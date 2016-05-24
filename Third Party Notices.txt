@@ -1,6 +1,5 @@
-﻿Third Party Notices. Place the following notice into a (i) ThirdPartyNotices.txt file that is conspicuous and readable file for users of the Microsoft Open Source Project (for example, as a License.txt file on the Github page); or (ii) in a conspicuous place on the repository from which the OSS source code is made available.
+﻿Third Party Notices for PowerShell Editor Syntax
 
-Third Party Notices for PowerShell-EditorSyntax
 This Microsoft Open Source project incorporates material from the project(s) listed below (“Third Party Code”). Microsoft is not the original author of the Third Party Code. Microsoft reserves all other rights not expressly granted, whether by implication, estoppel or otherwise.  
 
 Copyright (c) 2011 Guillermo López-Anglada
