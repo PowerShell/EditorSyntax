@@ -456,7 +456,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
+							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -465,7 +465,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:\s*(\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY))</string>
+					<string>(?i:(\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY)\b)</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -475,7 +475,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
+							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -485,11 +485,11 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.documentation.powershell</string>
+							<string>constant.string.documentation.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:\s*(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+([a-z0-9-_]+))</string>
+					<string>(?i:(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+(.+))</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -499,21 +499,16 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
+							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.documentation.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.double.heredoc.powershell</string>
+							<string>constant.string.documentation.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:requires\s+-(Version\s+\d(.\d+)?|Assembly\s+(.*)|Module\s+(.*)|PsSnapIn\s+(.*)|ShellId\s+(.*)))</string>
+					<string>((?i:requires))\s+-(Version\s+\d(?:.\d+)?|Assembly\s+(?:.*)|Module\s+(?:.*)|PsSnapIn\s+(?:.*)|ShellId\s+(?:.*))</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
