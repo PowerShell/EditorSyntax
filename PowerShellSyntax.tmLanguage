@@ -566,6 +566,13 @@
 			</dict>
 			<key>end</key>
 			<string>\{|\(</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#lineComment</string>
+				</dict>
+			</array>
 		</dict>
 		<key>interpolatedStringContent</key>
 		<dict>
