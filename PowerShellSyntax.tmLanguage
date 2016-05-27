@@ -103,10 +103,6 @@
 			<string>#type</string>
 		</dict>
 		<dict>
-			<key>include</key>
-			<string>#parameter</string>
-		</dict>
-		<dict>
 			<key>begin</key>
 			<string>(?&lt;!(?&lt;!`)")"</string>
 			<key>end</key>
@@ -313,7 +309,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)-(?i:band|bor|bnot|bxor)(?!\p{L})</string>
+			<string>(?&lt;!\w)-(?i:band|bor|bnot|bxor|shr|shl)(?!\p{L})</string>
 			<key>name</key>
 			<string>keyword.operator.bitwise.powershell</string>
 		</dict>
@@ -322,6 +318,10 @@
 			<string>(?&lt;!\w)-(?i:f)(?!\p{L})</string>
 			<key>name</key>
 			<string>keyword.operator.string-format.powershell</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#parameter</string>
 		</dict>
 		<dict>
 			<key>match</key>
