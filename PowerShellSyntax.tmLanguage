@@ -404,7 +404,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#variable</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
