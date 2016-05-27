@@ -66,6 +66,7 @@ $_ = $null
 $123 = 'value'
 $variable_name = 'value'
 $variable-name = 'value' # - in variable name is not allowed
+$$
 
 # Syntax highlighting not consistent in these two cases!
 $foo.bar
