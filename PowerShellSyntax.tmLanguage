@@ -89,6 +89,10 @@
 			<string>#type</string>
 		</dict>
 		<dict>
+			<key>include</key>
+			<string>#parameter</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>(?&lt;!(?&lt;!`)")"</string>
 			<key>end</key>
@@ -692,6 +696,13 @@
 					<string>constant.numeric.scientific.powershell</string>
 				</dict>
 			</array>
+		</dict>
+		<key>parameter</key>
+		<dict>
+			<key>match</key>
+			<string>((?&lt;=\s)-(\w+))</string>
+			<key>name</key>
+			<string>variable.parameter.powershell</string>
 		</dict>
 		<key>scriptblock</key>
 		<dict>
