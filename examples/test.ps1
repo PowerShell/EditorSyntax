@@ -244,16 +244,31 @@ configuration myConfiguration {
 }
 
 # Switch
+# switch [-regex|-wildcard|-exact][-casesensitive] (<value>)
+# switch [-regex|-wildcard|-exact][-casesensitive] -file filename
 switch ($variable)
 {
     'Value' {
         return $false
     }
+    
+    2 {}
+    
+    {$value -le 100} {}
 
     default {
         return $true
     }
 }
+
+switch ("fourteen") {}
+switch -CaseSensitive ("fourteen") {}
+switch -Illegal ("fourteen") {}
+switch -Regex ("fourteen") {}
+switch -Wildcard ("four*") {}
+switch -regex -file .\somefile.txt {}
+switch (3) {}
+switch (4, 2) {} 
 
 # Executable files
 . .\otherScript.ps1
@@ -272,7 +287,7 @@ my file.exe
 
 # Comment based help and keywords
 # .ExternalHelp  psake.psm1-help.xml
-#Requires -Version 2.0
+#Requires -Version 2.0     # <-- should #Requires statements be highlighted differently?
 
 <#
 	.PARAMETER
@@ -308,6 +323,7 @@ Test-Output *>> Test-Output.txt
 Test-Output *>&1
 
 # Special characters
+# Should these be highlighted differently?
 "`0"
 for ($i = 0; $i -le 1; $i++){"`a"}
 "backup`b`b out"
