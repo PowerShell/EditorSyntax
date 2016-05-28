@@ -68,18 +68,26 @@ $variable_name = 'value'
 $variable-name = 'value' # - in variable name is not allowed
 $$
 
-# Syntax highlighting not consistent in these two cases!
+# Syntax highlighting not consistent in these cases!
 $foo.bar
 ($foo).bar
+(Invoke-Something).bar
 
 # Sub Expression
 # Syntax highlighting not consistent in these two cases!
 "blablabla $(invoke-foo baz $a.bar) blablabla"
 invoke-foo baz $a.bar
 
-# Array Declaration
+# Arrays
 @('One', 2, $three)
 ('One', 2, $three)
+$p = @(Get-Process Notepad)
+$a[0]
+$a[-3..-1]
+$a[0,2+4..6]
+,(1,2,3)
+,$a
+$t = $a[0,1 + 3..($a.length - 1)]
 
 # Hash Table
 @{
@@ -93,6 +101,8 @@ $ht = @{
     Key = 123
     Key = $value
 }
+
+$hash = [ordered]@{ Number = 1; Shape = "Square"; Color = "Blue"}
 
 # Splatting
 Invoke-Something @parameters
@@ -115,6 +125,7 @@ $sb = {
 [uint64]$var = 100
 [System.String]::Empty
 [System.DateTime]::Parse('2016/09/21')
+[int32[]]$ia = 1500,2230,3350,4000
 
 # Numeric constants
 1
@@ -187,6 +198,7 @@ function NewFile($Name) { }
 functionMyFunction{}
 filter myfilter($param) {}
 Filter my-Filter ($param){}
+function global:Invoke-Something {}
 
 # This variant don't work properly
 function 
@@ -274,6 +286,37 @@ my file.exe
 # Methods
 # Only the first method name is highlighted correctly.
 $users.Split(',').Trim()
+
+# Redirection
+# Examples from https://technet.microsoft.com/en-us/library/hh847746.aspx
+Get-Process > Process.txt
+dir *.ps1 >> Scripts.txt
+Get-Process none 2> Errors.txt
+Get-Process none 2>> Save-Errors.txt
+Get-Process none, Powershell 2>&1
+Write-Warning "Test!" 3> Warnings.txt
+Write-Warning "Test!" 3>> Save-Warnings.txt
+Test-Warning 3>&1
+Import-Module * -Verbose 4> Verbose.txt
+Import-Module * -Verbose 4>> Save-Verbose.txt
+Import-Module * -Verbose 4>&1
+Write-Debug "Starting" 5> Debug.txt
+Write-Debug "Saving" 5>> Save-Debug.txt
+Test-Debug 5>&1
+Test-Output *> Test-Output.txt
+Test-Output *>> Test-Output.txt
+Test-Output *>&1
+
+# Special characters
+"`0"
+for ($i = 0; $i -le 1; $i++){"`a"}
+"backup`b`b out"
+"There are two line breaks`n`nhere."
+Write-Host "Let's not move`rDelete everything before this point."
+"Column1`t`tColumn2`t`tColumn3"
+
+# Range
+Get-ChildItem c:\techdocs\[a-l]*.txt
 
 # Other - strange cases
 [string]
