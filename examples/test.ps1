@@ -265,7 +265,7 @@ switch ("fourteen") {}
 switch -CaseSensitive ("fourteen") {}
 switch -Illegal ("fourteen") {}
 switch -Regex ("fourteen") {}
-switch -Wildcard ("four*") {}
+switch -Wildcard ($a) {}
 switch -regex -file .\somefile.txt {}
 switch (3) {}
 switch (4, 2) {} 
