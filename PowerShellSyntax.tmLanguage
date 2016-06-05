@@ -470,7 +470,7 @@
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>Calling external script</string>
+					<string>External script</string>
 					<key>end</key>
 					<string>((?=\))|(?=\})|(?&lt;!`)\n|(?&lt;!`)\r|(\|))</string>
 					<key>endCaptures</key>
