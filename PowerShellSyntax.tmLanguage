@@ -1116,7 +1116,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#variable</string>
+					<string>#variableWithoutPropertyHighlighting</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1140,7 +1140,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#variable</string>
+					<string>#variableWithoutPropertyHighlighting</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1493,6 +1493,121 @@
 					<string>${var}, ${script:var}</string>
 					<key>match</key>
 					<string>(\$)(\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+)(\})((\.[\w"']+)*)</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>Splatting</string>
+					<key>match</key>
+					<string>(@)(\w+)</string>
+				</dict>
+			</array>
+		</dict>
+		<key>variableWithoutPropertyHighlighting</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>Invalid variable name</string>
+					<key>match</key>
+					<string>(\$)(\w+-\w+)\b</string>
+					<key>name</key>
+					<string>invalid.illegal.powershell</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.powershell</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>Automatic variables - read-only.</string>
+					<key>match</key>
+					<string>(\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\b</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.scope.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>$var, $local:var</string>
+					<key>match</key>
+					<string>(\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\w+)(:\w+)?</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>storage.modifier.scope.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>${var}, ${script:var}</string>
+					<key>match</key>
+					<string>(\$)(\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+)(\})</string>
 				</dict>
 				<dict>
 					<key>captures</key>
