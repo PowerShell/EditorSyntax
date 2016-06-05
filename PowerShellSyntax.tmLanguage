@@ -266,7 +266,15 @@
 					<key>comment</key>
 					<string>Verb-Noun</string>
 					<key>end</key>
-					<string>((?=\))|(?&lt;!`)\n|(?&lt;!`)\r|\|)</string>
+					<string>((?=\))|(?&lt;!`)\n|(?&lt;!`)\r|(\|))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.powershell</string>
+						</dict>
+					</dict>
 					<key>name</key>
 					<string>meta.command.powershell</string>
 					<key>patterns</key>
@@ -281,7 +289,15 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#redirection</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#numericConstant</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#operators</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -868,7 +884,7 @@
 					<key>comment</key>
 					<string>Command invocation (Call)</string>
 					<key>match</key>
-					<string>(&amp;)</string>
+					<string>(&amp;|\|)</string>
 					<key>name</key>
 					<string>keyword.operator.other.powershell</string>
 				</dict>
