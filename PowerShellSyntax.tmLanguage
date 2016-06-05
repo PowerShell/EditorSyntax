@@ -71,6 +71,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#switch</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#scriptBlock</string>
 		</dict>
 		<dict>
@@ -115,19 +119,11 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#commands-OLD</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#commands-NEW</string>
+			<string>#commands</string>
 		</dict>
 		<dict>
 			<key>include</key>
 			<string>#executableFiles</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#parameter-OLD</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -136,10 +132,6 @@
 		<dict>
 			<key>include</key>
 			<string>#variable</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#demoScopeHighlighting</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -225,43 +217,13 @@
 					<key>comment</key>
 					<string>-Parameter value</string>
 					<key>match</key>
-					<string>(-\w+)(:)?</string>
+					<string>\s(-\w+)(:)?</string>
 					<key>name</key>
 					<string>variable.parameter.powershell</string>
 				</dict>
 			</array>
 		</dict>
 		<key>commands</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>comment</key>
-					<string>Generic function match based on Verb-Noun pair using list of approved verbs.</string>
-					<key>match</key>
-					<string>(?&lt;!\\)\b(?i:Add|Approve|Assert|Backup|Block|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write)-(?i:\w+)\b(?!\.|\\)</string>
-					<key>name</key>
-					<string>support.function.powershell</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>Built-in commands that don't adhere to the approved verbs standard.</string>
-					<key>match</key>
-					<string>(?&lt;!\\)\b(?i:foreach-object|tee-object|where-object|sort-object)\b(?!\.|\\)</string>
-					<key>name</key>
-					<string>support.function.powershell</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>Built-in aliases</string>
-					<key>match</key>
-					<string>(?&lt;!\\|\[)\b(?i:ac|asnp|cat|cd|cfs|chdir|clc|clear|clhy|cli|clp|cls|clv|cnsn|compare|copy|cp|cpi|cpp|curl|cvpa|dbp|del|diff|dir|dnsn|ebp|echo|epal|epcsv|epsn|erase|etsn|exsn|fc|fhx|fl|ft|fw|gal|gbp|gc|gcb|gci|gcm|gcs|gdr|ghy|gi|gjb|gl|gm|gmo|gp|gps|gpv|group|gsn|gsnp|gsv|gu|gv|gwmi|h|history|icm|iex|ihy|ii|ipal|ipcsv|ipmo|ipsn|irm|ise|iwmi|iwr|kill|lp|ls|man|md|measure|mi|mount|move|mp|mv|nal|ndr|ni|nmo|npssc|nsn|nv|ogv|oh|popd|ps|pushd|r|rbp|rcjb|rcsn|rd|rdr|ren|ri|rjb|rm|rmdir|rmo|rni|rnp|rp|rsn|rsnp|rujb|rv|rvpa|rwmi|sajb|sal|saps|sasv|sbp|sc|scb|select|set|shcm|si|sl|sleep|sls|sort|sp|spjb|spps|spsv|start|sujb|sv|swmi|tee|trcm|type|wget|wjb|write)\b(?!\.|\\|\])</string>
-					<key>name</key>
-					<string>support.other.alias.powershell</string>
-				</dict>
-			</array>
-		</dict>
-		<key>commands-NEW</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -736,155 +698,20 @@
 			<key>name</key>
 			<string>keyword.control.powershell</string>
 		</dict>
-		<key>demoScopeHighlighting</key>
+		<key>defaultKeyword</key>
 		<dict>
-			<key>patterns</key>
-			<array>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
 				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_constantLanguage)\b</string>
 					<key>name</key>
-					<string>constant.language</string>
+					<string>keyword.other.powershell</string>
 				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_constantNumeric)\b</string>
-					<key>name</key>
-					<string>constant.numeric</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_constantOther)\b</string>
-					<key>name</key>
-					<string>constant.other</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_constantCharacterEscape)\b</string>
-					<key>name</key>
-					<string>constant.character.escape</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_entityOtherAttributeName)\b</string>
-					<key>name</key>
-					<string>entity.other.attribute-name</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_invalid)\b</string>
-					<key>name</key>
-					<string>invalid</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_comment)\b</string>
-					<key>name</key>
-					<string>comment</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_metaSelector)\b</string>
-					<key>name</key>
-					<string>meta.selector</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_storageType)\b</string>
-					<key>name</key>
-					<string>storage.type</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_string)\b</string>
-					<key>name</key>
-					<string>string</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_keywordControl)\b</string>
-					<key>name</key>
-					<string>keyword.control</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_keywordOperator)\b</string>
-					<key>name</key>
-					<string>keyword.operator</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_keywordOtherUnit)\b</string>
-					<key>name</key>
-					<string>keyword.other.unit</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_supportType)\b</string>
-					<key>name</key>
-					<string>support.type</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_supportConstant)\b</string>
-					<key>name</key>
-					<string>support.constant</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_supportVariable)\b</string>
-					<key>name</key>
-					<string>support.variable</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_entityNameClass)\b</string>
-					<key>name</key>
-					<string>entity.name.class</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_entityNameType)\b</string>
-					<key>name</key>
-					<string>entity.name.type</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_entityNameFunction)\b</string>
-					<key>name</key>
-					<string>entity.name.function</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_metaParameterTypeVariable)\b</string>
-					<key>name</key>
-					<string>meta.parameter.type.variable</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_metaTypeAnnotation)\b</string>
-					<key>name</key>
-					<string>meta.type.annotation</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_variableParameter)\b</string>
-					<key>name</key>
-					<string>variable.parameter</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_variableLanguage)\b</string>
-					<key>name</key>
-					<string>variable.language</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(demo_scope_variableOther)\b</string>
-					<key>name</key>
-					<string>variable.other</string>
-				</dict>
-			</array>
+			</dict>
+			<key>comment</key>
+			<string>Default is a reserved word when used in Switch statements. This is kind of a work-around - it will highlight only inside scriptblocks.</string>
+			<key>match</key>
+			<string>(?i:(default))\s*(?=\{)</string>
 		</dict>
 		<key>executableFiles</key>
 		<dict>
@@ -1138,13 +965,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>parameter</key>
-		<dict>
-			<key>match</key>
-			<string>((?&lt;=\s)-(\w+))</string>
-			<key>name</key>
-			<string>variable.parameter.powershell</string>
-		</dict>
 		<key>redirection</key>
 		<dict>
 			<key>patterns</key>
@@ -1174,12 +994,12 @@
 			<key>name</key>
 			<string>keyword.other.powershell</string>
 		</dict>
-		<key>scriptblock</key>
+		<key>scriptBlock</key>
 		<dict>
 			<key>begin</key>
-			<string>\{</string>
+			<string>(\{)</string>
 			<key>end</key>
-			<string>\}</string>
+			<string>(\})</string>
 			<key>name</key>
 			<string>meta.scriptblock.powershell</string>
 			<key>patterns</key>
@@ -1187,6 +1007,10 @@
 				<dict>
 					<key>include</key>
 					<string>$self</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#defaultKeyword</string>
 				</dict>
 			</array>
 		</dict>
@@ -1215,10 +1039,6 @@
 				<dict>
 					<key>include</key>
 					<string>#subExpression</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#scriptBlock</string>
 				</dict>
 			</array>
 		</dict>
@@ -1334,6 +1154,65 @@
 					<string>(.)</string>
 					<key>name</key>
 					<string>source.powershell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>switch</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>switch [-regex|-wildcard|-exact][-casesensitive] -file filename</string>
+					<key>match</key>
+					<string>\b(?i:(switch))\b\s+(?i:(-regex|-wildcard|-exact){0,1})\s*(?i:(-casesensitive){0,1})\s*(?i:(-file))\s+</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>switch [-regex|-wildcard|-exact][-casesensitive] (&lt;value&gt;)</string>
+					<key>match</key>
+					<string>\b(?i:(switch))\b\s+(?i:(-regex|-wildcard|-exact){0,1})\s*(?i:(-casesensitive){0,1})\s*</string>
 				</dict>
 			</array>
 		</dict>
