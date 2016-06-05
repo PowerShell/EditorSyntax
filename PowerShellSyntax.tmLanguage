@@ -107,6 +107,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#enum</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#class</string>
 		</dict>
 		<dict>
@@ -191,7 +195,9 @@
 		</dict>
 		<key>class</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>(?&lt;!\w|-)(?i:(class))\s+(\w+)(?:\s*(:)\s*(\w+))?\s*\{</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -201,13 +207,69 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function</string>
+					<string>entity.name.function.powershell</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.powershell</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.inherited-class.powershell</string>
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>capture should be entity.name.type, but it doesn't provide a good color in the default schema.</string>
+			<string>Class</string>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>meta.class.powershell</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#classReservedWords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#classBaseKeyword</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<key>classBaseKeyword</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.class.powershell</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>The base keyword used in classes.</string>
 			<key>match</key>
-			<string>(?&lt;!\w|-)(?i:(class|enum))\s+(\w+)\s+</string>
+			<string>(:)\s*(?i:(base))\s*(?=\()</string>
+		</dict>
+		<key>classReservedWords</key>
+		<dict>
+			<key>comment</key>
+			<string>Reserved words for classes.</string>
+			<key>match</key>
+			<string>\b(?i:(hidden|static))\b</string>
+			<key>name</key>
+			<string>keyword.other.powershell</string>
 		</dict>
 		<key>commandParameter</key>
 		<dict>
@@ -713,6 +775,26 @@
 			<key>match</key>
 			<string>(?i:(default))\s*(?=\{)</string>
 		</dict>
+		<key>enum</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>capture should be entity.name.type, but it doesn't provide a good color in the default schema.</string>
+			<key>match</key>
+			<string>(?&lt;!\w|-)(?i:(enum))\s+(\w+)\s+</string>
+		</dict>
 		<key>executableFiles</key>
 		<dict>
 			<key>comment</key>
@@ -990,7 +1072,7 @@
 		<key>reservedWords</key>
 		<dict>
 			<key>match</key>
-			<string>(\b(?&lt;!-|\$)(?i:configuration|node|process|enum|filter|sequence|class|switch|data|define|function|dynamicparam|inlinescript|var|parallel|param|workflow)\b(?!-|\.))</string>
+			<string>(\b(?&lt;!-|\$)(?i:configuration|node|process|enum|filter|sequence|class|data|define|function|dynamicparam|inlinescript|var|parallel|param|workflow)\b(?!-|\.))</string>
 			<key>name</key>
 			<string>keyword.other.powershell</string>
 		</dict>
