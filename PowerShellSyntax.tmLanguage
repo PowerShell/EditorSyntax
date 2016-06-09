@@ -326,10 +326,6 @@
 			<string>keyword.operator.string-format.powershell</string>
 		</dict>
 		<dict>
-			<key>include</key>
-			<string>#parameter</string>
-		</dict>
-		<dict>
 			<key>match</key>
 			<string>[+%*/-]?=|[+/*%-]</string>
 			<key>name</key>
@@ -695,7 +691,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?&lt;!\w)(?i:(0x)([a-f0-9]+)((?i:L)?(?i:[kmgtp]b)?))(?!\w)</string>
+					<string>(?&lt;!\w)([-+]?)(?i:(0x)([a-f0-9]+)((?i:L)?(?i:[kmgtp]b)?))(?!\w)</string>
 					<key>name</key>
 					<string>constant.numeric.hexadecimal.powershell</string>
 				</dict>
