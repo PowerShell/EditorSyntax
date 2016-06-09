@@ -45,18 +45,38 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;![\\-])#</string>
+			<string>--%</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.powershell</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Stop Parsing</string>
+			<key>contentName</key>
+			<string>source.powershell</string>
 			<key>end</key>
 			<string>$</string>
-			<key>name</key>
-			<string>comment.line.number-sign.powershell</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#commentEmbeddedDocs</string>
+					<string>#lineComment</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#lineComment</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(`(?!$))</string>
+			<key>name</key>
+			<string>invalid.illegal.powershell</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -234,7 +254,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)-([ci]?[lg][te]|eq|ne)</string>
+			<string>(?&lt;!\w)-([ci]?[lg][te]|eq|ne)\b</string>
 			<key>name</key>
 			<string>keyword.operator.logical.powershell</string>
 		</dict>
@@ -246,7 +266,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)((?i:begin|break|catch|continue|data|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach(?!-object)|from|if|in|inlinescript|parallel|param|process|return|switch|throw|trap|try|until|using|var|where(?!=-object)|while)|%|\?)(?!\w)</string>
+			<string>(?&lt;!\w)((?i:begin|break|catch|continue|data|define|do|dynamicparam|node|else|elseif|end|exit|finally|for|foreach(?!-object)|from|if|in|inlinescript|parallel|param|process|return|switch|throw|trap|try|until|using|var|where(?!=-object)|while)|%|\?)(?!\w)</string>
 			<key>name</key>
 			<string>keyword.control.powershell</string>
 		</dict>
@@ -267,7 +287,7 @@
 			<key>comment</key>
 			<string>capture should be entity.name.type, but it doesn't provide a good color in the default schema.</string>
 			<key>match</key>
-			<string>(?&lt;!\w)((?i:class)|%|\?)(?:\s)+((?:\p{L}|\d|_|-|)+)\b</string>
+			<string>(?&lt;!\w|-)((?i:class|enum)|%|\?)(?:\s)+((?:\p{L}|\d|_|)+)\b</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -295,7 +315,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)-(?i:band|bor|bnot|bxor)(?!\p{L})</string>
+			<string>(?&lt;!\w)-(?i:band|bor|bnot|bxor|shr|shl)(?!\p{L})</string>
 			<key>name</key>
 			<string>keyword.operator.bitwise.powershell</string>
 		</dict>
@@ -400,7 +420,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#variable</string>
+							<string>$self</string>
 						</dict>
 					</array>
 				</dict>
@@ -438,7 +458,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
+							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -447,7 +467,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:\s*(\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY))</string>
+					<string>(?i:(\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY|ROLE)\b)</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -457,7 +477,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
+							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -467,11 +487,11 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.documentation.powershell</string>
+							<string>constant.string.documentation.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:\s*(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+([a-z0-9-_]+))</string>
+					<string>(?i:(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+(.+))</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -481,21 +501,16 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
+							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.documentation.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.double.heredoc.powershell</string>
+							<string>constant.string.documentation.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:requires\s+-(Version\s+\d(.\d+)?|Assembly\s+(.*)|Module\s+(.*)|PsSnapIn\s+(.*)|ShellId\s+(.*)))</string>
+					<string>((?i:requires))\s+-(Version\s+\d(?:.\d+)?|Assembly\s+(?:.*)|Module\s+(?:.*)|PsSnapIn\s+(?:.*)|ShellId\s+(?:.*))</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -522,7 +537,7 @@
 		<key>function</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!\S)(?i)(function|filter|configuration|workflow)\s+(?:(global|local|script|private):)?((?:\p{L}|\d|_|-|\.)+)</string>
+			<string>(?&lt;!\S)(?i)(function|filter|workflow|configuration)\s+(?:(global|local|script|private):)?((?:\p{L}|\d|_|-|\.)+)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -548,6 +563,13 @@
 			</dict>
 			<key>end</key>
 			<string>\{|\(</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#lineComment</string>
+				</dict>
+			</array>
 		</dict>
 		<key>interpolatedStringContent</key>
 		<dict>
@@ -629,6 +651,22 @@
 				</dict>
 			</array>
 		</dict>
+		<key>lineComment</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;![\\-])(?:\s+?|^)#</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>comment.line.number-sign.powershell</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#commentEmbeddedDocs</string>
+				</dict>
+			</array>
+		</dict>
 		<key>numericConstant</key>
 		<dict>
 			<key>patterns</key>
@@ -653,7 +691,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?&lt;!\w)(?i:(0x)([a-f0-9]+)((?i:L)?(?i:[kmgtp]b)?))(?!\w)</string>
+					<string>(?&lt;!\w)([-+]?)(?i:(0x)([a-f0-9]+)((?i:L)?(?i:[kmgtp]b)?))(?!\w)</string>
 					<key>name</key>
 					<string>constant.numeric.hexadecimal.powershell</string>
 				</dict>
@@ -692,6 +730,13 @@
 					<string>constant.numeric.scientific.powershell</string>
 				</dict>
 			</array>
+		</dict>
+		<key>parameter</key>
+		<dict>
+			<key>match</key>
+			<string>((?&lt;=\s)-(\w+))</string>
+			<key>name</key>
+			<string>variable.parameter.powershell</string>
 		</dict>
 		<key>scriptblock</key>
 		<dict>
