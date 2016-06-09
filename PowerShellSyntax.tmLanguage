@@ -1108,11 +1108,11 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#stringEscapeChars</string>
+					<string>#illegalVariable</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#illegalVariable</string>
+					<string>#stringEscapeChars</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1134,6 +1134,10 @@
 			<string>string.quoted.double.heredoc.powershell</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#illegalVariable</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#stringEscapeChars</string>
