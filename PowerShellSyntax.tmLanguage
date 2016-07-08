@@ -756,7 +756,7 @@
 		<key>controlWords</key>
 		<dict>
 			<key>match</key>
-			<string>(\b(?&lt;!-|\$)(?i:begin|exit|break|return|catch|finally|for|continue|foreach|throw|from|trap|try|do|if|until|in|using|else|elseif|while|end|where)\b(?!-|\.))</string>
+			<string>(\b(?&lt;!-|\$)(?i:begin|process|exit|break|return|catch|finally|for|continue|foreach|throw|from|trap|try|do|if|until|in|using|else|elseif|while|end|where)\b(?!-|\.))</string>
 			<key>name</key>
 			<string>keyword.control.powershell</string>
 		</dict>
@@ -1072,7 +1072,7 @@
 		<key>reservedWords</key>
 		<dict>
 			<key>match</key>
-			<string>(\b(?&lt;!-|\$)(?i:configuration|node|process|enum|filter|sequence|class|data|define|function|dynamicparam|inlinescript|var|parallel|param|workflow)\b(?!-|\.))</string>
+			<string>(\b(?&lt;!-|\$)(?i:configuration|node|enum|filter|sequence|class|data|define|function|dynamicparam|inlinescript|var|parallel|param|workflow)\b(?!-|\.))</string>
 			<key>name</key>
 			<string>keyword.other.powershell</string>
 		</dict>
@@ -1496,7 +1496,7 @@
 					<key>comment</key>
 					<string>${var}, ${script:var}</string>
 					<key>match</key>
-					<string>(\$)(\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+)(\})((\.[\w"'\- @]+)*)</string>
+					<string>(\$)(\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+?)(\})((\.[\w"'\- @]+)*)</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1611,7 +1611,7 @@
 					<key>comment</key>
 					<string>${var}, ${script:var}</string>
 					<key>match</key>
-					<string>(\$)(\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+)(\})</string>
+					<string>(\$)(\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+?)(\})</string>
 				</dict>
 				<dict>
 					<key>captures</key>
