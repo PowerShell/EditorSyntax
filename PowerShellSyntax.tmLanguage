@@ -9,7 +9,7 @@
 		<string>psd1</string>
 	</array>
 	<key>name</key>
-	<string>Powershell</string>
+	<string>PowerShell</string>
 	<key>patterns</key>
 	<array>
 		<dict>
