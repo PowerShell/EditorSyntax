@@ -1,3 +1,5 @@
+[![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # PowerShell Syntax Definition for Editors
 
 This project establishes the central development and maintenance of syntax definition
