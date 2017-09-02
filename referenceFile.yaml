@@ -10,3 +10,39 @@ lines:
         scopes:
           - source.powershell
           - comment.line
+  - line: '<#'
+    tokens:
+      - token: '<#'
+        scopes:
+          - source.powershell
+          - comment.block
+          - punctuation.definition.comment
+  - line: '    Block comment'
+    tokens:
+      - token: '    Block comment'
+        scopes:
+          - source.powershell
+          - comment.block
+  - line: '#>'
+    tokens:
+      - token: '#>'
+        scopes:
+          - source.powershell
+          - comment.block
+          - punctuation.definition.comment
+  - line: "'Single Quoted string'"
+    tokens:
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: 'Single Quoted string'
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
