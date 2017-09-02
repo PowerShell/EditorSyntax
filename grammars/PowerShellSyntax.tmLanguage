@@ -42,6 +42,23 @@
         </array>
       </dict>
       <dict>
+        <key>match</key>
+        <string>(\$)(\$)</string>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.definition.variable</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>variable.language</string>
+          </dict>
+        </dict>
+      </dict>
+      <dict>
         <key>include</key>
         <string>#lineComment</string>
       </dict>
@@ -60,6 +77,30 @@
       <dict>
         <key>include</key>
         <string>#stringDoubleQuoted</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#stringSingleQuotedHeredoc</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#stringDoubleQuotedHeredoc</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#illegalBacktick</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#illegalVariable</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#redirection</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#function</string>
       </dict>
       <dict>
         <key>include</key>
@@ -143,6 +184,13 @@
         </dict>
         <key>name</key>
         <string>comment.block</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#commentEmbeddedDocs</string>
+          </dict>
+        </array>
       </dict>
       <key>stringEscapeChars</key>
       <dict>
@@ -247,6 +295,54 @@
           </dict>
         </array>
       </dict>
+      <key>stringSingleQuotedHeredoc</key>
+      <dict>
+        <key>begin</key>
+        <string>(\@'\s*$)</string>
+        <key>end</key>
+        <string>^'\@</string>
+        <key>name</key>
+        <string>string.quoted.single.heredoc</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#stringSingleQuotedEscape</string>
+          </dict>
+        </array>
+      </dict>
+      <key>stringDoubleQuotedHeredoc</key>
+      <dict>
+        <key>begin</key>
+        <string>(\@"\s*$)</string>
+        <key>end</key>
+        <string>^"\@</string>
+        <key>name</key>
+        <string>string.quoted.double.heredoc</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#illegalVariable</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#stringEscapeChars</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#variableWithoutPropertyHighlighting</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#subExpression</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#scriptBlock</string>
+          </dict>
+        </array>
+      </dict>
       <key>controlWords</key>
       <dict>
         <key>match</key>
@@ -262,6 +358,65 @@
         <string>(\b(([\p{L}A-Za-z0-9\-_\.]+).(?i:exe|com|cmd|bat))\b)</string>
         <key>name</key>
         <string>support.executable</string>
+      </dict>
+      <key>redirection</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>Merging redirection</string>
+            <key>match</key>
+            <string>(?&lt;=\s|^)([2-6\*]?&gt;&amp;1)</string>
+            <key>name</key>
+            <string>keyword.operator.redirection</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>File redirection</string>
+            <key>match</key>
+            <string>(?&lt;=\s|^)(([1-6\*]?&gt;{1,2})|(&lt;))</string>
+            <key>name</key>
+            <string>keyword.operator.redirection</string>
+          </dict>
+        </array>
+      </dict>
+      <key>function</key>
+      <dict>
+        <key>begin</key>
+        <string>(?&lt;!\S)(?i)(function|filter|workflow|configuration)\s+(?:(global|local|script|private):)?((?:\p{L}|\d|_|-|\.)+)</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>meta.function</string>
+          </dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.other</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>storage.modifier.scope</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.function</string>
+          </dict>
+        </dict>
+        <key>end</key>
+        <string>\{|\(</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>include</key>
+            <string>#lineComment</string>
+          </dict>
+        </array>
       </dict>
       <key>arrayDeclaration</key>
       <dict>
@@ -396,6 +551,36 @@
           <dict>
             <key>include</key>
             <string>$self</string>
+          </dict>
+        </array>
+      </dict>
+      <key>illegalBacktick</key>
+      <dict>
+        <key>comment</key>
+        <string>Any characters (other than new line) after a back-tick, is illegal in PowerShell.</string>
+        <key>match</key>
+        <string>(`(?!$))</string>
+        <key>name</key>
+        <string>invalid.illegal</string>
+      </dict>
+      <key>illegalVariable</key>
+      <dict>
+        <key>match</key>
+        <string>\$\w+:\s</string>
+        <key>name</key>
+        <string>invalid.illegal</string>
+      </dict>
+      <key>commandParameter</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>-Parameter value</string>
+            <key>match</key>
+            <string>\s(-\w+)(:)?</string>
+            <key>name</key>
+            <string>variable.parameter</string>
           </dict>
         </array>
       </dict>
@@ -713,6 +898,160 @@
           </dict>
         </array>
       </dict>
+      <key>commentEmbeddedDocs</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>match</key>
+            <string>(?i:(\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY|ROLE)\b)</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>constant.string.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>match</key>
+            <string>(?i:(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+(.+))</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.string.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Requires -Version</string>
+            <key>match</key>
+            <string>(?i:(requires))\s(-(?i:version)\s\d+(\.\d+)?)</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.string.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Requires -PSSnapin</string>
+            <key>match</key>
+            <string>(?i:(requires))\s(-(?i:pssnapin)\s\w+(\s*-(?i:version)\s\d+(\.\d+)?)?)</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.string.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Requires -Modules</string>
+            <key>match</key>
+            <string>(?i:(requires))\s(-(?i:modules)\s.*)</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.string.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Requires -ShellId</string>
+            <key>match</key>
+            <string>(?i:(requires))\s(-(?i:shellid)\s.*)</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.documentation.powershell</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>constant.string.documentation.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Requires -RunAsAdministrator</string>
+            <key>match</key>
+            <string>(?i:(requires))\s(-(?i:runasadministrator))</string>
+            <key>name</key>
+            <string>comment.block.documentation</string>
+          </dict>
+        </array>
+      </dict>
       <key>numericConstant</key>
       <dict>
         <key>patterns</key>
@@ -815,7 +1154,7 @@
             <key>comment</key>
             <string>Logical NOT</string>
             <key>match</key>
-            <string>(?&lt;=\d|\s|^)((?i:-not)|!)</string>
+            <string>(?&lt;=\d|\s|^|\()((?i:-not)|!)</string>
             <key>name</key>
             <string>keyword.operator.unary.logical-not</string>
           </dict>

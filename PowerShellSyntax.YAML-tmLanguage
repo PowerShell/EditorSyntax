@@ -16,11 +16,22 @@ patterns:
         -
             match: (.)
             name: source.powershell
+-
+    match: (\$)(\$)
+    captures:
+        '1': {name: punctuation.definition.variable}
+        '2': {name: variable.language}
 - include: '#lineComment'
 - include: '#blockComment'
 - include: '#numericConstant'
 - include: '#stringSingleQuoted'
 - include: '#stringDoubleQuoted'
+- include: '#stringSingleQuotedHeredoc'
+- include: '#stringDoubleQuotedHeredoc'
+- include: '#illegalBacktick'
+- include: '#illegalVariable'
+- include: '#redirection'
+- include: '#function'
 - include: '#commands'
 - include: '#arrayDeclaration'
 - include: '#hashTable'
@@ -49,6 +60,8 @@ repository:
             '1':
                 name: punctuation.definition.comment
         name: comment.block
+        patterns:
+            - include: '#commentEmbeddedDocs'
     stringEscapeChars:
         patterns:
             - name: constant.character.escape
@@ -85,6 +98,28 @@ repository:
             - include: '#stringEscapeChars'
             - include: '#variableWithoutPropertyHighlighting'
             - include: '#subExpression'
+    stringSingleQuotedHeredoc:
+        begin: '(\@''\s*$)'
+        end: '^''\@'
+        name: string.quoted.single.heredoc
+        patterns:
+            -
+                include: '#stringSingleQuotedEscape'
+    stringDoubleQuotedHeredoc:
+        begin: '(\@"\s*$)'
+        end: '^"\@'
+        name: string.quoted.double.heredoc
+        patterns:
+            -
+                include: '#illegalVariable'
+            -
+                include: '#stringEscapeChars'
+            -
+                include: '#variableWithoutPropertyHighlighting'
+            -
+                include: '#subExpression'
+            -
+                include: '#scriptBlock'
     controlWords:
         match: '(\b(?<!-|\$)(?i:begin|process|exit|break|return|catch|finally|for|continue|foreach|throw|from|trap|try|do|if|until|in|using|else|elseif|while|end|where)\b(?!-|\.))'
         name: keyword.control
@@ -92,6 +127,31 @@ repository:
         comment: 'Executable files, like exe, com, cmd and bat'
         match: '(\b(([\p{L}A-Za-z0-9\-_\.]+).(?i:exe|com|cmd|bat))\b)'
         name: support.executable
+    redirection:
+        patterns:
+            -
+                comment: 'Merging redirection'
+                match: '(?<=\s|^)([2-6\*]?>&1)'
+                name: keyword.operator.redirection
+            -
+                comment: 'File redirection'
+                match: '(?<=\s|^)(([1-6\*]?>{1,2})|(<))'
+                name: keyword.operator.redirection
+    function:
+        begin: '(?<!\S)(?i)(function|filter|workflow|configuration)\s+(?:(global|local|script|private):)?((?:\p{L}|\d|_|-|\.)+)'
+        beginCaptures:
+            '0':
+                name: meta.function
+            '1':
+                name: keyword.other
+            '2':
+                name: storage.modifier.scope
+            '3':
+                name: entity.name.function
+        end: '\{|\('
+        patterns:
+            -
+                include: '#lineComment'
     arrayDeclaration:
         begin: '(\@?\()'
         beginCaptures:
@@ -143,6 +203,19 @@ repository:
         name: meta.subexpression
         patterns:
             - include: $self
+    illegalBacktick:
+        comment: 'Any characters (other than new line) after a back-tick, is illegal in PowerShell.'
+        match: '(`(?!$))'
+        name: invalid.illegal
+    illegalVariable:
+        match: '\$\w+:\s'
+        name: invalid.illegal
+    commandParameter:
+        patterns:
+            -
+                comment: '-Parameter value'
+                match: '\s(-\w+)(:)?'
+                name: variable.parameter
     commands:
         patterns:
             -
@@ -233,6 +306,56 @@ repository:
                     - {include: '#arrayDeclaration'}
                     - {include: '#illegalBacktick'}
                     - {include: '#illegalVariable'}
+    commentEmbeddedDocs:
+        patterns:
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: keyword.operator.documentation.powershell}
+                match: '(?i:(\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY|ROLE)\b)'
+                name: comment.block.documentation
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: keyword.operator.documentation.powershell}
+                    '3': {name: constant.string.documentation.powershell}
+                match: '(?i:(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+(.+))'
+                name: comment.block.documentation
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: constant.string.documentation.powershell}
+                comment: 'Requires -Version'
+                match: '(?i:(requires))\s(-(?i:version)\s\d+(\.\d+)?)'
+                name: comment.block.documentation
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: constant.string.documentation.powershell}
+                comment: 'Requires -PSSnapin'
+                match: '(?i:(requires))\s(-(?i:pssnapin)\s\w+(\s*-(?i:version)\s\d+(\.\d+)?)?)'
+                name: comment.block.documentation
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: constant.string.documentation.powershell}
+                comment: 'Requires -Modules'
+                match: '(?i:(requires))\s(-(?i:modules)\s.*)'
+                name: comment.block.documentation
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: constant.string.documentation.powershell}
+                comment: 'Requires -ShellId'
+                match: '(?i:(requires))\s(-(?i:shellid)\s.*)'
+                name: comment.block.documentation
+            -
+                captures:
+                    '1': {name: keyword.operator.documentation.powershell}
+                    '2': {name: constant.string.documentation.powershell}
+                comment: 'Requires -RunAsAdministrator'
+                match: '(?i:(requires))\s(-(?i:runasadministrator))'
+                name: comment.block.documentation
     numericConstant:
         patterns:
             -
@@ -283,7 +406,7 @@ repository:
                 name: keyword.operator.assignment
             -
                 comment: 'Logical NOT'
-                match: '(?<=\d|\s|^)((?i:-not)|!)'
+                match: '(?<=\d|\s|^|\()((?i:-not)|!)'
                 name: keyword.operator.unary.logical-not
             -
                 comment: Multiplicative
