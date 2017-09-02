@@ -52,7 +52,7 @@ Note that you need to run these scripts as Administrator, and you also need to r
 
 The test script are using the file ``referenceFile.yaml`` to test the tokens and their assigned scopes.
 
-If you make any changes to the grammar file, remember to also update the reference file if needed; or the tests will fail.
+If you make any changes to the grammar file, remember to also update the reference file and/or ``test.ps1`` if needed; or the tests will fail.
 
 ## Maintainers
 
