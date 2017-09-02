@@ -1,0 +1,53 @@
+{
+  "name": "powershelleditorsyntax",
+  "version": "2.0.0",
+  "description": "PowerShell Editor Syntax",
+  "private": true,
+  "keywords": [
+    "grammar",
+    "syntax",
+    "powershell",
+    "vscode",
+    "Visual Studio Code",
+    "Atom",
+    "Sublime",
+    "Sublime Text",
+    "SublimeText",
+    "tmLanguage",
+    "TextMate"
+  ],
+  "homepage": "https://github.com/PowerShell/EditorSyntax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PowerShell/EditorSyntax"
+  },
+  "bugs": {
+    "url": "https://github.com/PowerShell/EditorSyntax/issues"
+  },
+  "scripts": {
+    "test": "node test.js",
+    "build": "node build.js",
+    "postbuild": "node test.js"
+  },
+  "contributors": [
+    {
+      "name": "David Wilson",
+      "url": "http://twitter.com/daviwil"
+    },
+    {
+      "name": "Sergei Vorobev",
+      "url": "https://twitter.com/xvorsx"
+    },
+    {
+      "name": "Øyvind Kallstad",
+      "url": "https://twitter.com/okallstad"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cson": "^4.1.0",
+    "js-yaml": "^3.9.1",
+    "plist": "^2.1.0",
+    "vscode-textmate": "^3.1.5"
+  }
+}

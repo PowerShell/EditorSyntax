@@ -22,11 +22,37 @@ both VS Code and Sublime Text.  There are a number of existing issues with the g
 that we need to track down and fix.  Please see [issue #1](https://github.com/PowerShell/EditorSyntax/issues/1)
 for more details.
 
+Ultimately we are looking at doing a total refactoring of the grammar file.
+
 ## Contributing
 
 We would love to have community contributions to this project to make PowerShell syntax
 highlighting great in as many editors as we can.  Please feel free to file issues or
 send pull requests if you'd like to contribute.
+
+### Workflow
+
+Build and test scripts are provided that requires node and tasks are included for Visual Studio Code.
+
+To get started contributing:
+
+- Install node (if not installed already)
+- Clone this repository locally
+- run ``npm install`` to install the node dependencies
+
+After you have made changes to ``PowerShellSyntax.YAML-tmLanguage``, press ``Ctrl`` + ``Shift`` + ``b`` to start the build task. This will convert the file to _plist_, _JSON_ and _CSON_ as well as run the tests to make sure that nothing breaks.
+
+The converted files are saved to the **grammars** folder.
+
+If you want to preview the changes locally, and are running Windows (with PowerShell), you can use the included helper scripts ``useThisGrammar.ps1`` and ``useOriginalGrammar.ps1`` to change between the original and the grammar file from this repository.
+
+Note that you need to run these scripts as Administrator, and you also need to reload Visual Studio Code to read the new grammar file.
+
+### Tests
+
+The test script are using the file ``referenceFile.yaml`` to test the tokens and their assigned scopes.
+
+If you make any changes to the grammar file, remember to also update the reference file if needed; or the tests will fail.
 
 ## Maintainers
 

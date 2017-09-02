@@ -1,0 +1,12 @@
+lines:
+  - line: '# Line comment'
+    tokens:
+      - token: '#'
+        scopes:
+          - source.powershell
+          - comment.line
+          - punctuation.definition.comment
+      - token: ' Line comment'
+        scopes:
+          - source.powershell
+          - comment.line
