@@ -38,6 +38,9 @@
       "include": "#stringDoubleQuoted"
     },
     {
+      "include": "#commands"
+    },
+    {
       "include": "#arrayDeclaration"
     },
     {
@@ -57,6 +60,9 @@
     },
     {
       "include": "#executableFiles"
+    },
+    {
+      "include": "#numericConstant"
     }
   ],
   "repository": {
@@ -247,6 +253,260 @@
         }
       ]
     },
+    "commands": {
+      "patterns": [
+        {
+          "begin": "(?<!\\\\)\\b((?i:(Add|Approve|Assert|Backup|Block|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write))-(\\w+))\\b(?!\\.|\\\\)",
+          "beginCaptures": {
+            "1": {
+              "name": "support.function"
+            }
+          },
+          "comment": "Generic function match based on Verb-Noun pair using list of approved verbs.",
+          "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
+          "endCaptures": {
+            "2": {
+              "name": "keyword.operator.powershell"
+            }
+          },
+          "name": "meta.command.powershell",
+          "patterns": [
+            {
+              "include": "#scriptblock"
+            },
+            {
+              "include": "#commandParameter"
+            },
+            {
+              "include": "#lineComment"
+            },
+            {
+              "include": "#redirection"
+            },
+            {
+              "include": "#numericConstant"
+            },
+            {
+              "include": "#operators"
+            },
+            {
+              "include": "#variable"
+            },
+            {
+              "include": "#stringDoubleQuoted"
+            },
+            {
+              "include": "#stringSingleQuoted"
+            },
+            {
+              "include": "#arrayDeclaration"
+            },
+            {
+              "include": "#illegalBacktick"
+            },
+            {
+              "include": "#illegalVariable"
+            }
+          ]
+        },
+        {
+          "begin": "(?<!\\\\)\\b(?i:foreach-object|tee-object|where-object|sort-object)\\b(?!\\.|\\\\)",
+          "beginCaptures": {
+            "0": {
+              "name": "support.function.powershell"
+            }
+          },
+          "comment": "Built-in commands that don't adhere to the approved verbs standard.",
+          "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
+          "endCaptures": {
+            "2": {
+              "name": "keyword.operator.powershell"
+            }
+          },
+          "name": "meta.command.powershell",
+          "patterns": [
+            {
+              "include": "#scriptblock"
+            },
+            {
+              "include": "#commandParameter"
+            },
+            {
+              "include": "#lineComment"
+            },
+            {
+              "include": "#redirection"
+            },
+            {
+              "include": "#numericConstant"
+            },
+            {
+              "include": "#operators"
+            },
+            {
+              "include": "#variable"
+            },
+            {
+              "include": "#stringDoubleQuoted"
+            },
+            {
+              "include": "#stringSingleQuoted"
+            },
+            {
+              "include": "#arrayDeclaration"
+            },
+            {
+              "include": "#illegalBacktick"
+            },
+            {
+              "include": "#illegalVariable"
+            }
+          ]
+        },
+        {
+          "begin": "(?<!\\\\|\\[)\\b(?i:ac|asnp|cat|cd|cfs|chdir|clc|clear|clhy|cli|clp|cls|clv|cnsn|compare|copy|cp|cpi|cpp|curl|cvpa|dbp|del|diff|dir|dnsn|ebp|echo|epal|epcsv|epsn|erase|etsn|exsn|fc|fhx|fl|ft|fw|gal|gbp|gc|gcb|gci|gcm|gcs|gdr|ghy|gi|gjb|gl|gm|gmo|gp|gps|gpv|group|gsn|gsnp|gsv|gu|gv|gwmi|h|history|icm|iex|ihy|ii|ipal|ipcsv|ipmo|ipsn|irm|ise|iwmi|iwr|kill|lp|ls|man|md|measure|mi|mount|move|mp|mv|nal|ndr|ni|nmo|npssc|nsn|nv|ogv|oh|popd|ps|pushd|r|rbp|rcjb|rcsn|rd|rdr|ren|ri|rjb|rm|rmdir|rmo|rni|rnp|rp|rsn|rsnp|rujb|rv|rvpa|rwmi|sajb|sal|saps|sasv|sbp|sc|scb|select|set|shcm|si|sl|sleep|sls|sort|sp|spjb|spps|spsv|start|sujb|sv|swmi|tee|trcm|type|wget|wjb|write)\\b(?!\\.|\\\\|\\])",
+          "beginCaptures": {
+            "0": {
+              "name": "support.function.powershell"
+            }
+          },
+          "comment": "Built-in aliases",
+          "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
+          "endCaptures": {
+            "2": {
+              "name": "keyword.operator.powershell"
+            }
+          },
+          "name": "meta.command.powershell",
+          "patterns": [
+            {
+              "include": "#scriptblock"
+            },
+            {
+              "include": "#commandParameter"
+            },
+            {
+              "include": "#lineComment"
+            },
+            {
+              "include": "#redirection"
+            },
+            {
+              "include": "#numericConstant"
+            },
+            {
+              "include": "#operators"
+            },
+            {
+              "include": "#variable"
+            },
+            {
+              "include": "#stringDoubleQuoted"
+            },
+            {
+              "include": "#stringSingleQuoted"
+            },
+            {
+              "include": "#arrayDeclaration"
+            },
+            {
+              "include": "#illegalBacktick"
+            },
+            {
+              "include": "#illegalVariable"
+            }
+          ]
+        },
+        {
+          "begin": "(\\b(([A-Za-z0-9\\-_\\.]+).(?i:ps1))\\b)",
+          "beginCaptures": {
+            "0": {
+              "name": "support.function.powershell"
+            }
+          },
+          "comment": "External script",
+          "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
+          "endCaptures": {
+            "2": {
+              "name": "keyword.operator.powershell"
+            }
+          },
+          "name": "meta.command.powershell",
+          "patterns": [
+            {
+              "include": "#scriptblock"
+            },
+            {
+              "include": "#commandParameter"
+            },
+            {
+              "include": "#lineComment"
+            },
+            {
+              "include": "#redirection"
+            },
+            {
+              "include": "#numericConstant"
+            },
+            {
+              "include": "#operators"
+            },
+            {
+              "include": "#variable"
+            },
+            {
+              "include": "#stringDoubleQuoted"
+            },
+            {
+              "include": "#stringSingleQuoted"
+            },
+            {
+              "include": "#arrayDeclaration"
+            },
+            {
+              "include": "#illegalBacktick"
+            },
+            {
+              "include": "#illegalVariable"
+            }
+          ]
+        }
+      ]
+    },
+    "numericConstant": {
+      "patterns": [
+        {
+          "comment": "Real [(+|-)] digits . digits [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]",
+          "match": "(?<!\\w)([-+]?)\\d+\\.\\d+(?i:e(\\+|-){0,1}\\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\\w|\\d)",
+          "name": "constant.numeric.real"
+        },
+        {
+          "comment": "Real [(+|-)] . digits [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]",
+          "match": "(?<!\\.|\\d|\\w)([-+]?)\\.\\d+(?i:e(\\+|-){0,1}\\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\\w|\\d)",
+          "name": "constant.numeric.real"
+        },
+        {
+          "comment": "Real [(+|-)] digits . [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]",
+          "match": "(?<!\\w)([-+]?)(?<!\\d)\\d+\\.(?i:e(\\+|-){0,1}\\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\\w|\\d|\\.)",
+          "name": "constant.numeric.real"
+        },
+        {
+          "comment": "Integer [(+|-)] digits [(d|l)] [(kb|mb|gb|tb|pb)]",
+          "match": "(?<!\\w|\\w\\.)([-+]?)\\d+(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\\w|\\d)",
+          "name": "constant.numeric.integer"
+        },
+        {
+          "comment": "Real [(+|-)] digits [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]",
+          "match": "(?<!\\w|\\.)([-+]?)(?<!\\d)\\d+(?i:e(\\+|-){0,1}\\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\\w|\\d|\\.)",
+          "name": "constant.numeric.real"
+        },
+        {
+          "comment": "Hexadecimal 0x 0-f [l] [kb|mb|gb|tb|pb]",
+          "match": "(?<!\\w|\\d)([-+]?)(?i:0x)(?i:[0-9a-f])+(?i:l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\\w|\\d)",
+          "name": "constant.numeric.hex"
+        }
+      ]
+    },
     "variable": {
       "patterns": [
         {
@@ -335,7 +595,7 @@
               "name": "punctuation.definition.variable"
             },
             "2": {
-              "name": "variable.other.readwrite.powershell"
+              "name": "variable.other.readwrite"
             }
           },
           "comment": "Splatting",
@@ -348,15 +608,15 @@
         {
           "comment": "Invalid variable name",
           "match": "(\\$)(\\w+-\\w+)\\b",
-          "name": "invalid.illegal.powershell"
+          "name": "invalid.illegal"
         },
         {
           "captures": {
             "1": {
-              "name": "constant.language.powershell"
+              "name": "punctuation.definition.variable"
             },
             "2": {
-              "name": "constant.language.powershell"
+              "name": "variable.language"
             }
           },
           "comment": "Automatic variables - read-only.",

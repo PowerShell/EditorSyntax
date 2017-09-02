@@ -46,3 +46,81 @@ lines:
           - source.powershell
           - string.quoted.single
           - punctuation.definition.string.end
+  - line: '7'
+    tokens:
+      - token: '7'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '-10lkb'
+    tokens:
+      - token: '-10lkb'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '0x9'
+    tokens:
+      - token: '0x9'
+        scopes:
+          - source.powershell
+          - constant.numeric.hex
+  - line: '0x25l'
+    tokens:
+      - token: '0x25l'
+        scopes:
+          - source.powershell
+          - constant.numeric.hex
+  - line: '-999e-10dmb'
+    tokens:
+      - token: '-999e-10dmb'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '+6.e-6lkb'
+    tokens:
+      - token: '+6.e-6lkb'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '+.6'
+    tokens:
+      - token: '+.6'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '-.9e+5dmb'
+    tokens:
+      - token: '-.9e+5dmb'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '.6tb'
+    tokens:
+      - token: '.6tb'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '+4.9e+5dmb'
+    tokens:
+      - token: '+4.9e+5dmb'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '4.5'
+    tokens:
+      - token: '4.5'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '-9.9'
+    tokens:
+      - token: '-9.9'
+        scopes:
+          - source.powershell
+          - constant.numeric.real
+  - line: '+7.4'
+    tokens:
+      - token: '+7.4'
+        scopes:
+          - source.powershell
+          - constant.numeric.real

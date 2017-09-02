@@ -59,6 +59,10 @@
       </dict>
       <dict>
         <key>include</key>
+        <string>#commands</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#arrayDeclaration</string>
       </dict>
       <dict>
@@ -84,6 +88,10 @@
       <dict>
         <key>include</key>
         <string>#executableFiles</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#numericConstant</string>
       </dict>
     </array>
     <key>repository</key>
@@ -389,6 +397,374 @@
           </dict>
         </array>
       </dict>
+      <key>commands</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;!\\)\b((?i:(Add|Approve|Assert|Backup|Block|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write))-(\w+))\b(?!\.|\\)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>support.function</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Generic function match based on Verb-Noun pair using list of approved verbs.</string>
+            <key>end</key>
+            <string>((?=\))|(?=\})|(?&lt;!`)\n|(?&lt;!`)\r|(\|))</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.powershell</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>meta.command.powershell</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#scriptblock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#commandParameter</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#lineComment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#redirection</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numericConstant</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#operators</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringDoubleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringSingleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#arrayDeclaration</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalBacktick</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalVariable</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;!\\)\b(?i:foreach-object|tee-object|where-object|sort-object)\b(?!\.|\\)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>support.function.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Built-in commands that don't adhere to the approved verbs standard.</string>
+            <key>end</key>
+            <string>((?=\))|(?=\})|(?&lt;!`)\n|(?&lt;!`)\r|(\|))</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.powershell</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>meta.command.powershell</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#scriptblock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#commandParameter</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#lineComment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#redirection</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numericConstant</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#operators</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringDoubleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringSingleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#arrayDeclaration</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalBacktick</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalVariable</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(?&lt;!\\|\[)\b(?i:ac|asnp|cat|cd|cfs|chdir|clc|clear|clhy|cli|clp|cls|clv|cnsn|compare|copy|cp|cpi|cpp|curl|cvpa|dbp|del|diff|dir|dnsn|ebp|echo|epal|epcsv|epsn|erase|etsn|exsn|fc|fhx|fl|ft|fw|gal|gbp|gc|gcb|gci|gcm|gcs|gdr|ghy|gi|gjb|gl|gm|gmo|gp|gps|gpv|group|gsn|gsnp|gsv|gu|gv|gwmi|h|history|icm|iex|ihy|ii|ipal|ipcsv|ipmo|ipsn|irm|ise|iwmi|iwr|kill|lp|ls|man|md|measure|mi|mount|move|mp|mv|nal|ndr|ni|nmo|npssc|nsn|nv|ogv|oh|popd|ps|pushd|r|rbp|rcjb|rcsn|rd|rdr|ren|ri|rjb|rm|rmdir|rmo|rni|rnp|rp|rsn|rsnp|rujb|rv|rvpa|rwmi|sajb|sal|saps|sasv|sbp|sc|scb|select|set|shcm|si|sl|sleep|sls|sort|sp|spjb|spps|spsv|start|sujb|sv|swmi|tee|trcm|type|wget|wjb|write)\b(?!\.|\\|\])</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>support.function.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Built-in aliases</string>
+            <key>end</key>
+            <string>((?=\))|(?=\})|(?&lt;!`)\n|(?&lt;!`)\r|(\|))</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.powershell</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>meta.command.powershell</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#scriptblock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#commandParameter</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#lineComment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#redirection</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numericConstant</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#operators</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringDoubleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringSingleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#arrayDeclaration</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalBacktick</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalVariable</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>(\b(([A-Za-z0-9\-_\.]+).(?i:ps1))\b)</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>support.function.powershell</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>External script</string>
+            <key>end</key>
+            <string>((?=\))|(?=\})|(?&lt;!`)\n|(?&lt;!`)\r|(\|))</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.operator.powershell</string>
+              </dict>
+            </dict>
+            <key>name</key>
+            <string>meta.command.powershell</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#scriptblock</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#commandParameter</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#lineComment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#redirection</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#numericConstant</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#operators</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#variable</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringDoubleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#stringSingleQuoted</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#arrayDeclaration</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalBacktick</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#illegalVariable</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>numericConstant</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>Real [(+|-)] digits . digits [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]</string>
+            <key>match</key>
+            <string>(?&lt;!\w)([-+]?)\d+\.\d+(?i:e(\+|-){0,1}\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\w|\d)</string>
+            <key>name</key>
+            <string>constant.numeric.real</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Real [(+|-)] . digits [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]</string>
+            <key>match</key>
+            <string>(?&lt;!\.|\d|\w)([-+]?)\.\d+(?i:e(\+|-){0,1}\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\w|\d)</string>
+            <key>name</key>
+            <string>constant.numeric.real</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Real [(+|-)] digits . [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]</string>
+            <key>match</key>
+            <string>(?&lt;!\w)([-+]?)(?&lt;!\d)\d+\.(?i:e(\+|-){0,1}\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\w|\d|\.)</string>
+            <key>name</key>
+            <string>constant.numeric.real</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Integer [(+|-)] digits [(d|l)] [(kb|mb|gb|tb|pb)]</string>
+            <key>match</key>
+            <string>(?&lt;!\w|\w\.)([-+]?)\d+(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\w|\d)</string>
+            <key>name</key>
+            <string>constant.numeric.integer</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Real [(+|-)] digits [e [(+|-)] digits] [(d|l)] [(kb|mb|gb|tb|pb)]</string>
+            <key>match</key>
+            <string>(?&lt;!\w|\.)([-+]?)(?&lt;!\d)\d+(?i:e(\+|-){0,1}\d+){0,1}(?i:d|l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\w|\d|\.)</string>
+            <key>name</key>
+            <string>constant.numeric.real</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Hexadecimal 0x 0-f [l] [kb|mb|gb|tb|pb]</string>
+            <key>match</key>
+            <string>(?&lt;!\w|\d)([-+]?)(?i:0x)(?i:[0-9a-f])+(?i:l){0,1}(?i:kb|mb|gb|tb|pb){0,1}(?!\w|\d)</string>
+            <key>name</key>
+            <string>constant.numeric.hex</string>
+          </dict>
+        </array>
+      </dict>
       <key>variable</key>
       <dict>
         <key>patterns</key>
@@ -534,7 +910,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.powershell</string>
+                <string>variable.other.readwrite</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -554,7 +930,7 @@
             <key>match</key>
             <string>(\$)(\w+-\w+)\b</string>
             <key>name</key>
-            <string>invalid.illegal.powershell</string>
+            <string>invalid.illegal</string>
           </dict>
           <dict>
             <key>captures</key>
@@ -562,12 +938,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>constant.language.powershell</string>
+                <string>punctuation.definition.variable</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.language.powershell</string>
+                <string>variable.language</string>
               </dict>
             </dict>
             <key>comment</key>
