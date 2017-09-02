@@ -32,6 +32,9 @@
       "include": "#blockComment"
     },
     {
+      "include": "#numericConstant"
+    },
+    {
       "include": "#stringSingleQuoted"
     },
     {
@@ -53,7 +56,7 @@
       "include": "#subExpression"
     },
     {
-      "include": "#variable"
+      "include": "#operators"
     },
     {
       "include": "#controlWords"
@@ -62,7 +65,7 @@
       "include": "#executableFiles"
     },
     {
-      "include": "#numericConstant"
+      "include": "#variable"
     }
   ],
   "repository": {
@@ -186,7 +189,6 @@
           "name": "variable.parameter"
         }
       },
-      "name": "meta.array",
       "patterns": [
         {
           "include": "$self"
@@ -507,6 +509,70 @@
         }
       ]
     },
+    "operators": {
+      "patterns": [
+        {
+          "comment": "Comparison",
+          "match": "(?<=\\d|\\s|^)-(?i:as|is|isnot|in|notin|join|((c|i)?(eq|ne|gt|lt|ge|le|like|notlike|split|replace|contains|notcontains|match|notmatch))|shl|shr)\\b(?!\\.|\\\\)",
+          "name": "keyword.operator.comparison"
+        },
+        {
+          "comment": "Bitwise",
+          "match": "(?<=\\d|\\s|^)-(?i:band|bor|bxor|bnot|shr|shl)\\b",
+          "name": "keyword.operator.bitwise"
+        },
+        {
+          "comment": "Logical",
+          "match": "(?<=\\d|\\s|^)-(?i:and|or|xor)\\b",
+          "name": "keyword.operator.logical"
+        },
+        {
+          "comment": "Format",
+          "match": "(?<=\\d|\\s|^)-(?i:f)\\b",
+          "name": "keyword.operator.format"
+        },
+        {
+          "comment": "Assignment",
+          "match": "(=|-=|\\+=|\\*=|/=|%=)",
+          "name": "keyword.operator.assignment"
+        },
+        {
+          "comment": "Logical NOT",
+          "match": "(?<=\\d|\\s|^)((?i:-not)|!)",
+          "name": "keyword.operator.unary.logical-not"
+        },
+        {
+          "comment": "Multiplicative",
+          "match": "([*/%])(?!\\.)",
+          "name": "keyword.operator.multiplicative"
+        },
+        {
+          "comment": "Unary Plus",
+          "match": "([+](?=\\$|\\(|\"))",
+          "name": "keyword.operator.unary-plus"
+        },
+        {
+          "comment": "Unary Minus",
+          "match": "([-](?=\\$|\\(|\"))",
+          "name": "keyword.operator.unary-minus"
+        },
+        {
+          "comment": "Additive",
+          "match": "([+-])(?!\\{|\\p{L}|@)",
+          "name": "keyword.operator.additive"
+        },
+        {
+          "comment": "Range",
+          "match": "(\\.\\.)",
+          "name": "keyword.operator.range"
+        },
+        {
+          "comment": "Command invocation (Call)",
+          "match": "(&|\\|)",
+          "name": "keyword.operator.other"
+        }
+      ]
+    },
     "variable": {
       "patterns": [
         {
@@ -522,15 +588,15 @@
             "2": {
               "name": "variable.language"
             },
-            "3": {
+            "5": {
               "name": "punctuation.accessor"
             },
-            "4": {
-              "name": "variable.parameter"
+            "6": {
+              "name": "variable.other.member"
             }
           },
           "comment": "Automatic variables - read-only.",
-          "match": "(\\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\\b(\\.)*(([\\w\"'\\- @#]+)*)"
+          "match": "(\\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\\b(((\\.)([\\w\"'\\- @#]+)*)*)"
         },
         {
           "captures": {
@@ -549,18 +615,15 @@
             "4": {
               "name": "variable.other.readwrite"
             },
-            "5": {
+            "7": {
               "name": "punctuation.accessor"
             },
-            "6": {
-              "name": "variable.parameter"
-            },
-            "7": {
-              "name": "variable.parameter"
+            "8": {
+              "name": "variable.other.member"
             }
           },
           "comment": "$var, $local:var",
-          "match": "(\\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\\w+)(:\\w+)?((\\.[\\w\"'\\- @#]+)*)"
+          "match": "(\\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\\w+)(:\\w+)?(((\\.)([\\w\"'\\- @#]+))*)"
         },
         {
           "captures": {
@@ -583,7 +646,7 @@
               "name": "punctuation.accessor"
             },
             "7": {
-              "name": "variable.parameter"
+              "name": "variable.other.member"
             }
           },
           "comment": "${var}, ${script:var}",

@@ -51,6 +51,10 @@
       </dict>
       <dict>
         <key>include</key>
+        <string>#numericConstant</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#stringSingleQuoted</string>
       </dict>
       <dict>
@@ -79,7 +83,7 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#variable</string>
+        <string>#operators</string>
       </dict>
       <dict>
         <key>include</key>
@@ -91,7 +95,7 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#numericConstant</string>
+        <string>#variable</string>
       </dict>
     </array>
     <key>repository</key>
@@ -291,8 +295,6 @@
             <string>variable.parameter</string>
           </dict>
         </dict>
-        <key>name</key>
-        <string>meta.array</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -765,6 +767,108 @@
           </dict>
         </array>
       </dict>
+      <key>operators</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>Comparison</string>
+            <key>match</key>
+            <string>(?&lt;=\d|\s|^)-(?i:as|is|isnot|in|notin|join|((c|i)?(eq|ne|gt|lt|ge|le|like|notlike|split|replace|contains|notcontains|match|notmatch))|shl|shr)\b(?!\.|\\)</string>
+            <key>name</key>
+            <string>keyword.operator.comparison</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Bitwise</string>
+            <key>match</key>
+            <string>(?&lt;=\d|\s|^)-(?i:band|bor|bxor|bnot|shr|shl)\b</string>
+            <key>name</key>
+            <string>keyword.operator.bitwise</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Logical</string>
+            <key>match</key>
+            <string>(?&lt;=\d|\s|^)-(?i:and|or|xor)\b</string>
+            <key>name</key>
+            <string>keyword.operator.logical</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Format</string>
+            <key>match</key>
+            <string>(?&lt;=\d|\s|^)-(?i:f)\b</string>
+            <key>name</key>
+            <string>keyword.operator.format</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Assignment</string>
+            <key>match</key>
+            <string>(=|-=|\+=|\*=|/=|%=)</string>
+            <key>name</key>
+            <string>keyword.operator.assignment</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Logical NOT</string>
+            <key>match</key>
+            <string>(?&lt;=\d|\s|^)((?i:-not)|!)</string>
+            <key>name</key>
+            <string>keyword.operator.unary.logical-not</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Multiplicative</string>
+            <key>match</key>
+            <string>([*/%])(?!\.)</string>
+            <key>name</key>
+            <string>keyword.operator.multiplicative</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Unary Plus</string>
+            <key>match</key>
+            <string>([+](?=\$|\(|"))</string>
+            <key>name</key>
+            <string>keyword.operator.unary-plus</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Unary Minus</string>
+            <key>match</key>
+            <string>([-](?=\$|\(|"))</string>
+            <key>name</key>
+            <string>keyword.operator.unary-minus</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Additive</string>
+            <key>match</key>
+            <string>([+-])(?!\{|\p{L}|@)</string>
+            <key>name</key>
+            <string>keyword.operator.additive</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Range</string>
+            <key>match</key>
+            <string>(\.\.)</string>
+            <key>name</key>
+            <string>keyword.operator.range</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Command invocation (Call)</string>
+            <key>match</key>
+            <string>(&amp;|\|)</string>
+            <key>name</key>
+            <string>keyword.operator.other</string>
+          </dict>
+        </array>
+      </dict>
       <key>variable</key>
       <dict>
         <key>patterns</key>
@@ -790,21 +894,21 @@
                 <key>name</key>
                 <string>variable.language</string>
               </dict>
-              <key>3</key>
+              <key>5</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.accessor</string>
               </dict>
-              <key>4</key>
+              <key>6</key>
               <dict>
                 <key>name</key>
-                <string>variable.parameter</string>
+                <string>variable.other.member</string>
               </dict>
             </dict>
             <key>comment</key>
             <string>Automatic variables - read-only.</string>
             <key>match</key>
-            <string>(\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\b(\.)*(([\w"'\- @#]+)*)</string>
+            <string>(\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\b(((\.)([\w"'\- @#]+)*)*)</string>
           </dict>
           <dict>
             <key>captures</key>
@@ -834,26 +938,21 @@
                 <key>name</key>
                 <string>variable.other.readwrite</string>
               </dict>
-              <key>5</key>
+              <key>7</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.accessor</string>
               </dict>
-              <key>6</key>
+              <key>8</key>
               <dict>
                 <key>name</key>
-                <string>variable.parameter</string>
-              </dict>
-              <key>7</key>
-              <dict>
-                <key>name</key>
-                <string>variable.parameter</string>
+                <string>variable.other.member</string>
               </dict>
             </dict>
             <key>comment</key>
             <string>$var, $local:var</string>
             <key>match</key>
-            <string>(\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\w+)(:\w+)?((\.[\w"'\- @#]+)*)</string>
+            <string>(\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\w+)(:\w+)?(((\.)([\w"'\- @#]+))*)</string>
           </dict>
           <dict>
             <key>captures</key>
@@ -891,7 +990,7 @@
               <key>7</key>
               <dict>
                 <key>name</key>
-                <string>variable.parameter</string>
+                <string>variable.other.member</string>
               </dict>
             </dict>
             <key>comment</key>
