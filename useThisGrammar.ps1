@@ -12,10 +12,9 @@ function Test-IsAdmin {
 
 if (Test-IsAdmin) {
     function Set-GrammarFile ($new,$original,$backup) {
-        if (Test-Path -Path $backup) {
-            Remove-Item -Path $backup -Force
+        if (-not (Test-Path -Path $backup)) {
+            Copy-Item -Path $original -Destination $backup -Force
         }
-        Copy-Item -Path $original -Destination $backup -Force
         Copy-Item -Path $new -Destination $original -Force
     }
 

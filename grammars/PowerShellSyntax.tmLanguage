@@ -100,11 +100,27 @@
       </dict>
       <dict>
         <key>include</key>
+        <string>#type</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#function</string>
       </dict>
       <dict>
         <key>include</key>
         <string>#commands</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#class</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#enum</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#switch</string>
       </dict>
       <dict>
         <key>include</key>
@@ -359,6 +375,100 @@
         <key>name</key>
         <string>support.executable</string>
       </dict>
+      <key>enum</key>
+      <dict>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>storage.type</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>entity.name.enum</string>
+          </dict>
+        </dict>
+        <key>comment</key>
+        <string>capture should be entity.name.type, but it doesn't provide a good color in the default schema.</string>
+        <key>match</key>
+        <string>(?&lt;!\w|-)(?i:(enum))\s+(\w+)\s+</string>
+      </dict>
+      <key>switch</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter</string>
+              </dict>
+              <key>5</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>switch [-regex|-wildcard|-exact][-casesensitive] -file filename</string>
+            <key>match</key>
+            <string>\b(?i:(switch))\b\s+(?i:(-regex|-wildcard|-exact){0,1})\s*(?i:(-casesensitive){0,1})\s*(?i:(-file))\s+</string>
+          </dict>
+          <dict>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.control</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>variable.parameter</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>switch [-regex|-wildcard|-exact][-casesensitive] (&lt;value&gt;)</string>
+            <key>match</key>
+            <string>\b(?i:(switch))\b\s+(?i:(-regex|-wildcard|-exact){0,1})\s*(?i:(-casesensitive){0,1})\s*</string>
+          </dict>
+        </array>
+      </dict>
+      <key>defaultKeyword</key>
+      <dict>
+        <key>captures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.other</string>
+          </dict>
+        </dict>
+        <key>comment</key>
+        <string>Default is a reserved word when used in Switch statements. This is kind of a work-around - it will highlight only inside scriptblocks.</string>
+        <key>match</key>
+        <string>(?i:(default))\s*(?=\{)</string>
+      </dict>
       <key>redirection</key>
       <dict>
         <key>patterns</key>
@@ -447,7 +557,7 @@
           <key>3</key>
           <dict>
             <key>name</key>
-            <string>variable.parameter</string>
+            <string>variable.other.member</string>
           </dict>
         </dict>
         <key>patterns</key>
@@ -519,6 +629,10 @@
           <dict>
             <key>include</key>
             <string>$self</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#defaultKeyword</string>
           </dict>
         </array>
       </dict>
@@ -608,11 +722,11 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.powershell</string>
+                <string>keyword.operator</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>meta.command.powershell</string>
+            <string>meta.command</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -673,7 +787,7 @@
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>support.function.powershell</string>
+                <string>support.function</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -685,11 +799,11 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.powershell</string>
+                <string>keyword.operator</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>meta.command.powershell</string>
+            <string>meta.command</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -750,7 +864,7 @@
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>support.function.powershell</string>
+                <string>support.function</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -762,11 +876,11 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.powershell</string>
+                <string>keyword.operator</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>meta.command.powershell</string>
+            <string>meta.command</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -827,7 +941,7 @@
               <key>0</key>
               <dict>
                 <key>name</key>
-                <string>support.function.powershell</string>
+                <string>support.function</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -839,11 +953,11 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.powershell</string>
+                <string>keyword.operator</string>
               </dict>
             </dict>
             <key>name</key>
-            <string>meta.command.powershell</string>
+            <string>meta.command</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -898,6 +1012,122 @@
           </dict>
         </array>
       </dict>
+      <key>class</key>
+      <dict>
+        <key>begin</key>
+        <string>(?i)(?=\bclass\b)</string>
+        <key>end</key>
+        <string>(?&lt;=\})</string>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>begin</key>
+            <string>(?i)\b(class)\b\s+\n*((?:\p{L}|\d|_|-|\.)+)(?:\s*(:)\s*((?:\p{L}|\d|_|-|\.)+))?</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>keyword.other</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>entity.name.type.class</string>
+              </dict>
+              <key>3</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.accessor</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>storage.type</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(?=\{)</string>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#lineComment</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#blockComment</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>\{</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.section.braces.open</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>\}</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.section.braces.close</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>$self</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#classBaseKeyword</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#classReservedWords</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>classBaseKeyword</key>
+      <dict>
+        <key>captures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.operator</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.class</string>
+          </dict>
+        </dict>
+        <key>comment</key>
+        <string>The base keyword used in classes.</string>
+        <key>match</key>
+        <string>(:)\s*(?i:(base))\s*(?=\()</string>
+      </dict>
+      <key>classReservedWords</key>
+      <dict>
+        <key>comment</key>
+        <string>Reserved words for classes.</string>
+        <key>match</key>
+        <string>\b(?i:(hidden|static))\b</string>
+        <key>name</key>
+        <string>keyword.other</string>
+      </dict>
       <key>commentEmbeddedDocs</key>
       <dict>
         <key>patterns</key>
@@ -908,12 +1138,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
             </dict>
             <key>match</key>
@@ -927,17 +1157,17 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>constant.string.documentation.powershell</string>
+                <string>constant.string.documentation</string>
               </dict>
             </dict>
             <key>match</key>
@@ -951,12 +1181,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.string.documentation.powershell</string>
+                <string>constant.string.documentation</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -972,12 +1202,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.string.documentation.powershell</string>
+                <string>constant.string.documentation</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -993,12 +1223,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.string.documentation.powershell</string>
+                <string>constant.string.documentation</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -1014,12 +1244,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.string.documentation.powershell</string>
+                <string>constant.string.documentation</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -1035,12 +1265,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.operator.documentation.powershell</string>
+                <string>keyword.operator.documentation</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>constant.string.documentation.powershell</string>
+                <string>constant.string.documentation</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -1205,6 +1435,107 @@
             <string>(&amp;|\|)</string>
             <key>name</key>
             <string>keyword.operator.other</string>
+          </dict>
+        </array>
+      </dict>
+      <key>type</key>
+      <dict>
+        <key>begin</key>
+        <string>\[</string>
+        <key>beginCaptures</key>
+        <dict>
+          <key>0</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.section.brackets.begin</string>
+          </dict>
+        </dict>
+        <key>comment</key>
+        <string>Type []</string>
+        <key>end</key>
+        <string>(\])(?:(::)([\w]+))*(?:(?:(\.)([\w"']+))*)</string>
+        <key>endCaptures</key>
+        <dict>
+          <key>1</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.section.brackets.end</string>
+          </dict>
+          <key>2</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.accessor</string>
+          </dict>
+          <key>3</key>
+          <dict>
+            <key>name</key>
+            <string>meta.method</string>
+          </dict>
+          <key>4</key>
+          <dict>
+            <key>name</key>
+            <string>punctuation.accessor</string>
+          </dict>
+          <key>5</key>
+          <dict>
+            <key>name</key>
+            <string>entity.other.attribute-name</string>
+          </dict>
+        </dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>Reserved words</string>
+            <key>match</key>
+            <string>(?i)\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b</string>
+            <key>name</key>
+            <string>entity.other.attribute-name</string>
+          </dict>
+          <dict>
+            <key>begin</key>
+            <string>\(</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.section.parens.begin</string>
+              </dict>
+            </dict>
+            <key>comment</key>
+            <string>Parenthesis ()</string>
+            <key>end</key>
+            <string>\)</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.section.parens.end</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>$self</string>
+              </dict>
+              <dict>
+                <key>comment</key>
+                <string>Reserved words within [( )]</string>
+                <key>match</key>
+                <string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b</string>
+                <key>name</key>
+                <string>variable.other.member</string>
+              </dict>
+            </array>
+          </dict>
+          <dict>
+            <key>match</key>
+            <string>(.(`){0,2}(\d){0,2})</string>
+            <key>name</key>
+            <string>entity.name.type</string>
           </dict>
         </array>
       </dict>
@@ -1395,22 +1726,22 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.other.powershell</string>
+                <string>keyword.other</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>storage.modifier.scope.powershell</string>
+                <string>storage.modifier.scope</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.powershell</string>
+                <string>variable.other.readwrite</string>
               </dict>
               <key>4</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.powershell</string>
+                <string>variable.other.readwrite</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -1424,27 +1755,27 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.other.powershell</string>
+                <string>keyword.other</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>keyword.other.powershell</string>
+                <string>keyword.other</string>
               </dict>
               <key>3</key>
               <dict>
                 <key>name</key>
-                <string>storage.modifier.scope.powershell</string>
+                <string>storage.modifier.scope</string>
               </dict>
               <key>4</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.powershell</string>
+                <string>variable.other.readwrite</string>
               </dict>
               <key>5</key>
               <dict>
                 <key>name</key>
-                <string>keyword.other.powershell</string>
+                <string>keyword.other</string>
               </dict>
             </dict>
             <key>comment</key>
@@ -1458,12 +1789,12 @@
               <key>1</key>
               <dict>
                 <key>name</key>
-                <string>keyword.other.powershell</string>
+                <string>keyword.other</string>
               </dict>
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>variable.other.readwrite.powershell</string>
+                <string>variable.other.readwrite</string>
               </dict>
             </dict>
             <key>comment</key>

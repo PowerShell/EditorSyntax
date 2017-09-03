@@ -19,6 +19,7 @@ if (Test-IsAdmin) {
         }
         else {
             Write-Warning 'No backup found of the grammar file!'
+            break
         }
     }
 

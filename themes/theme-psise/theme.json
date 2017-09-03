@@ -11,7 +11,8 @@
 			"name": "Comments",
 			"scope": [
 				"comment",
-				"punctuation.definition.comment"
+				"punctuation.definition.comment",
+				"keyword.operator.documentation"
 			],
 			"settings": {
 				"fontStyle": "",
@@ -59,6 +60,13 @@
       ],
 			"settings": {
 				"foreground": "#A9A9A9"
+			}
+		},
+		{
+			"name": "Attributes",
+			"scope": "entity.other.attribute-name",
+			"settings":{
+				"foreground":"#00bfff"
 			}
 		},
 		{
@@ -110,15 +118,23 @@
       "settings":{
         "foreground":"#000000"
       }
-    },
+		},
 		{
-			"name": "Functions",
+			"name": "Commands",
 			"scope": [
-				"entity.name.function",
 				"support.function"
 			],
 			"settings": {
 				"foreground": "#0000FF"
+			}
+		},
+		{
+			"name": "Functions",
+			"scope": [
+				"entity.name.function"
+			],
+			"settings": {
+				"foreground": "#8a2be2"
 			}
 		},
 		{
@@ -129,7 +145,7 @@
 				"support.class"
 			],
 			"settings": {
-				"foreground": "#7A3E9D"
+				"foreground": "#008080"
 			}
 		},
 		{

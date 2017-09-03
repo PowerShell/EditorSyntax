@@ -67,10 +67,22 @@
       "include": "#redirection"
     },
     {
+      "include": "#type"
+    },
+    {
       "include": "#function"
     },
     {
       "include": "#commands"
+    },
+    {
+      "include": "#class"
+    },
+    {
+      "include": "#enum"
+    },
+    {
+      "include": "#switch"
     },
     {
       "include": "#arrayDeclaration"
@@ -236,6 +248,64 @@
       "match": "(\\b(([\\p{L}A-Za-z0-9\\-_\\.]+).(?i:exe|com|cmd|bat))\\b)",
       "name": "support.executable"
     },
+    "enum": {
+      "captures": {
+        "1": {
+          "name": "storage.type"
+        },
+        "2": {
+          "name": "entity.name.enum"
+        }
+      },
+      "comment": "capture should be entity.name.type, but it doesn't provide a good color in the default schema.",
+      "match": "(?<!\\w|-)(?i:(enum))\\s+(\\w+)\\s+"
+    },
+    "switch": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.control"
+            },
+            "2": {
+              "name": "variable.parameter"
+            },
+            "4": {
+              "name": "variable.parameter"
+            },
+            "5": {
+              "name": "variable.parameter"
+            }
+          },
+          "comment": "switch [-regex|-wildcard|-exact][-casesensitive] -file filename",
+          "match": "\\b(?i:(switch))\\b\\s+(?i:(-regex|-wildcard|-exact){0,1})\\s*(?i:(-casesensitive){0,1})\\s*(?i:(-file))\\s+"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.control"
+            },
+            "2": {
+              "name": "variable.parameter"
+            },
+            "3": {
+              "name": "variable.parameter"
+            }
+          },
+          "comment": "switch [-regex|-wildcard|-exact][-casesensitive] (<value>)",
+          "match": "\\b(?i:(switch))\\b\\s+(?i:(-regex|-wildcard|-exact){0,1})\\s*(?i:(-casesensitive){0,1})\\s*"
+        }
+      ]
+    },
+    "defaultKeyword": {
+      "captures": {
+        "0": {
+          "name": "keyword.other"
+        }
+      },
+      "comment": "Default is a reserved word when used in Switch statements. This is kind of a work-around - it will highlight only inside scriptblocks.",
+      "match": "(?i:(default))\\s*(?=\\{)"
+    },
     "redirection": {
       "patterns": [
         {
@@ -289,7 +359,7 @@
           "name": "punctuation.accessor"
         },
         "3": {
-          "name": "variable.parameter"
+          "name": "variable.other.member"
         }
       },
       "patterns": [
@@ -335,6 +405,9 @@
       "patterns": [
         {
           "include": "$self"
+        },
+        {
+          "include": "#defaultKeyword"
         }
       ]
     },
@@ -389,10 +462,10 @@
           "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
           "endCaptures": {
             "2": {
-              "name": "keyword.operator.powershell"
+              "name": "keyword.operator"
             }
           },
-          "name": "meta.command.powershell",
+          "name": "meta.command",
           "patterns": [
             {
               "include": "#scriptblock"
@@ -436,17 +509,17 @@
           "begin": "(?<!\\\\)\\b(?i:foreach-object|tee-object|where-object|sort-object)\\b(?!\\.|\\\\)",
           "beginCaptures": {
             "0": {
-              "name": "support.function.powershell"
+              "name": "support.function"
             }
           },
           "comment": "Built-in commands that don't adhere to the approved verbs standard.",
           "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
           "endCaptures": {
             "2": {
-              "name": "keyword.operator.powershell"
+              "name": "keyword.operator"
             }
           },
-          "name": "meta.command.powershell",
+          "name": "meta.command",
           "patterns": [
             {
               "include": "#scriptblock"
@@ -490,17 +563,17 @@
           "begin": "(?<!\\\\|\\[)\\b(?i:ac|asnp|cat|cd|cfs|chdir|clc|clear|clhy|cli|clp|cls|clv|cnsn|compare|copy|cp|cpi|cpp|curl|cvpa|dbp|del|diff|dir|dnsn|ebp|echo|epal|epcsv|epsn|erase|etsn|exsn|fc|fhx|fl|ft|fw|gal|gbp|gc|gcb|gci|gcm|gcs|gdr|ghy|gi|gjb|gl|gm|gmo|gp|gps|gpv|group|gsn|gsnp|gsv|gu|gv|gwmi|h|history|icm|iex|ihy|ii|ipal|ipcsv|ipmo|ipsn|irm|ise|iwmi|iwr|kill|lp|ls|man|md|measure|mi|mount|move|mp|mv|nal|ndr|ni|nmo|npssc|nsn|nv|ogv|oh|popd|ps|pushd|r|rbp|rcjb|rcsn|rd|rdr|ren|ri|rjb|rm|rmdir|rmo|rni|rnp|rp|rsn|rsnp|rujb|rv|rvpa|rwmi|sajb|sal|saps|sasv|sbp|sc|scb|select|set|shcm|si|sl|sleep|sls|sort|sp|spjb|spps|spsv|start|sujb|sv|swmi|tee|trcm|type|wget|wjb|write)\\b(?!\\.|\\\\|\\])",
           "beginCaptures": {
             "0": {
-              "name": "support.function.powershell"
+              "name": "support.function"
             }
           },
           "comment": "Built-in aliases",
           "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
           "endCaptures": {
             "2": {
-              "name": "keyword.operator.powershell"
+              "name": "keyword.operator"
             }
           },
-          "name": "meta.command.powershell",
+          "name": "meta.command",
           "patterns": [
             {
               "include": "#scriptblock"
@@ -544,17 +617,17 @@
           "begin": "(\\b(([A-Za-z0-9\\-_\\.]+).(?i:ps1))\\b)",
           "beginCaptures": {
             "0": {
-              "name": "support.function.powershell"
+              "name": "support.function"
             }
           },
           "comment": "External script",
           "end": "((?=\\))|(?=\\})|(?<!`)\\n|(?<!`)\\r|(\\|))",
           "endCaptures": {
             "2": {
-              "name": "keyword.operator.powershell"
+              "name": "keyword.operator"
             }
           },
-          "name": "meta.command.powershell",
+          "name": "meta.command",
           "patterns": [
             {
               "include": "#scriptblock"
@@ -596,15 +669,89 @@
         }
       ]
     },
+    "class": {
+      "begin": "(?i)(?=\\bclass\\b)",
+      "end": "(?<=\\})",
+      "patterns": [
+        {
+          "begin": "(?i)\\b(class)\\b\\s+\\n*((?:\\p{L}|\\d|_|-|\\.)+)(?:\\s*(:)\\s*((?:\\p{L}|\\d|_|-|\\.)+))?",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other"
+            },
+            "2": {
+              "name": "entity.name.type.class"
+            },
+            "3": {
+              "name": "punctuation.accessor"
+            },
+            "4": {
+              "name": "storage.type"
+            }
+          },
+          "end": "(?=\\{)",
+          "patterns": [
+            {
+              "include": "#lineComment"
+            },
+            {
+              "include": "#blockComment"
+            }
+          ]
+        },
+        {
+          "begin": "\\{",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.braces.open"
+            }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.braces.close"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            },
+            {
+              "include": "#classBaseKeyword"
+            },
+            {
+              "include": "#classReservedWords"
+            }
+          ]
+        }
+      ]
+    },
+    "classBaseKeyword": {
+      "captures": {
+        "1": {
+          "name": "keyword.operator"
+        },
+        "2": {
+          "name": "keyword.control.class"
+        }
+      },
+      "comment": "The base keyword used in classes.",
+      "match": "(:)\\s*(?i:(base))\\s*(?=\\()"
+    },
+    "classReservedWords": {
+      "comment": "Reserved words for classes.",
+      "match": "\\b(?i:(hidden|static))\\b",
+      "name": "keyword.other"
+    },
     "commentEmbeddedDocs": {
       "patterns": [
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             }
           },
           "match": "(?i:(\\.)(SYNOPSIS|DESCRIPTION|EXAMPLE|INPUTS|OUTPUTS|NOTES|LINK|COMPONENT|FUNCTIONALITY|ROLE)\\b)",
@@ -613,13 +760,13 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "3": {
-              "name": "constant.string.documentation.powershell"
+              "name": "constant.string.documentation"
             }
           },
           "match": "(?i:(\\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\\s+(.+))",
@@ -628,10 +775,10 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "constant.string.documentation.powershell"
+              "name": "constant.string.documentation"
             }
           },
           "comment": "Requires -Version",
@@ -641,10 +788,10 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "constant.string.documentation.powershell"
+              "name": "constant.string.documentation"
             }
           },
           "comment": "Requires -PSSnapin",
@@ -654,10 +801,10 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "constant.string.documentation.powershell"
+              "name": "constant.string.documentation"
             }
           },
           "comment": "Requires -Modules",
@@ -667,10 +814,10 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "constant.string.documentation.powershell"
+              "name": "constant.string.documentation"
             }
           },
           "comment": "Requires -ShellId",
@@ -680,10 +827,10 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.operator.documentation.powershell"
+              "name": "keyword.operator.documentation"
             },
             "2": {
-              "name": "constant.string.documentation.powershell"
+              "name": "constant.string.documentation"
             }
           },
           "comment": "Requires -RunAsAdministrator",
@@ -787,6 +934,69 @@
           "comment": "Command invocation (Call)",
           "match": "(&|\\|)",
           "name": "keyword.operator.other"
+        }
+      ]
+    },
+    "type": {
+      "begin": "\\[",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.brackets.begin"
+        }
+      },
+      "comment": "Type []",
+      "end": "(\\])(?:(::)([\\w]+))*(?:(?:(\\.)([\\w\"']+))*)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.brackets.end"
+        },
+        "2": {
+          "name": "punctuation.accessor"
+        },
+        "3": {
+          "name": "meta.method"
+        },
+        "4": {
+          "name": "punctuation.accessor"
+        },
+        "5": {
+          "name": "entity.other.attribute-name"
+        }
+      },
+      "patterns": [
+        {
+          "comment": "Reserved words",
+          "match": "(?i)\\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\\b",
+          "name": "entity.other.attribute-name"
+        },
+        {
+          "begin": "\\(",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.parens.begin"
+            }
+          },
+          "comment": "Parenthesis ()",
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.parens.end"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            },
+            {
+              "comment": "Reserved words within [( )]",
+              "match": "(?i)\\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\\b",
+              "name": "variable.other.member"
+            }
+          ]
+        },
+        {
+          "match": "(.(`){0,2}(\\d){0,2})",
+          "name": "entity.name.type"
         }
       ]
     },
@@ -905,16 +1115,16 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.other.powershell"
+              "name": "keyword.other"
             },
             "2": {
-              "name": "storage.modifier.scope.powershell"
+              "name": "storage.modifier.scope"
             },
             "3": {
-              "name": "variable.other.readwrite.powershell"
+              "name": "variable.other.readwrite"
             },
             "4": {
-              "name": "variable.other.readwrite.powershell"
+              "name": "variable.other.readwrite"
             }
           },
           "comment": "$var, $local:var",
@@ -923,19 +1133,19 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.other.powershell"
+              "name": "keyword.other"
             },
             "2": {
-              "name": "keyword.other.powershell"
+              "name": "keyword.other"
             },
             "3": {
-              "name": "storage.modifier.scope.powershell"
+              "name": "storage.modifier.scope"
             },
             "4": {
-              "name": "variable.other.readwrite.powershell"
+              "name": "variable.other.readwrite"
             },
             "5": {
-              "name": "keyword.other.powershell"
+              "name": "keyword.other"
             }
           },
           "comment": "${var}, ${script:var}",
@@ -944,10 +1154,10 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.other.powershell"
+              "name": "keyword.other"
             },
             "2": {
-              "name": "variable.other.readwrite.powershell"
+              "name": "variable.other.readwrite"
             }
           },
           "comment": "Splatting",
