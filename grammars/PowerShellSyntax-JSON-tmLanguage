@@ -119,7 +119,12 @@
         }
       },
       "end": "$",
-      "name": "comment.line"
+      "name": "comment.line",
+      "patterns": [
+        {
+          "include": "#commentEmbeddedDocs"
+        }
+      ]
     },
     "blockComment": {
       "begin": "(<#)",
@@ -200,7 +205,7 @@
           "include": "#stringEscapeChars"
         },
         {
-          "include": "#variableWithoutPropertyHighlighting"
+          "include": "#variableWithoutMemberHighlighting"
         },
         {
           "include": "#subExpression"
@@ -229,7 +234,7 @@
           "include": "#stringEscapeChars"
         },
         {
-          "include": "#variableWithoutPropertyHighlighting"
+          "include": "#variableWithoutMemberHighlighting"
         },
         {
           "include": "#subExpression"
@@ -431,6 +436,17 @@
         }
       ]
     },
+    "splatting": {
+      "match": "(@)(\\w+)",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable"
+        },
+        "2": {
+          "name": "variable.other.readwrite"
+        }
+      }
+    },
     "illegalBacktick": {
       "comment": "Any characters (other than new line) after a back-tick, is illegal in PowerShell.",
       "match": "(`(?!$))",
@@ -502,6 +518,9 @@
             },
             {
               "include": "#illegalVariable"
+            },
+            {
+              "include": "#splatting"
             }
           ]
         },
@@ -560,7 +579,7 @@
           ]
         },
         {
-          "begin": "(?<!\\\\|\\[)\\b(?i:ac|asnp|cat|cd|cfs|chdir|clc|clear|clhy|cli|clp|cls|clv|cnsn|compare|copy|cp|cpi|cpp|curl|cvpa|dbp|del|diff|dir|dnsn|ebp|echo|epal|epcsv|epsn|erase|etsn|exsn|fc|fhx|fl|ft|fw|gal|gbp|gc|gcb|gci|gcm|gcs|gdr|ghy|gi|gjb|gl|gm|gmo|gp|gps|gpv|group|gsn|gsnp|gsv|gu|gv|gwmi|h|history|icm|iex|ihy|ii|ipal|ipcsv|ipmo|ipsn|irm|ise|iwmi|iwr|kill|lp|ls|man|md|measure|mi|mount|move|mp|mv|nal|ndr|ni|nmo|npssc|nsn|nv|ogv|oh|popd|ps|pushd|r|rbp|rcjb|rcsn|rd|rdr|ren|ri|rjb|rm|rmdir|rmo|rni|rnp|rp|rsn|rsnp|rujb|rv|rvpa|rwmi|sajb|sal|saps|sasv|sbp|sc|scb|select|set|shcm|si|sl|sleep|sls|sort|sp|spjb|spps|spsv|start|sujb|sv|swmi|tee|trcm|type|wget|wjb|write)\\b(?!\\.|\\\\|\\])",
+          "begin": "(?<!\\\\|\\[)\\b(?i:ac|asnp|cat|cd|cfs|chdir|clc|clear|clhy|cli|clp|cls|clv|cnsn|compare|copy|cp|cpi|cpp|curl|cvpa|dbp|del|diff|dir|dnsn|ebp|echo|epal|epcsv|epsn|erase|etsn|exsn|fc|fhx|fl|ft|fw|gal|gbp|gc|gcb|gci|gcm|gcs|gdr|ghy|gi|gjb|gl|gm|gmo|gp|gps|gpv|group|gsn|gsnp|gsv|gu|gv|gwmi|h|history|icm|iex|ihy|ii|ipal|ipcsv|ipmo|ipsn|irm|ise|iwmi|iwr|kill|lp|ls|man|md|measure|mi|mount|move|mp|mv|nal|ndr|ni|nmo|npssc|nsn|nv|ogv|oh|popd|ps|pushd|r|rbp|rcjb|rcsn|rd|rdr|ren|ri|rjb|rm|rmdir|rmo|rni|rnp|rp|rsn|rsnp|rujb|rv|rvpa|rwmi|sajb|sal|saps|sasv|sbp|sc|scb|select|set|shcm|si|sl|sleep|sls|sort|sp|spjb|spps|spsv|start|sujb|sv|swmi|tee|trcm|type|wget|wjb|write|where)\\b(?!\\.|\\\\|\\])",
           "beginCaptures": {
             "0": {
               "name": "support.function"
@@ -965,6 +984,9 @@
       },
       "patterns": [
         {
+          "include": "#variableWithoutMemberHighlighting"
+        },
+        {
           "comment": "Reserved words",
           "match": "(?i)\\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\\b",
           "name": "entity.other.attribute-name"
@@ -1001,58 +1023,150 @@
       ]
     },
     "variable": {
+      "begin": "(?=\\$)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.variable"
+        }
+      },
+      "end": "(?=\\s|\\))",
       "patterns": [
+        {
+          "include": "#type"
+        },
         {
           "comment": "Invalid variable name",
           "match": "(\\$)(\\w+-\\w+)\\b",
           "name": "invalid.illegal"
         },
         {
+          "comment": "built-in variables; $args",
+          "match": "(\\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\\b",
+          "name": "variable.language"
+        },
+        {
+          "comment": "built-in variables; ${args}",
+          "match": "(\\$)(\\{?)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\\b(\\}?)",
           "captures": {
             "1": {
               "name": "punctuation.definition.variable"
             },
             "2": {
+              "name": "punctuation.definition.variable"
+            },
+            "3": {
               "name": "variable.language"
             },
-            "5": {
-              "name": "punctuation.accessor"
-            },
-            "6": {
-              "name": "variable.other.member"
+            "4": {
+              "name": "punctuation.definition.variable"
             }
-          },
-          "comment": "Automatic variables - read-only.",
-          "match": "(\\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\\b(((\\.)([\\w\"'\\- @#]+)*)*)"
+          }
         },
         {
-          "captures": {
-            "0": {
-              "name": "meta.variable"
-            },
+          "comment": "variable method",
+          "begin": "(\\.)([\\w\\-@#]+)(\\()",
+          "beginCaptures": {
             "1": {
-              "name": "punctuation.definition.variable"
-            },
-            "2": {
-              "name": "storage.modifier.scope"
-            },
-            "3": {
-              "name": "variable.other.readwrite"
-            },
-            "4": {
-              "name": "variable.other.readwrite"
-            },
-            "7": {
               "name": "punctuation.accessor"
             },
-            "8": {
+            "2": {
               "name": "variable.other.member"
+            },
+            "3": {
+              "name": "punctuation.block.parens.start"
             }
           },
+          "end": "(\\))",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.block.parens.end"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "comment": "variable member with double quotes",
+          "begin": "(\\.)(?=\")",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.accessor"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin"
+            }
+          },
+          "end": "(?<=\")",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#stringDoubleQuoted"
+            }
+          ]
+        },
+        {
+          "comment": "variable member with single quotes",
+          "begin": "(\\.)(?=')",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.accessor"
+            },
+            "2": {
+              "name": "punctuation.definition.string.begin"
+            }
+          },
+          "end": "(?<=')",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#stringSingleQuoted"
+            }
+          ]
+        },
+        {
+          "comment": "variable member",
+          "match": "(\\.)([\\w\\-@#]+)",
+          "captures": {
+            "1": {
+              "name": "punctuation.accessor"
+            },
+            "2": {
+              "name": "variable.other.member"
+            }
+          }
+        },
+        {
           "comment": "$var, $local:var",
-          "match": "(\\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\\w+)(:\\w+)?(((\\.)([\\w\"'\\- @#]+))*)"
+          "match": "(\\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?([\\w?]+)(:\\w+)?",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable"
+            },
+            "2": {
+              "name": "storage.modifier.scope"
+            },
+            "3": {
+              "name": "variable.other.readwrite"
+            },
+            "4": {
+              "name": "variable.other.readwrite"
+            }
+          }
         },
         {
+          "comment": "${var}, ${local:var}",
+          "match": "(\\$)(\\{?)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?([\\w?-]+)(:\\w+)?(\\}?)",
           "captures": {
             "1": {
               "name": "punctuation.definition.variable"
@@ -1067,33 +1181,16 @@
               "name": "variable.other.readwrite"
             },
             "5": {
-              "name": "punctuation.definition.variable"
+              "name": "variable.other.readwrite"
             },
             "6": {
-              "name": "punctuation.accessor"
-            },
-            "7": {
-              "name": "variable.other.member"
-            }
-          },
-          "comment": "${var}, ${script:var}",
-          "match": "(\\$)(\\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(.+?)(\\})(\\.)*(([\\w\"'\\- @#]+)*)"
-        },
-        {
-          "captures": {
-            "1": {
               "name": "punctuation.definition.variable"
-            },
-            "2": {
-              "name": "variable.other.readwrite"
             }
-          },
-          "comment": "Splatting",
-          "match": "(@)(\\w+)"
+          }
         }
       ]
     },
-    "variableWithoutPropertyHighlighting": {
+    "variableWithoutMemberHighlighting": {
       "patterns": [
         {
           "comment": "Invalid variable name",
@@ -1115,7 +1212,7 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.other"
+              "name": "punctuation.definition.variable"
             },
             "2": {
               "name": "storage.modifier.scope"
@@ -1128,15 +1225,15 @@
             }
           },
           "comment": "$var, $local:var",
-          "match": "(\\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?(\\w+)(:\\w+)?"
+          "match": "(\\$)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?([\\w?]+)(:\\w+)?"
         },
         {
           "captures": {
             "1": {
-              "name": "keyword.other"
+              "name": "punctuation.definition.variable"
             },
             "2": {
-              "name": "keyword.other"
+              "name": "punctuation.definition.variable"
             },
             "3": {
               "name": "storage.modifier.scope"
@@ -1145,7 +1242,7 @@
               "name": "variable.other.readwrite"
             },
             "5": {
-              "name": "keyword.other"
+              "name": "punctuation.definition.variable"
             }
           },
           "comment": "${var}, ${script:var}",
@@ -1154,7 +1251,7 @@
         {
           "captures": {
             "1": {
-              "name": "keyword.other"
+              "name": "punctuation.definition.variable"
             },
             "2": {
               "name": "variable.other.readwrite"

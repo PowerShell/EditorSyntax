@@ -55,6 +55,8 @@ function Issue51 {
 # https://github.com/PowerShell/EditorSyntax/issues/40
 $foo?bar = 1
 "$foo?bar"
+${foo?bar}
+"${foo?bar}"
 "https://www.googleapis.com/drive/v3/teamdrives/$TeamDriveID?fields=capabilities%2Cid%2Ckind%2Cname"
 
 # "Process" keyword is incorrectly highlighted in New-Object -TypeName System.Diagnostics.Process
@@ -194,14 +196,14 @@ $RemoteServicePS = @{
   'VMware' = @{
     'Service' = $(get-service -verbose:$false -computername $SomeComputer -displayName 'VMware Tools');
     'EndpointContracts' = @('ISimService','IServiceBroker');
-    'Identity' = '';
+    'Identity' = ''; #comment
     };
   }
 $ServicesToSkip = @()
 
 $RemoteServiceCIM = @{}; $HasServicePrincipalNames = @{}
-$RemoteServicePS.GetEnumerator() | % {
-  $thisServiceKey = $_.Key
+$RemoteServicePS.GetEnumerator() | % { #comment
+  $thisServiceKey = $_.Key # test
   if ($_.Value.Service -ne $null){
 
     $thisCIMService = $(get-ciminstance win32_service -verbose:$false -computername $_.Value.Service.MachineName -filter "name='$($_.Value.Service.ServiceName)'")
@@ -254,6 +256,7 @@ function Clear-JunctionLinks {
 
 # Syntax highlighting doesn't recognize '#text' property
 # https://github.com/PowerShell/EditorSyntax/issues/21
+$_.'#text'.Trim()
 Get-SomeXml |
 Select-Object -ExpandProperty Node |
         % { if ($_.'#text') { $_.'#text'.Trim() -split ',\s*' }
@@ -263,7 +266,8 @@ Select-Object -ExpandProperty Node |
 # Improper syntax highlighting for #requires statement
 # https://github.com/PowerShell/EditorSyntax/issues/20
 #requires -runasadministrator
-#requires -module servermanager
+#requires -modules servermanager
+#Requires -Modules PSWorkflow, @{ModuleName="PSScheduledJob";ModuleVersion="1.0.0.0"}
 #requires -version 5.0
 
 # Are there Powershell flag highlighting inconsistencies?
