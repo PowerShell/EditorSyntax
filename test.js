@@ -50,14 +50,22 @@ for (var i = 0; i < lines.length; i++) {
                         var refScopes = refLine[0].tokens[y].scopes;
 
                         // check that token scopes match the reference scopes
-                        if (tokenScopes.join() == refScopes.join()) {
+                        if (Array.isArray(tokenScopes)) {
+                            checkTokenScopes = tokenScopes.join();
+                        }
+                        else { checkTokenScopes = tokenScopes }
+                        if (Array.isArray(refScopes)) {
+                            checkRefScopes = refScopes;
+                        }
+                        else { checkRefScopes = refScopes }
+                        if (checkTokenScopes == checkRefScopes) {
                             //console.log('Everything is OK!');
                         }
                         else {
                             passed = false;
                             console.warn('[' + (i+1) + '] Scope mismatch found: \t"');
-                            console.warn('    test: \t' + tokenScopes.join());
-                            console.warn('    ref:\t' + refScopes.join());
+                            console.warn('    test: \t' + checkTokenScopes);
+                            console.warn('    ref:\t' + checkRefScopes);
                         }
                     } else {
                         passed = false;
