@@ -699,7 +699,7 @@
               "name": "keyword.other"
             },
             "2": {
-              "name": "entity.name.type.class"
+              "name": "entity.name.class"
             },
             "3": {
               "name": "punctuation.accessor"
@@ -987,6 +987,9 @@
           "include": "#variableWithoutMemberHighlighting"
         },
         {
+          "include": "$self"
+        },
+        {
           "comment": "Reserved words",
           "match": "(?i)\\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\\b",
           "name": "entity.other.attribute-name"
@@ -1017,7 +1020,7 @@
           ]
         },
         {
-          "match": "(.(`){0,2}(\\d){0,2})",
+          "match": "(?:([\\w]+)((`){0,2}(\\d){0,2})?)",
           "name": "entity.name.type"
         }
       ]

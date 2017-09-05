@@ -63,7 +63,7 @@ for (var i = 0; i < lines.length; i++) {
                         }
                         else {
                             passed = false;
-                            console.warn('[' + (i+1) + '] Scope mismatch found: \t"');
+                            console.warn('[' + (i+1) + '] Scope mismatch found: \t');
                             console.warn('    test: \t' + checkTokenScopes);
                             console.warn('    ref:\t' + checkRefScopes);
                         }

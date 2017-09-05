@@ -48,5 +48,21 @@ ${HKCU:System}
 ${HKLM:System}
 ${WSMan:localhost}
 command.exe $par1 --% $par2 #comment
+command.execute
 $$
 '''str''ing'
+enum myEnum {}
+@(1,2,3)
+(1,2,3)
+(1,2,3).Count
+@{1 = 1}
+{}
+"$($subExpression)"
+Get-Service @par
+$var:
+Write-Warning -Message "Warning"
+class myClass {}
+1 -is [int]
+1 -as [string]
+1 -isnot [int]
+"c" -in [char[]]"abc"

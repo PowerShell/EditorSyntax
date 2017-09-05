@@ -1062,7 +1062,7 @@
               <key>2</key>
               <dict>
                 <key>name</key>
-                <string>entity.name.type.class</string>
+                <string>entity.name.class</string>
               </dict>
               <key>3</key>
               <dict>
@@ -1518,6 +1518,10 @@
             <string>#variableWithoutMemberHighlighting</string>
           </dict>
           <dict>
+            <key>include</key>
+            <string>$self</string>
+          </dict>
+          <dict>
             <key>comment</key>
             <string>Reserved words</string>
             <key>match</key>
@@ -1566,7 +1570,7 @@
           </dict>
           <dict>
             <key>match</key>
-            <string>(.(`){0,2}(\d){0,2})</string>
+            <string>(?:([\w]+)((`){0,2}(\d){0,2})?)</string>
             <key>name</key>
             <string>entity.name.type</string>
           </dict>

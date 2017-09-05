@@ -351,7 +351,7 @@ repository:
                 begin: '(?i)\b(class)\b\s+\n*((?:\p{L}|\d|_|-|\.)+)(?:\s*(:)\s*((?:\p{L}|\d|_|-|\.)+))?'
                 beginCaptures:
                     '1': {name: keyword.other}
-                    '2': {name: entity.name.type.class}
+                    '2': {name: entity.name.class}
                     '3': {name: punctuation.accessor}
                     '4': {name: storage.type}
                 end: '(?=\{)'
@@ -527,6 +527,7 @@ repository:
                 name: entity.other.attribute-name
         patterns:
             - include: '#variableWithoutMemberHighlighting'
+            - include: $self
             -
                 comment: 'Reserved words'
                 match: '(?i)\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b'
@@ -546,7 +547,7 @@ repository:
                         match: '(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b'
                         name: variable.other.member
             -
-                match: '(.(`){0,2}(\d){0,2})'
+                match: '(?:([\w]+)((`){0,2}(\d){0,2})?)'
                 name: entity.name.type
     variable:
         begin: '(?=\$)'

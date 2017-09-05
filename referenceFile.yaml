@@ -765,3 +765,437 @@ lines:
           - source.powershell
           - string.quoted.single
           - punctuation.definition.string.end
+  - line: 'command.execute'
+    tokens:
+      - token: 'command.execute'
+        scopes:
+          - source.powershell
+  - line: 'enum myEnum {}'
+    tokens:
+      - token: 'enum'
+        scopes:
+          - source.powershell
+          - storage.type
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: 'myEnum'
+        scopes:
+          - source.powershell
+          - entity.name.enum
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '{'
+        scopes:
+          - source.powershell
+          - meta.scriptblock
+          - punctuation.section.braces.begin
+      - token: '}'
+        scopes:
+          - source.powershell
+          - meta.scriptblock
+          - punctuation.section.braces.end
+  - line: '@(1,2,3)'
+    tokens:
+      - token: '@('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '(1,2,3)'
+    tokens:
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '(1,2,3).Count'
+    tokens:
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+      - token: '.'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: 'Count'
+        scopes:
+          - source.powershell
+          - variable.other.member
+  - line: '@{1 = 1}'
+    tokens:
+      - token: '@{'
+        scopes:
+          - source.powershell
+          - meta.hashtable
+          - punctuation.section.braces.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - meta.hashtable
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+          - meta.hashtable
+      - token: '='
+        scopes:
+          - source.powershell
+          - meta.hashtable
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+          - meta.hashtable
+      - token: '1'
+        scopes:
+          - source.powershell
+          - meta.hashtable
+          - constant.numeric.integer
+      - token: '}'
+        scopes:
+          - source.powershell
+          - meta.hashtable
+          - punctuation.section.braces.end
+  - line: '{}'
+    tokens:
+      - token: '{'
+        scopes:
+          - source.powershell
+          - meta.scriptblock
+          - punctuation.section.braces.begin
+      - token: '}'
+        scopes:
+          - source.powershell
+          - meta.scriptblock
+          - punctuation.section.braces.end
+  - line: '"$($subExpression)"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '$('
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.section.parens.begin
+      - token: '$'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.definition.variable
+      - token: 'subExpression'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - variable.other.readwrite
+      - token: ')'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.section.parens.end
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: 'Get-Service @par'
+    tokens:
+      - token: 'Get-Service'
+        scopes:
+          - source.powershell
+          - meta.command
+          - support.function
+      - token: ' '
+        scopes:
+          - source.powershell
+          - meta.command
+      - token: '@'
+        scopes:
+          - source.powershell
+          - meta.command
+          - punctuation.definition.variable
+      - token: 'par'
+        scopes:
+          - source.powershell
+          - meta.command
+          - variable.other.readwrite
+  - line: '$var:'
+    tokens:
+      - token: '$var:'
+        scopes:
+          - source.powershell
+          - invalid.illegal
+  - line: 'Write-Warning -Message "Warning"'
+    tokens:
+      - token: 'Write-Warning'
+        scopes:
+          - source.powershell
+          - meta.command
+          - support.function
+      - token: ' -Message'
+        scopes:
+          - source.powershell
+          - meta.command
+          - variable.parameter
+      - token: ' '
+        scopes:
+          - source.powershell
+          - meta.command
+      - token: '"'
+        scopes:
+          - source.powershell
+          - meta.command
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'Warning'
+        scopes:
+          - source.powershell
+          - meta.command
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - meta.command
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: 'class myClass {}'
+    tokens:
+      - token: 'class'
+        scopes:
+          - source.powershell
+          - keyword.other
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: 'myClass'
+        scopes:
+          - source.powershell
+          - entity.name.class
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.section.braces.open
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.section.braces.close
+  - line: '1 -is [int]'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-is'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'int'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: '1 -as [string]'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-as'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'string'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: '1 -isnot [int]'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-isnot'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'int'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: '"c" -in [char[]]"abc"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'c'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-in'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'char'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'abc'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
