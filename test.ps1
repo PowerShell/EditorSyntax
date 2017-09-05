@@ -3,6 +3,7 @@
     Block comment
 #>
 'Single Quoted string'
+"Double Quoted string"
 7
 -10lkb
 0x9
@@ -16,3 +17,36 @@
 4.5
 -9.9
 +7.4
+$myVariable
+$my-Variable
+$local:myVariable
+$global:myVariable
+$script:myVariable
+$private:myVariable
+$using:myVariable
+$env:COMPUTERNAME
+$Function:help
+$Alias:cat
+$Cert:myCert
+$Variable:ast
+$HKCU:System
+$HKLM:System
+$WSMan:localhost
+${myVariable}
+${my-Variable}
+${local:myVariable}
+${global:myVariable}
+${script:myVariable}
+${private:myVariable}
+${using:myVariable}
+${env:COMPUTERNAME}
+${Function:help}
+${Alias:cat}
+${Cert:myCert}
+${Variable:ast}
+${HKCU:System}
+${HKLM:System}
+${WSMan:localhost}
+command.exe $par1 --% $par2 #comment
+$$
+'''str''ing'

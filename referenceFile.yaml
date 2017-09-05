@@ -46,6 +46,22 @@ lines:
           - source.powershell
           - string.quoted.single
           - punctuation.definition.string.end
+  - line: '"Double Quoted string"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'Double Quoted string'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
   - line: '7'
     tokens:
       - token: '7'
@@ -124,3 +140,628 @@ lines:
         scopes:
           - source.powershell
           - constant.numeric.real
+  - line: '$myVariable'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$my-Variable'
+    tokens:
+      - token: '$my-Variable'
+        scopes:
+          - source.powershell
+          - invalid.illegal
+  - line: '$local:myVariable'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'local:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$global:myVariable'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'global:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$script:myVariable'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'script:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$private:myVariable'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'private:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$using:myVariable'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'using:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$env:COMPUTERNAME'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'env:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'COMPUTERNAME'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$Function:help'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Function:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'help'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$Alias:cat'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Alias:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'cat'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$Cert:myCert'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Cert:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myCert'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$Variable:ast'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Variable:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'ast'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$HKCU:System'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'HKCU:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'System'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$HKLM:System'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'HKLM:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'System'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$WSMan:localhost'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'WSMan:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'localhost'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '${myVariable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${my-Variable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'my-Variable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${local:myVariable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'local:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${global:myVariable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'global:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${script:myVariable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'script:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${private:myVariable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'private:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${using:myVariable}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'using:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myVariable'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${env:COMPUTERNAME}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'env:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'COMPUTERNAME'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${Function:help}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Function:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'help'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${Alias:cat}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Alias:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'cat'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${Cert:myCert}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Cert:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'myCert'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${Variable:ast}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Variable:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'ast'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${HKCU:System}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'HKCU:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'System'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${HKLM:System}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'HKLM:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'System'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '${WSMan:localhost}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'WSMan:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'localhost'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: 'command.exe $par1 --% $par2 #comment'
+    tokens:
+      - token: 'command.exe'
+        scopes:
+          - source.powershell
+          - support.executable
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'par1'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '--%'
+        scopes:
+          - source.powershell
+          - keyword.operator
+      - token: ' '
+        scopes:
+          - source.powershell
+          - source.powershell
+      - token: '$'
+        scopes:
+          - source.powershell
+          - source.powershell
+      - token: 'p'
+        scopes:
+          - source.powershell
+          - source.powershell
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - source.powershell
+      - token: 'r'
+        scopes:
+          - source.powershell
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - source.powershell
+      - token: ' #'
+        scopes:
+          - source.powershell
+          - comment.line
+          - punctuation.definition.comment
+      - token: 'comment'
+        scopes:
+          - source.powershell
+          - comment.line
+  - line: '$$'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '$'
+        scopes:
+          - source.powershell
+          - variable.language
+  - line: "'''str''ing'"
+    tokens:
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - constant.character.escape
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: 'str'
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - constant.character.escape
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: 'ing'
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
