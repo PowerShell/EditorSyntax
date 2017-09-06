@@ -1199,3 +1199,1228 @@ lines:
           - source.powershell
           - string.quoted.double
           - punctuation.definition.string.end
+  - line: '"c" -notin [char[]]"abc"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'c'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-notin'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'char'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'abc'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '1,2 -join ";"'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-join'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: ';'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '1,2 -split ","'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-split'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: ','
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '1 -eq 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-eq'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -ne 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-ne'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -gt 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-gt'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -lt 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-lt'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -ge 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-ge'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -le 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-le'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -like 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-like'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '1 -notlike 2'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-notlike'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '"abc" -replace("b","c")'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'abc'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-replace'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'b'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'c'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '1,2,3 -contains(2)'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-contains'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '1,2,3 -notcontains(2)'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-notcontains'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '"a" -match("\w")'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-match'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '\w'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '"a" -notmatch("\w")'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-notmatch'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '\w'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '102 -shl 2'
+    tokens:
+      - token: '102'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-shl'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '102 -shr 2'
+    tokens:
+      - token: '102'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-shr'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '5 -band 3'
+    tokens:
+      - token: '5'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-band'
+        scopes:
+          - source.powershell
+          - keyword.operator.bitwise
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '-bnot 5'
+    tokens:
+      - token: '-bnot'
+        scopes:
+          - source.powershell
+          - keyword.operator.bitwise
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '5'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '5 -bor 0x03'
+    tokens:
+      - token: '5'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-bor'
+        scopes:
+          - source.powershell
+          - keyword.operator.bitwise
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '0x03'
+        scopes:
+          - source.powershell
+          - constant.numeric.hex
+  - line: '5 -bxor 3'
+    tokens:
+      - token: '5'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-bxor'
+        scopes:
+          - source.powershell
+          - keyword.operator.bitwise
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '3'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '(1 -gt 2) -and (2 -gt 1)'
+    tokens:
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-gt'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-and'
+        scopes:
+          - source.powershell
+          - keyword.operator.logical
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-gt'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '(1 -gt 2) -or (2 -gt 1)'
+    tokens:
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-gt'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-or'
+        scopes:
+          - source.powershell
+          - keyword.operator.logical
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-gt'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '(1 -eq 1) -xor (2 -eq 2)'
+    tokens:
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-eq'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-xor'
+        scopes:
+          - source.powershell
+          - keyword.operator.logical
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-eq'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '-not (1 -eq 1)'
+    tokens:
+      - token: '-not'
+        scopes:
+          - source.powershell
+          - keyword.operator.unary.logical-not
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-eq'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '!(1 -eq 1)'
+    tokens:
+      - token: '!'
+        scopes:
+          - source.powershell
+          - keyword.operator.unary.logical-not
+      - token: '('
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-eq'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '"{0} {1,-10} {2:N}" -f 1,"hello",[math]::pi'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '{0} {1,-10} {2:N}'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-f'
+        scopes:
+          - source.powershell
+          - keyword.operator.format
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'hello'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'math'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: '::'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: 'pi'
+        scopes:
+          - source.powershell
+          - meta.method
+  - line: '$a = 1'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '='
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '$a += 1'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '+='
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '$a -= 1'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-='
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '$a *= 1'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '*='
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '$a /= 1'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '/='
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '$a %= 1'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '%='
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '2*2'
+    tokens:
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: '*'
+        scopes:
+          - source.powershell
+          - keyword.operator.multiplicative
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '2/2'
+    tokens:
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: '/'
+        scopes:
+          - source.powershell
+          - keyword.operator.multiplicative
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '2+2'
+    tokens:
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: '+'
+        scopes:
+          - source.powershell
+          - keyword.operator.additive
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '2-2'
+    tokens:
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: '-'
+        scopes:
+          - source.powershell
+          - keyword.operator.additive
+      - token: '2'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '+$a'
+    tokens:
+      - token: '+'
+        scopes:
+          - source.powershell
+          - keyword.operator.unary-plus
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '-$a'
+    tokens:
+      - token: '-'
+        scopes:
+          - source.powershell
+          - keyword.operator.unary-minus
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '1..4'
+    tokens:
+      - token: '1'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+      - token: '..'
+        scopes:
+          - source.powershell
+          - keyword.operator.range
+      - token: '4'
+        scopes:
+          - source.powershell
+          - constant.numeric.integer
+  - line: '& $a'
+    tokens:
+      - token: '&'
+        scopes:
+          - source.powershell
+          - keyword.operator.other
+      - token:
+        scopes:
+          - source.powershell
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
