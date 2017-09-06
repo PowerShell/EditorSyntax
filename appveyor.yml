@@ -1,0 +1,18 @@
+﻿version: 2.0.{build}
+image: Visual Studio 2017
+clone_depth: 10
+skip_tags: true
+
+branches:
+  only:
+  - master
+  - v2
+
+install:
+  - ps: npm install
+
+build_script:
+  - ps: npm build
+
+test_script:
+  - ps: npm test

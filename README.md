@@ -1,6 +1,7 @@
-[![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 # PowerShell Syntax Definition for Editors
+
+[![Build status](https://ci.appveyor.com/api/projects/status/yhplne0es74doruv/branch/master?svg=true)](https://ci.appveyor.com/project/PowerShell/editorsyntax/branch/master) 
+[![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project establishes the central development and maintenance of syntax definition
 files for the PowerShell language used by editors that leverage the XML version of the
