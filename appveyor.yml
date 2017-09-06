@@ -9,6 +9,7 @@ branches:
   - v2
 
 install:
+  - ps: Install-Product node '6.9.2'
   - ps: npm install
 
 build_script:
