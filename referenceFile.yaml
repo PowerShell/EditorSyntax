@@ -2424,3 +2424,59 @@ lines:
         scopes:
           - source.powershell
           - variable.other.readwrite
+  - line: '$a++'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '++'
+        scopes:
+          - source.powershell
+          - keyword.operator.increment
+  - line: '++$a'
+    tokens:
+      - token: '++'
+        scopes:
+          - source.powershell
+          - keyword.operator.increment
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '$a--'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '--'
+        scopes:
+          - source.powershell
+          - keyword.operator.decrement
+  - line: '--$a'
+    tokens:
+      - token: '--'
+        scopes:
+          - source.powershell
+          - keyword.operator.decrement
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'a'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite

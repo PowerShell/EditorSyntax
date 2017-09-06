@@ -1427,6 +1427,22 @@
           </dict>
           <dict>
             <key>comment</key>
+            <string>Increment Operator</string>
+            <key>match</key>
+            <string>(\+\+)</string>
+            <key>name</key>
+            <string>keyword.operator.increment</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>Decrement Operator</string>
+            <key>match</key>
+            <string>(--)</string>
+            <key>name</key>
+            <string>keyword.operator.decrement</string>
+          </dict>
+          <dict>
+            <key>comment</key>
             <string>Unary Plus</string>
             <key>match</key>
             <string>([+](?=\$|\(|"))</string>
@@ -1595,6 +1611,10 @@
           <dict>
             <key>include</key>
             <string>#type</string>
+          </dict>
+          <dict>
+            <key>include</key>
+            <string>#operators</string>
           </dict>
           <dict>
             <key>comment</key>

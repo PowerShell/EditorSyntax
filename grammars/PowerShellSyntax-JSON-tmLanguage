@@ -930,6 +930,16 @@
           "name": "keyword.operator.multiplicative"
         },
         {
+          "comment": "Increment Operator",
+          "match": "(\\+\\+)",
+          "name": "keyword.operator.increment"
+        },
+        {
+          "comment": "Decrement Operator",
+          "match": "(--)",
+          "name": "keyword.operator.decrement"
+        },
+        {
           "comment": "Unary Plus",
           "match": "([+](?=\\$|\\(|\"))",
           "name": "keyword.operator.unary-plus"
@@ -1036,6 +1046,9 @@
       "patterns": [
         {
           "include": "#type"
+        },
+        {
+          "include": "#operators"
         },
         {
           "comment": "Invalid variable name",

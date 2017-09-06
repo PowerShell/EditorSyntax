@@ -83,4 +83,5 @@ for (var i = 0; i < lines.length; i++) {
 
 if (passed) {
     console.log('All tests passed!');
+    process.exit(0);
 }
