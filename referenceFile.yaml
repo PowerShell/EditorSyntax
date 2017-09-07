@@ -2480,3 +2480,441 @@ lines:
         scopes:
           - source.powershell
           - variable.other.readwrite
+  - line: '"$(Get-RandomString -length 10)@$(Get-RandomString -length 10).com"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '$('
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.section.parens.begin
+      - token: 'Get-RandomString'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+          - support.function
+      - token: ' -length'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+          - variable.parameter
+      - token: ' '
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+      - token: '10'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.section.parens.end
+      - token: '@'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '$('
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.section.parens.begin
+      - token: 'Get-RandomString'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+          - support.function
+      - token: ' -length'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+          - variable.parameter
+      - token: ' '
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+      - token: '10'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - meta.command
+          - constant.numeric.integer
+      - token: ')'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - meta.subexpression
+          - punctuation.section.parens.end
+      - token: '.com'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '$foo?bar'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'foo?bar'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+  - line: '${foo?bar}'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'foo?bar'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+  - line: '"$foo?bar"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '$'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.variable
+      - token: 'foo?bar'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - variable.other.readwrite
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '"${foo?bar}"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '$'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.variable
+      - token: 'foo?bar'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.variable
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: 'myScript.ps1'
+    tokens:
+      - token: 'myScript.ps1'
+        scopes:
+          - source.powershell
+          - meta.command
+          - support.function
+  - line: 'myScript.ps1notafile'
+    tokens:
+      - token: 'myScript.ps1notafile'
+        scopes:
+          - source.powershell
+  - line: 'file.exe'
+    tokens:
+      - token: 'file.exe'
+        scopes:
+          - source.powershell
+          - support.executable
+  - line: 'file.exenotafile'
+    tokens:
+      - token: 'file.exenotafile'
+        scopes:
+          - source.powershell
+  - line: 'file.com'
+    tokens:
+      - token: 'file.com'
+        scopes:
+          - source.powershell
+          - support.executable
+  - line: 'file.comnotafile'
+    tokens:
+      - token: 'file.comnotafile'
+        scopes:
+          - source.powershell
+  - line: 'file.bat'
+    tokens:
+      - token: 'file.bat'
+        scopes:
+          - source.powershell
+          - support.executable
+  - line: 'file.batnotafile'
+    tokens:
+      - token: 'file.batnotafile'
+        scopes:
+          - source.powershell
+  - line: 'file.cmd'
+    tokens:
+      - token: 'file.cmd'
+        scopes:
+          - source.powershell
+          - support.executable
+  - line: 'file.cmdnotafile'
+    tokens:
+      - token: 'file.cmdnotafile'
+        scopes:
+          - source.powershell
+  - line: 'Function New-Function { #comment here'
+    tokens:
+      - token: 'Function'
+        scopes:
+          - source.powershell
+          - meta.function
+          - keyword.other
+      - token: ' '
+        scopes:
+          - source.powershell
+          - meta.function
+      - token: 'New-Function'
+        scopes:
+          - source.powershell
+          - meta.function
+          - entity.name.function
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '{'
+        scopes:
+          - source.powershell
+      - token: ' #'
+        scopes:
+          - source.powershell
+          - comment.line
+          - punctuation.definition.comment
+      - token: 'comment here'
+        scopes:
+          - source.powershell
+          - comment.line
+  - line: '}'
+    tokens:
+      - token: '}'
+        scopes:
+          - source.powershell
+  - line: 'Function New-Function #comment here'
+    tokens:
+      - token: 'Function'
+        scopes:
+          - source.powershell
+          - meta.function
+          - keyword.other
+      - token: ' '
+        scopes:
+          - source.powershell
+          - meta.function
+      - token: 'New-Function'
+        scopes:
+          - source.powershell
+          - meta.function
+          - entity.name.function
+      - token: ' #'
+        scopes:
+          - source.powershell
+          - comment.line
+          - punctuation.definition.comment
+      - token: 'comment here'
+        scopes:
+          - source.powershell
+          - comment.line
+  - line: '{'
+    tokens:
+      - token: '{'
+        scopes:
+          - source.powershell
+  - line: '[Microsoft.Win32.RegistryKey]'
+    tokens:
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: 'Microsoft'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: '.'
+        scopes:
+          - source.powershell
+      - token: 'Win32'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: '.'
+        scopes:
+          - source.powershell
+      - token: 'RegistryKey'
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: "$_.'#text'"
+    tokens:
+      - token: '$_'
+        scopes:
+          - source.powershell
+          - variable.language
+      - token: '.'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: '#text'
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: "'"
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
+  - line: '$Whatever.Name -match "Id"'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Whatever'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '.'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: 'Name'
+        scopes:
+          - source.powershell
+          - variable.other.member
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-match'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'Id'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '$Whatever.Name -match ".*Id"'
+    tokens:
+      - token: '$'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'Whatever'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '.'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: 'Name'
+        scopes:
+          - source.powershell
+          - variable.other.member
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '-match'
+        scopes:
+          - source.powershell
+          - keyword.operator.comparison
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: '.*Id'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end

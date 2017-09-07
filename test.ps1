@@ -112,3 +112,26 @@ $a--
 -$a
 1..4
 & $a
+"$(Get-RandomString -length 10)@$(Get-RandomString -length 10).com"
+$foo?bar
+${foo?bar}
+"$foo?bar"
+"${foo?bar}"
+myScript.ps1
+myScript.ps1notafile
+file.exe
+file.exenotafile
+file.com
+file.bat
+file.batnotafile
+file.cmd
+file.cmdnotafile
+Function New-Function { #comment here
+}
+Function New-Function #comment here
+{
+}
+[Microsoft.Win32.RegistryKey]
+$_.'#text'
+$Whatever.Name -match "Id"
+$Whatever.Name -match ".*Id"
