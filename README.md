@@ -1,6 +1,6 @@
 # PowerShell Syntax Definition for Editors
 
-[![Build status](https://ci.appveyor.com/api/projects/status/yhplne0es74doruv/branch/master?svg=true)](https://ci.appveyor.com/project/PowerShell/editorsyntax/branch/master) 
+[![Build status](https://ci.appveyor.com/api/projects/status/yhplne0es74doruv/branch/master?svg=true)](https://ci.appveyor.com/project/PowerShell/editorsyntax/branch/master)
 [![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project establishes the central development and maintenance of syntax definition
@@ -41,7 +41,7 @@ To get started contributing:
 - Clone this repository locally
 - run ``npm install`` to install the node dependencies
 
-After you have made changes to ``PowerShellSyntax.YAML-tmLanguage``, press ``Ctrl`` + ``Shift`` + ``b`` to start the build task. This will convert the file to _plist_, _JSON_ and _CSON_ as well as run the tests to make sure that nothing breaks.
+After you have made changes to ``PowerShellSyntax.YAML-tmLanguage``, press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>b</kbd> to start the build task. This will convert the file to _plist_, _JSON_ and _CSON_ as well as run the tests to make sure that nothing breaks.
 
 The converted files are saved to the **grammars** folder.
 
