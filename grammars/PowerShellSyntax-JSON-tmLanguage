@@ -1058,7 +1058,14 @@
         {
           "comment": "built-in variables; $args",
           "match": "(\\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\\b",
-          "name": "variable.language"
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable"
+            },
+            "2": {
+              "name": "variable.language"
+            }
+          }
         },
         {
           "comment": "built-in variables; ${args}",

@@ -135,3 +135,46 @@ Function New-Function #comment here
 $_.'#text'
 $Whatever.Name -match "Id"
 $Whatever.Name -match ".*Id"
+Add-Something
+Add-Something {}
+(Add-Something).method()
+Add-Something -Parameter1 value -Parameter2 value | Add-SomethingElse
+function Invoke-Test {
+    [CmdletBinding(ConfirmImpact="High", DefaultParameterSetName = "Name", HelpUri = "https://my.help.io", SupportsShouldProcess = $true, SupportsPaging = $true, PositionalBinding = $true)]
+    [OutputType("System.Int32", ParameterSetName="ID")]
+    [OutputType([String], ParameterSetName="Name")]
+    param (
+        [Parameter(ValueFromPipeline = $true, ValueFromPipelineByPropertyName, ParameterSetName = 'Name')]
+        [ValidateLength(1,25)]
+        [string] $Name,
+
+        [ValidatePattern("[0-9][0-9][0-9][0-9]")]
+        [ValidateNotNull()]
+        [string] $ComputerId,
+
+        [Parameter(Position = 0, ValueFromRemainingArguments, HelpMessage = 'User ID')]
+        [Alias('UserId','UID')]
+        [ValidateRange(1,999)]
+        [int32] $Id,
+
+        [AllowNull()]
+        [int] $State,
+
+        [AllowEmptyString()]
+        [string] $Message,
+
+        [ValidateCount(1,9)]
+        [ValidateNotNullOrEmpty()]
+        [string[]] $NewCollection,
+
+        [AllowEmptyCollection()]
+        [ValidateSet('Basic','Pro','Gold')]
+        [string[]] $OldCollection,
+
+        [Parameter()]
+        [ValidateScript({$_ -ge (get-date)})]
+        [DateTime] $Date,
+
+        [switch] $Force
+    )
+}

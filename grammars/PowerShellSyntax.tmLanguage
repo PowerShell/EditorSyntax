@@ -1629,8 +1629,19 @@
             <string>built-in variables; $args</string>
             <key>match</key>
             <string>(\$)(?i:(_|args|consolefilename|error|event|eventsubscriber|executioncontext|false|foreach|home|host|input|lastexitcode|matches|myinvocation|nestedpromptlevel|null|pid|psboundparameters|pscmdlet|psculture|psdebugcontext|pshome|psitem|psscriptroot|psuiculture|psversiontable|pwd|sender|shellid|sourceargs|sourceeventargs|switch|this|true))\b</string>
-            <key>name</key>
-            <string>variable.language</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.variable</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>variable.language</string>
+              </dict>
+            </dict>
           </dict>
           <dict>
             <key>comment</key>
