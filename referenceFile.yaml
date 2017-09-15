@@ -4254,3 +4254,536 @@ lines:
       - token: '}'
         scopes:
           - source.powershell
+  - line: >-
+      [System.Collections.Generic.Dictionary`2[[System.String,
+      mscorlib],[System.Management.Automation.ParameterMetadata,System.Management.Automation]]]
+    tokens:
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: System
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Collections
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Generic
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Dictionary`2
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: System
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: String
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ', '
+        scopes:
+          - source.powershell
+      - token: mscorlib
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: System
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Management
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Automation
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: ParameterMetadata
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ','
+        scopes:
+          - source.powershell
+      - token: System
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Management
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Automation
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: '[System.Array+SZArrayEnumerator]'
+    tokens:
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: System
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: Array
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: +
+        scopes:
+          - source.powershell
+      - token: SZArrayEnumerator
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: '[int]::MinValue'
+    tokens:
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: int
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: '::'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: MinValue
+        scopes:
+          - source.powershell
+          - meta.method
+  - line: '[System.DateTime]::Parse(''2016/09/21'')'
+    tokens:
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: System
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: .
+        scopes:
+          - source.powershell
+      - token: DateTime
+        scopes:
+          - source.powershell
+          - entity.name.type
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+      - token: '::'
+        scopes:
+          - source.powershell
+          - punctuation.accessor
+      - token: Parse
+        scopes:
+          - source.powershell
+          - meta.method
+      - token: (
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: 2016/09/21
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
+      - token: )
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+  - line: '"Name,""Id""`tPhone`n====`r`n"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: 'Name,'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: Id
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`t'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: Phone
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`n'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: ====
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`r'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: '`n'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '''Name,''''Id''''`tPhone`n====`r`n'''
+    tokens:
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: 'Name,'
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - constant.character.escape
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: Id
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - constant.character.escape
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: '`tPhone`n====`r`n'
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
+  - line: '"text`0text`atext`ftext`vtext`"`$text`"text`btext"'
+    tokens:
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.begin
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`0'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`a'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`f'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`v'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: $
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '`b'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - constant.character.escape
+      - token: text
+        scopes:
+          - source.powershell
+          - string.quoted.double
+      - token: '"'
+        scopes:
+          - source.powershell
+          - string.quoted.double
+          - punctuation.definition.string.end
+  - line: '''text`0text`atext`ftext`vtext`"`$text`"text`btext'''
+    tokens:
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: text`0text`atext`ftext`vtext`"`$text`"text`btext
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
+  - line: >-
+      [ValidatePattern('^(?=^.{1,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)')]
+    tokens:
+      - token: '['
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.begin
+      - token: ValidatePattern
+        scopes:
+          - source.powershell
+          - entity.other.attribute-name
+      - token: (
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.begin
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: >-
+          ^(?=^.{1,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end
+      - token: )
+        scopes:
+          - source.powershell
+          - punctuation.section.parens.end
+      - token: ']'
+        scopes:
+          - source.powershell
+          - punctuation.section.brackets.end
+  - line: '${script:this`{value`}is} = ''valid'''
+    tokens:
+      - token: $
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: '{'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: 'script:'
+        scopes:
+          - source.powershell
+          - storage.modifier.scope
+      - token: 'this`{value`}is'
+        scopes:
+          - source.powershell
+          - variable.other.readwrite
+      - token: '}'
+        scopes:
+          - source.powershell
+          - punctuation.definition.variable
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: =
+        scopes:
+          - source.powershell
+          - keyword.operator.assignment
+      - token: ' '
+        scopes:
+          - source.powershell
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.begin
+      - token: valid
+        scopes:
+          - source.powershell
+          - string.quoted.single
+      - token: ''''
+        scopes:
+          - source.powershell
+          - string.quoted.single
+          - punctuation.definition.string.end

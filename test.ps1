@@ -2,6 +2,13 @@
 <#
     Block comment
 #>
+# .ExternalHelp  psake.psm1-help.xml
+#requires -version 2.0
+#Requires -Version 5
+#Requires -PSSnapin DiskSnapin -Version 1.2
+# Requires -Version 3.1
+#Requires -Version 5 something
+# Requires -Version 3.1 something
 'Single Quoted string'
 "Double Quoted string"
 7
@@ -178,3 +185,40 @@ function Invoke-Test {
         [switch] $Force
     )
 }
+[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Management.Automation.ParameterMetadata,System.Management.Automation]]]
+[System.Array+SZArrayEnumerator]
+[int]::MinValue
+[System.DateTime]::Parse('2016/09/21')
+"Name,""Id""`tPhone`n====`r`n"
+'Name,''Id''`tPhone`n====`r`n'
+"text`0text`atext`ftext`vtext`"`$text`"text`btext"
+'text`0text`atext`ftext`vtext`"`$text`"text`btext'
+[ValidatePattern('^(?=^.{1,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)')]
+${script:this`{value`}is} = 'valid'
+$a[0]
+$a[-3..-1]
+$a[0,2+4..6]
+,(1,2,3)
+,$a
+$t = $a[0,1 + 3..($a.length - 1)]
+functioN MyFunction{}
+function My-Function         {}
+Function My.Function{}
+function My-Function.Other{}
+function Some.other.function{}
+FUNCTION MyFunction2 {}
+function New-File { }
+function New-File ($Name) { }
+function NewFile($Name) { }
+functionMyFunction{}
+filter myfilter($param) {}
+Filter my-Filter ($param){}
+function global:Invoke-Something {}
+switch ("fourteen") {}
+switch -CaseSensitive ("fourteen") {}
+switch -Illegal ("fourteen") {}
+switch -Regex ("fourteen") {}
+switch -Wildcard ($a) {}
+switch -regex -file .\somefile.txt {}
+switch (3) {}
+switch (4, 2) {}

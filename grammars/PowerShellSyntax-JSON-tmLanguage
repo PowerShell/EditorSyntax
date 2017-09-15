@@ -37,6 +37,9 @@
       }
     },
     {
+      "include": "#requires"
+    },
+    {
       "include": "#lineComment"
     },
     {
@@ -110,6 +113,57 @@
     }
   ],
   "repository": {
+    "requires": {
+      "comment": "#Requires statements",
+      "patterns": [
+        {
+          "match": "(?i:^(#requires))\\s(?i:(-version))\\s(\\d)(?:(\\.\\d))?$",
+          "captures": {
+            "0": {
+              "name": "meta.requires"
+            },
+            "1": {
+              "name": "keyword.other.requires"
+            },
+            "2": {
+              "name": "variable.parameter"
+            },
+            "3": {
+              "name": "variable.parameter"
+            },
+            "4": {
+              "name": "variable.parameter"
+            }
+          }
+        },
+        {
+          "match": "(?i:^(#requires))\\s(?i:(-pssnapin))\\s(\\w+)(?:\\s(?i:(-version))(?:\\s(\\d))(\\.\\d)?)?$",
+          "captures": {
+            "0": {
+              "name": "meta.requires"
+            },
+            "1": {
+              "name": "keyword.other.requires"
+            },
+            "2": {
+              "name": "variable.parameter"
+            },
+            "3": {
+              "name": "variable.parameter"
+            },
+            "4": {
+              "name": "variable.parameter"
+            },
+            "5": {
+              "name": "variable.parameter"
+            },
+            "6": {
+              "name": "variable.parameter"
+            }
+          }
+        }
+      ]
+    },
     "lineComment": {
       "comment": "Line comment - must start with new line or at least one whitespace character before the '#'.",
       "begin": "(^#|\\s#)",
@@ -149,12 +203,24 @@
     "stringEscapeChars": {
       "patterns": [
         {
-          "name": "constant.character.escape",
-          "match": "(`[0abfnrtv\"'$`])"
+          "match": "(\")(?:\")",
+          "captures": {
+            "1": {
+              "name": "constant.character.escape"
+            }
+          }
+        },
+        {
+          "match": "(`)(:?[\"'$`])",
+          "captures": {
+            "1": {
+              "name": "constant.character.escape"
+            }
+          }
         },
         {
           "name": "constant.character.escape",
-          "match": "(\"\")"
+          "match": "(`[0abfnrtv])"
         }
       ]
     },
@@ -1189,7 +1255,7 @@
         },
         {
           "comment": "${var}, ${local:var}",
-          "match": "(\\$)(\\{?)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?([\\w?-]+)(:\\w+)?(\\}?)",
+          "match": "(\\$)(\\{)((?i:global|local|script|private|using|env|function|alias|cert|variable|hkcu|hklm|wsman):)?([\\w?`{}-]+)(:\\w+)?(\\})",
           "captures": {
             "1": {
               "name": "punctuation.definition.variable"
