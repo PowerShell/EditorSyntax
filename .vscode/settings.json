@@ -1,3 +1,4 @@
 {
-  "powershell.scriptAnalysis.enable": false
+  "powershell.scriptAnalysis.enable": false,
+  "powershell.startAutomatically": false
 }
