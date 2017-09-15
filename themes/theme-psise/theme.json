@@ -174,7 +174,10 @@
 		},
 		{
 			"name": "Strings",
-			"scope": "string",
+			"scope": [
+				"string",
+				"punctuation.definition.string"
+			],
 			"settings": {
 				"foreground": "#8B0000"
 			}
@@ -183,7 +186,7 @@
 			"name": "Strings: Escape Sequences",
 			"scope": "constant.character.escape",
 			"settings": {
-				"foreground": "#8B0000"
+				"foreground": "#000000"
 			}
 		},
 		{
