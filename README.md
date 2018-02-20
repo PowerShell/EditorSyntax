@@ -30,7 +30,6 @@ send pull requests if you'd like to contribute.
 
 ## Maintainers
 
-- [David Wilson](https://github.com/daviwil) - [@daviwil](http://twitter.com/daviwil)
 - [Sergei Vorobev](https://github.com/vors) - [@xvorsx](https://twitter.com/xvorsx)
 - [Øyvind Kallstad](https://github.com/gravejester) - [@okallstad](https://twitter.com/okallstad)
 
