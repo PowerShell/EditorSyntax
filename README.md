@@ -43,27 +43,15 @@ for more details.
     npm run build-grammar
     ```
 
-3. The .json file will be output to `./syntaxes/` at the root  of the directory. You can use the vscode.ps1 script to load it or do it manually.
-
-    **Install - script**
-
-    ```PowerShell
-    PS tools> .\vscode.ps1 -InstallSyntax
-    ```
-
-    **Revert - script**
-
-    ```PowerShell
-    PS tools> .\vscode.ps1 -RevertSyntax
-    ```
-
-    **Install - manually**
+3. The .json file will be output to `./syntaxes/` at the root  of the directory. You will need to copy it to VS Code manually.
 
     1. Locate the VS Code installation directory and navigate to to `resources/app/extensions/powershell/syntaxes`
 
     2. Rename `powershell.tmLanguage.json` to `powershell.tmLanguage.json_default`
 
     3. Copy `powershell.tmLanguage.json` from `./syntaxes/` within this project folder to where you just renamed the file under VS Code's path.
+
+4. If VS Code is already running you will need to run "Reload Window" from the command pallete.
 
 ## Contributing
 
