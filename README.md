@@ -22,6 +22,49 @@ both VS Code and Sublime Text.  There are a number of existing issues with the g
 that we need to track down and fix.  Please see [issue #1](https://github.com/PowerShell/EditorSyntax/issues/1)
 for more details.
 
+## Build and Import (VS Code)
+
+### Prerequisites
+
+- Python, >=2.7 (version 3 is not supported)
+- Node.JS, >= 8.9.1
+
+### Build
+
+1. Navigate via command line to the ./tools/` directory and install dependencies:
+
+    ```
+    npm install
+    ```
+
+2. Run the `build-grammar` script to generate the json file.
+
+    ```
+    npm run build-grammar
+    ```
+
+3. The .json file will be output to `./syntaxes/` at the root  of the directory. You can use the vscode.ps1 script to load it or do it manually.
+
+    **Install - script**
+
+    ```PowerShell
+    PS tools> .\vscode.ps1 -InstallSyntax
+    ```
+
+    **Revert - script**
+
+    ```PowerShell
+    PS tools> .\vscode.ps1 -RevertSyntax
+    ```
+
+    **Install - manually**
+
+    1. Locate the VS Code installation directory and navigate to to `resources/app/extensions/powershell/syntaxes`
+
+    2. Rename `powershell.tmLanguage.json` to `powershell.tmLanguage.json_default`
+
+    3. Copy `powershell.tmLanguage.json` from `./syntaxes/` within this project folder to where you just renamed the file under VS Code's path.
+
 ## Contributing
 
 We would love to have community contributions to this project to make PowerShell syntax

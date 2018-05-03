@@ -1,0 +1,10 @@
+{
+ "name": "EditorSyntax",
+ "version": "1.0.0",
+ "dependencies": {
+  "fast-plist": "0.1.2"
+ },
+ "scripts": {
+  "build-grammar": "node ./scripts/build-grammar.js ../PowerShellSyntax.tmLanguage ../syntaxes/powershell.tmLanguage.json"
+ }
+}
