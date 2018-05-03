@@ -26,7 +26,6 @@ for more details.
 
 ### Prerequisites
 
-- Python, >=2.7 (version 3 is not supported)
 - Node.JS, >= 8.9.1
 
 ### Build
