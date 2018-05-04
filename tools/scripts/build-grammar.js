@@ -13,12 +13,14 @@ var fs = require('fs');
 var plist = require('fast-plist');
 
 exports.update = function (tmlPath, dest) {
-
+    console.log('... Reading source file.');
     var content = fs.readFileSync(tmlPath).toString();
 
+    console.log('... Parsing content.');
     var grammar;
 	grammar = plist.parse(content);
 
+    console.log('... Building contents.');
     let result = {
         information_for_contributors: [
             'This file has been converted from source and may not be in line with the official build.',
@@ -40,12 +42,15 @@ exports.update = function (tmlPath, dest) {
 
     var dirname = path.dirname(dest);
     if (!fs.existsSync(dirname)) {
+        console.log('... Creating directory: ' + dirname);
         fs.mkdirSync(dirname);
     }
 
     fs.writeFileSync(dest, JSON.stringify(result, null, '\t'));
+    console.log('[Finished] File written to: ' + dest);
 };
 
 if (path.basename(process.argv[1]) === 'build-grammar.js') {
+    console.log('[Starting] Converting ' + process.argv[2] + ' to json.');
     exports.update(process.argv[2], process.argv[3]);
 }
