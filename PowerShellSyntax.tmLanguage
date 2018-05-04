@@ -86,6 +86,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#UsingDirective</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#type</string>
 		</dict>
 		<dict>
@@ -246,7 +250,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)((?i:begin|break|catch|continue|data|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach(?!-object)|from|hidden|if|in|inlinescript|parallel|param|process|return|switch|throw|trap|try|until|using|var|where(?!-object)|while)|%|\?)(?!\w)</string>
+			<string>(?&lt;!\w)((?i:begin|break|catch|continue|data|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach(?!-object)|from|hidden|if|in|inlinescript|parallel|param|process|return|switch|throw|trap|try|until|var|where(?!-object)|while)|%|\?)(?!\w)</string>
 			<key>name</key>
 			<string>keyword.control.powershell</string>
 		</dict>
@@ -969,6 +973,29 @@
 					<string>(?i:(\$\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 			</array>
+		</dict>
+		<key>UsingDirective</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\w)(?i:(using))\s+(?i:(namespace|module))?\s+(?i:((?:\w+(?:\.)?)+))</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.using.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.powershell</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.type.powershell</string>
+				</dict>
+			</dict>
 		</dict>
 		<key>variableNoProperty</key>
 		<dict>
