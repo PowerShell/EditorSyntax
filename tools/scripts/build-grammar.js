@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------------------------
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *
- *  Modified for PowerShell\EditorSyntax from MicroSoft\vscode (update-grammar.js)
+ *  Modified for PowerShell\EditorSyntax from Microsoft\vscode (update-grammar.js)
  *    This script generates the JSON file using the same tools as vscode's build.
  *--------------------------------------------------------------------------------------------*/
 
