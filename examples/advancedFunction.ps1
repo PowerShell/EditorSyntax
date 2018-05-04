@@ -1,3 +1,5 @@
+using module Microsoft.PowerShell.Management
+
 <#
 .Synopsis
    Short description
@@ -22,8 +24,8 @@
 #>
 function Verb-Noun
 {
-    [CmdletBinding(DefaultParameterSetName='Parameter Set 1', 
-                  SupportsShouldProcess=$true, 
+    [CmdletBinding(DefaultParameterSetName='Parameter Set 1',
+                  SupportsShouldProcess=$true,
                   PositionalBinding=$false,
                   HelpUri = 'http://www.microsoft.com/',
                   ConfirmImpact='Medium')]
@@ -32,17 +34,17 @@ function Verb-Noun
     Param
     (
         # Param1 help description
-        [Parameter(Mandatory=$true, 
+        [Parameter(Mandatory=$true,
                    ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true, 
-                   ValueFromRemainingArguments=$false, 
+                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromRemainingArguments=$false,
                    Position=0,
                    ParameterSetName='Parameter Set 1')]
         [ValidateNotNull()]
         [ValidateNotNullOrEmpty()]
         [ValidateCount(0,5)]
         [ValidateSet("sun", "moon", "earth")]
-        [Alias("p1")] 
+        [Alias("p1")]
         $Param1,
 
         # Param2 help description
