@@ -1,6 +1,6 @@
 {
   "name": "editorsyntax",
-  "license" : "MIT",
+  "license": "MIT",
   "description": "PowerShell language syntax",
   "repository": {
     "type": "git",
