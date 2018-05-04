@@ -651,21 +651,16 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.math.powershell</string>
+							<string>constant.numeric.hexadecimal.powershell</string>
 						</dict>
 						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>support.constant.powershell</string>
-						</dict>
-						<key>3</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?&lt;!\w)(?i:(0x)([a-f0-9]+)((?i:L)?(?i:[kmgtp]b)?))(?!\w)</string>
+					<string>(?&lt;!\w)([-+]?0(?:x|X)[0-9a-fA-F_]+(?:U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
 					<string>constant.numeric.hexadecimal.powershell</string>
 				</dict>
@@ -675,33 +670,113 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>support.constant.powershell</string>
+							<string>constant.numeric.scientific.powershell</string>
 						</dict>
 						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.math.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>support.constant.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.powershell</string>
-						</dict>
-						<key>5</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?&lt;!\w)(?i:(\d*\.?\d+)(?:((?i:E)[+-]?)(\d+))?((?i:[DL])?)((?i:[kmgtp]b)?))(?!\w)</string>
+					<string>(?&lt;!\w)([-+]?(?:[0-9_]+)?\.[0-9_]+(?:(?:e|E)[0-9]+)?(?:F|f|D|d|M|m)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
 					<string>constant.numeric.scientific.powershell</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.binary.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\w)([-+]?0(?:b|B)[01_]+(?:U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?)((?i:[kmgtp]b)?)\b</string>
+					<key>name</key>
+					<string>constant.numeric.binary.powershell</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.decimal.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\w)([-+]?[0-9_]+(?:e|E)(?:[0-9_])?+(?:F|f|D|d|M|m)?)((?i:[kmgtp]b)?)\b</string>
+					<key>name</key>
+					<string>constant.numeric.decimal.powershell</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.decimal.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\w)([-+]?[0-9_]+\.(?:e|E)(?:[0-9_])?+(?:F|f|D|d|M|m)?)((?i:[kmgtp]b)?)\b</string>
+					<key>name</key>
+					<string>constant.numeric.decimal.powershell</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.decimal.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\w)([-+]?[0-9_]+[\.]?(?:F|f|D|d|M|m))((?i:[kmgtp]b)?)\b</string>
+					<key>name</key>
+					<string>constant.numeric.decimal.powershell</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.numeric.decimal.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;!\w)([-+]?[0-9_]+[\.]?(?:U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?)((?i:[kmgtp]b)?)\b</string>
+					<key>name</key>
+					<string>constant.numeric.decimal.powershell</string>
 				</dict>
 			</array>
 		</dict>
@@ -879,7 +954,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$)(global|local|private|script|using|workflow):((?:\p{L}|\d|_)+))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+					<string>(?i:(\$|@)(global|local|private|script|using|workflow):((?:\p{L}|\d|_)+))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -938,7 +1013,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$)((?:\p{L}|\d|_)+:)?((?:\p{L}|\d|_)+))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+					<string>(?i:(\$|@)((?:\p{L}|\d|_)+:)?((?:\p{L}|\d|_)+))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1117,7 +1192,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$)(global|local|private|script|using|workflow):((?:\p{L}|\d|_)+))</string>
+					<string>(?i:(\$|@)(global|local|private|script|using|workflow):((?:\p{L}|\d|_)+))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1219,4 +1294,3 @@
 	<string>f8f5ffb0-503e-11df-9879-0800200c9a66</string>
 </dict>
 </plist>
-
