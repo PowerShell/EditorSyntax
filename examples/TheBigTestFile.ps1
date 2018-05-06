@@ -1,3 +1,17 @@
+using namespace System.Management.Automation
+#Requires -PSSnapin DiskSnapin -Version 1.2
+#Requires -PSSnapin DiskSnapin
+#Requires -Version 3
+#Requires -Version 3.0
+#Requires -RunAsAdministrator
+#Requires -Modules PSWorkflow
+#Requires -Modules PSWorkflow, ActiveDirectory
+#Requires -ShellId MyLocalShell
+#Requires -Modules @{
+    ModuleName="PSScheduledJob"
+    ModuleVersion="1.0.0.0"
+}
+
 throw "Do not run this file!"
 
 <#
@@ -194,7 +208,7 @@ switch -Regex ("fourteen") {}
 switch -Wildcard ($a) {}
 switch -regex -file .\somefile.txt {}
 switch (3) {}
-switch (4, 2) {} 
+switch (4, 2) {}
 
 switch -Regex -File $filePath {
     '.' {}
@@ -213,7 +227,7 @@ switch ('this') {
 
 # Illegal backtick
 Invoke-Command -arg1 $val1 `
-	           -arg2 $val2 ` 
+	           -arg2 $val2 `
 
 # Functions and filters
 functioN MyFunction{}
@@ -234,14 +248,14 @@ filter myfilter($param) {}
 Filter my-Filter ($param){}
 
 function foo
-#comment 
+#comment
 {
-    
+
 }
 
 # This one will not highlight the function name,
 # because of the comments after 'function'. TODO?
-function 
+function
 <# another comment #>
 test
 (
@@ -261,15 +275,15 @@ function Test-Drive([string]$roman) {
 
 function Get-EscapedPath
 {
-    param( 
+    param(
     [Parameter(
-        Position=0, 
+        Position=0,
         Mandatory=$true
         ValueFromPipeline=$true,
         ValueFromPipelineByPropertyName=$true)
     ]
     [string]$path
-    ) 
+    )
 
     process {
         if ($path.Contains(' '))
@@ -326,7 +340,7 @@ class Car: Vehicle {
 
     SetLength([int]$Length) {
         $this.Length = $Length
-    } 
+    }
 }
 
 # Illegal class name
@@ -373,7 +387,7 @@ $a -match $b
 $a -notmatch $b
 $x -like $c
 100 -and 0
-$a -ceq 4 -and $a -ine $d -or 
+$a -ceq 4 -and $a -ine $d -or
 $c -is [Type]
 $c -isnot [Type]
 $c -as [Type]
@@ -441,7 +455,7 @@ Foo-match
     # Should also be able to use with line comments
     # .DESCRIPTION
     # .EXAMPLE sdkl
-    # 
+    #
     # .EXTERNALHELP some
     # .REMOTEHELPRUNSPACE some
     # .ExternalHelp some
