@@ -1072,7 +1072,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.requires</string>
+							<string>meta.requires.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
@@ -1099,7 +1099,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.requires</string>
+							<string>meta.requires.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
@@ -1126,7 +1126,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.requires</string>
+							<string>meta.requires.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
@@ -1148,7 +1148,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.requires</string>
+							<string>meta.requires.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
@@ -1175,7 +1175,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>meta.requires</string>
+							<string>meta.requires.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
