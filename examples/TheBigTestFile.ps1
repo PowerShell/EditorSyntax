@@ -54,9 +54,13 @@ $variable-name
 
 # Hashtable
 $properties = @{
-	Name = 'Name'
+	Name      = 'Name'
 	Something = $else
-	Number = 16
+    Number    = 16
+    from      = 'Hello World'
+    break     = @{
+        hello = 'world'
+    }
 }
 
 # Spatting
@@ -194,7 +198,7 @@ switch -Regex ("fourteen") {}
 switch -Wildcard ($a) {}
 switch -regex -file .\somefile.txt {}
 switch (3) {}
-switch (4, 2) {} 
+switch (4, 2) {}
 
 switch -Regex -File $filePath {
     '.' {}
@@ -213,7 +217,7 @@ switch ('this') {
 
 # Illegal backtick
 Invoke-Command -arg1 $val1 `
-	           -arg2 $val2 ` 
+	           -arg2 $val2 `
 
 # Functions and filters
 functioN MyFunction{}
@@ -234,14 +238,14 @@ filter myfilter($param) {}
 Filter my-Filter ($param){}
 
 function foo
-#comment 
+#comment
 {
-    
+
 }
 
 # This one will not highlight the function name,
 # because of the comments after 'function'. TODO?
-function 
+function
 <# another comment #>
 test
 (
@@ -261,15 +265,15 @@ function Test-Drive([string]$roman) {
 
 function Get-EscapedPath
 {
-    param( 
+    param(
     [Parameter(
-        Position=0, 
+        Position=0,
         Mandatory=$true
         ValueFromPipeline=$true,
         ValueFromPipelineByPropertyName=$true)
     ]
     [string]$path
-    ) 
+    )
 
     process {
         if ($path.Contains(' '))
@@ -326,7 +330,7 @@ class Car: Vehicle {
 
     SetLength([int]$Length) {
         $this.Length = $Length
-    } 
+    }
 }
 
 # Illegal class name
@@ -373,7 +377,7 @@ $a -match $b
 $a -notmatch $b
 $x -like $c
 100 -and 0
-$a -ceq 4 -and $a -ine $d -or 
+$a -ceq 4 -and $a -ine $d -or
 $c -is [Type]
 $c -isnot [Type]
 $c -as [Type]
@@ -441,7 +445,7 @@ Foo-match
     # Should also be able to use with line comments
     # .DESCRIPTION
     # .EXAMPLE sdkl
-    # 
+    #
     # .EXTERNALHELP some
     # .REMOTEHELPRUNSPACE some
     # .ExternalHelp some
