@@ -70,7 +70,11 @@ $variable-name
 $properties = @{
 	Name = 'Name'
 	Something = $else
-	Number = 16
+    Number = 16
+    from = 'hello world'
+    hash = @{
+        hello = 'world'
+    }
 }
 
 # Spatting
