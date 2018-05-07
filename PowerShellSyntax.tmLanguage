@@ -357,70 +357,108 @@
 		<key>attribute</key>
 		<dict>
 			<key>begin</key>
-			<string>\[(\p{L}|\.|``\d+)+(?=\()</string>
+			<string>(\[)\b(?i)(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag</string>
-				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag</string>
+					<string>punctuation.squarebracket.open.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.powershell</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\]</string>
+			<string>\]$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag</string>
+					<string>punctuation.squarebracket.close.powershell</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>meta.attribute.powershell</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
 					<string>\(</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.bracket.open.powershell</string>
+						</dict>
+					</dict>
 					<key>end</key>
 					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.bracket.close.powershell</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>entity.other.attribute-name</string>
+					<string>meta.attribute.arguments.powershell</string>
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>include</key>
+							<string>#variable</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#hashtable</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#scriptblock</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedStringEscapes</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b(?:\s+)?(=)</string>
 							<key>captures</key>
 							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>entity.other.attribute.parameter.powershell</string>
-								</dict>
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>constant.language.powershell</string>
+									<string>variable.other.readwrite.powershell</string>
 								</dict>
 								<key>2</key>
 								<dict>
 									<key>name</key>
-									<string>variable.other.powershell</string>
+									<string>keyword.operator.assignment.powershell</string>
 								</dict>
 							</dict>
-							<key>comment</key>
-							<string>really we should match the known attributes first</string>
-							<key>match</key>
-							<string>(\w+)\s*=?([^"']*?|'[^']*?'|"[^"]*?")?(?=,|\))</string>
-							<key>name</key>
-							<string>entity.other.attribute-name.powershell</string>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#variable</string>
+							<key>begin</key>
+							<string>(?&lt;!')'</string>
+							<key>end</key>
+							<string>'(?!')</string>
+							<key>name</key>
+							<string>string.quoted.single.powershell</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>''</string>
+									<key>name</key>
+									<string>constant.character.escape.powershell</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -810,107 +848,30 @@
 			<string>\[</string>
 			<key>beginCaptures</key>
 			<dict>
-			<key>0</key>
-			<dict>
-				<key>name</key>
-				<string>punctuation.section.brackets.begin</string>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.brackets.begin</string>
+				</dict>
 			</dict>
-			</dict>
-			<key>comment</key>
-			<string>Type []</string>
 			<key>end</key>
 			<string>(\])(?:(::)([\w]+))*(?:(?:(\.)([\w"']+))*)</string>
 			<key>endCaptures</key>
 			<dict>
-			<key>1</key>
-			<dict>
-				<key>name</key>
-				<string>punctuation.section.brackets.end</string>
-			</dict>
-			<key>2</key>
-			<dict>
-				<key>name</key>
-				<string>punctuation.accessor</string>
-			</dict>
-			<key>3</key>
-			<dict>
-				<key>name</key>
-				<string>meta.method</string>
-			</dict>
-			<key>4</key>
-			<dict>
-				<key>name</key>
-				<string>punctuation.accessor</string>
-			</dict>
-			<key>5</key>
-			<dict>
-				<key>name</key>
-				<string>entity.other.attribute-name</string>
-			</dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.brackets.end</string>
+				</dict>
 			</dict>
 			<key>patterns</key>
 			<array>
-			<dict>
-				<key>include</key>
-				<string>#variableNoProperty</string>
-			</dict>
-			<dict>
-				<key>include</key>
-				<string>$self</string>
-			</dict>
-			<dict>
-				<key>comment</key>
-				<string>Reserved words</string>
-				<key>match</key>
-				<string>(?i)\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b</string>
-				<key>name</key>
-				<string>entity.other.attribute-name</string>
-			</dict>
-			<dict>
-				<key>begin</key>
-				<string>\(</string>
-				<key>beginCaptures</key>
 				<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.parens.begin</string>
-				</dict>
-				</dict>
-				<key>comment</key>
-				<string>Parenthesis ()</string>
-				<key>end</key>
-				<string>\)</string>
-				<key>endCaptures</key>
-				<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.parens.end</string>
-				</dict>
-				</dict>
-				<key>patterns</key>
-				<array>
-				<dict>
-					<key>include</key>
-					<string>$self</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>Reserved words within [( )]</string>
 					<key>match</key>
-					<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|helpuri|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b</string>
+					<string>(\p{L}|\p{Nd})+</string>
 					<key>name</key>
-					<string>variable.other.member</string>
+					<string>entity.name.type.powershell</string>
 				</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>match</key>
-				<string>(?:([\w]+)((`){0,2}(\d){0,2})?)</string>
-				<key>name</key>
-				<string>entity.name.type</string>
-			</dict>
 			</array>
 		</dict>
 		<key>variable</key>

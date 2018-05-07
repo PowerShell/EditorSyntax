@@ -24,11 +24,11 @@ using module Microsoft.PowerShell.Management
 #>
 function Verb-Noun
 {
-    [CmdletBinding(DefaultParameterSetName='Parameter Set 1',
-                  SupportsShouldProcess=$true,
-                  PositionalBinding=$false,
-                  HelpUri = 'http://www.microsoft.com/',
-                  ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'Parameter Set 1',
+                  SupportsShouldProcess    = $true,
+                  PositionalBinding        = $false,
+                  HelpUri                  = 'http://www.microsoft.com/',
+                  ConfirmImpact            = 'Medium')]
     [Alias()]
     [OutputType([String])]
     Param
@@ -36,10 +36,10 @@ function Verb-Noun
         # Param1 help description
         [Parameter(Mandatory=$true,
                    ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipelineByPropertyName = $true,
                    ValueFromRemainingArguments=$false,
                    Position=0,
-                   ParameterSetName='Parameter Set 1')]
+                   ParameterSetName = 'Parameter Set 1')]
         [ValidateNotNull()]
         [ValidateNotNullOrEmpty()]
         [ValidateCount(0,5)]
@@ -54,16 +54,29 @@ function Verb-Noun
         [AllowEmptyString()]
         [ValidateScript({$true})]
         [ValidateRange(0,5)]
-        [int]
+        [int32]
         $Param2,
+
 
         # Param3 help description
         [Parameter(ParameterSetName='Another Parameter Set')]
         [ValidatePattern("[a-z]*")]
         [ValidateLength(0,15)]
         [String]
-        $Param3
-    )
+        $Param3,
+
+        # Param4 help description
+        [Parameter(ParameterSetName='Parameter Set 1')]
+        [ValidateScript({Test-Path $_})] #Make sure cmdlets don't break highlighting
+        [string]
+        $Param4,
+
+        # Param4 help description
+        [Parameter(ParameterSetName='Parameter Set 1')]
+        [ValidatePattern('(?=^.{1,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)')] # this regex shouldn't break highlighting
+        [string]
+        $Param5
+        )
 
     Begin
     {
