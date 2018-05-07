@@ -3,11 +3,14 @@ using namespace System.Management.Automation
 #Requires -PSSnapin DiskSnapin
 #Requires -Version 3
 #Requires -Version 3.0
+#Requires -Version 3 -RunAsAdministrator
 #Requires -RunAsAdministrator
 #Requires -Modules PSWorkflow
+#Requires -Modules PSWorkflow -ThisIsInvalid
 #Requires -Modules PSWorkflow, ActiveDirectory
+#Requires -Modules PSWorkflow,ActiveDirectory
 #Requires -ShellId MyLocalShell
-#Requires -Modules @{
+#Requires -Modules PSWorkflow @{
     ModuleName="PSScheduledJob"
     ModuleVersion="1.0.0.0"
 }
