@@ -810,36 +810,107 @@
 			<string>\[</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.attribute-name</string>
-				</dict>
+			<key>0</key>
+			<dict>
+				<key>name</key>
+				<string>punctuation.section.brackets.begin</string>
+			</dict>
 			</dict>
 			<key>comment</key>
-			<string>name should be entity.name.type but default schema doesn't have a good color for it</string>
+			<string>Type []</string>
 			<key>end</key>
-			<string>\]</string>
+			<string>(\])(?:(::)([\w]+))*(?:(?:(\.)([\w"']+))*)</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.attribute-name</string>
-				</dict>
+			<key>1</key>
+			<dict>
+				<key>name</key>
+				<string>punctuation.section.brackets.end</string>
+			</dict>
+			<key>2</key>
+			<dict>
+				<key>name</key>
+				<string>punctuation.accessor</string>
+			</dict>
+			<key>3</key>
+			<dict>
+				<key>name</key>
+				<string>meta.method</string>
+			</dict>
+			<key>4</key>
+			<dict>
+				<key>name</key>
+				<string>punctuation.accessor</string>
+			</dict>
+			<key>5</key>
+			<dict>
+				<key>name</key>
+				<string>entity.other.attribute-name</string>
+			</dict>
 			</dict>
 			<key>patterns</key>
 			<array>
+			<dict>
+				<key>include</key>
+				<string>#variableNoProperty</string>
+			</dict>
+			<dict>
+				<key>include</key>
+				<string>$self</string>
+			</dict>
+			<dict>
+				<key>comment</key>
+				<string>Reserved words</string>
+				<key>match</key>
+				<string>(?i)\b(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b</string>
+				<key>name</key>
+				<string>entity.other.attribute-name</string>
+			</dict>
+			<dict>
+				<key>begin</key>
+				<string>\(</string>
+				<key>beginCaptures</key>
 				<dict>
-					<key>match</key>
-					<string>(\p{L}|\.|``\d+)+?</string>
+				<key>0</key>
+				<dict>
 					<key>name</key>
-					<string>entity.other.attribute-name</string>
+					<string>punctuation.section.parens.begin</string>
 				</dict>
+				</dict>
+				<key>comment</key>
+				<string>Parenthesis ()</string>
+				<key>end</key>
+				<string>\)</string>
+				<key>endCaptures</key>
+				<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.parens.end</string>
+				</dict>
+				</dict>
+				<key>patterns</key>
+				<array>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
 				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Reserved words within [( )]</string>
+					<key>match</key>
+					<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|helpuri|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b</string>
+					<key>name</key>
+					<string>variable.other.member</string>
+				</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>match</key>
+				<string>(?:([\w]+)((`){0,2}(\d){0,2})?)</string>
+				<key>name</key>
+				<string>entity.name.type</string>
+			</dict>
 			</array>
 		</dict>
 		<key>variable</key>
