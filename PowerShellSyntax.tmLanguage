@@ -56,6 +56,10 @@
 					<key>include</key>
 					<string>#commentEmbeddedDocs</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#RequiresDirective</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -83,6 +87,10 @@
 		<dict>
 			<key>include</key>
 			<string>#attribute</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#UsingDirective</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -246,9 +254,17 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)((?i:begin|break|catch|continue|data|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach(?!-object)|from|if|in|inlinescript|parallel|param|process|return|switch|throw|trap|try|until|using|var|where(?!-object)|while)|%|\?)(?!\w)</string>
+			<string>(?&lt;!\w)((?i:begin|break|catch|continue|data|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach(?!-object)|from|if|in|inlinescript|parallel|param|process|return|switch|throw|trap|try|until|var|where(?!-object)|while)|%|\?)(?!\w)</string>
 			<key>name</key>
 			<string>keyword.control.powershell</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>This should only be relevant inside a class but will require a rework of how classes are matched. This is a temp fix.</string>
+			<key>match</key>
+			<string>(?&lt;!\w)((?i:hidden|static))(?!\w)</string>
+			<key>name</key>
+			<string>storage.modifier.powershell</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -496,30 +512,6 @@
 					</dict>
 					<key>match</key>
 					<string>(?i:\s*(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+([a-z0-9-_]+))</string>
-					<key>name</key>
-					<string>comment.documentation.embedded.powershell</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>constant.string.documentation.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.documentation.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.double.heredoc.powershell</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>(?i:requires\s+-(Version\s+\d(.\d+)?|Assembly\s+(.*)|Module\s+(.*)|PsSnapIn\s+(.*)|ShellId\s+(.*)))</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -1058,6 +1050,175 @@
 					</dict>
 					<key>match</key>
 					<string>(?i:(\$\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+				</dict>
+			</array>
+		</dict>
+		<key>UsingDirective</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;!\w)(?i:(using))\s+(?i:(namespace|module))\s+(?i:((?:\w+(?:\.)?)+))</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.using.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.powershell</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.powershell</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>RequiresDirective</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?i:(requires))\s(?i:(-Modules))\s(((?:\w+)\,?\s?){1,})$</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.requires.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.requires.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i:(requires))\s(?i:(-ShellId))\s(\w+)$</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.requires.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.requires.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i:(requires))\s(?i:(-RunAsAdministrator))$</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.requires.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.requires.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i:(requires))\s(?i:(-Version))\s((?:\d\.?){1,})$</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.requires.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.requires.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i:(requires))(?:\s(-PSSnapin)\s(\w+))(?:\s(?i:(-Version))\s((?:\d\.?){1,}))?$</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.requires.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.requires.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter.powershell</string>
+						</dict>
+					</dict>
 				</dict>
 			</array>
 		</dict>

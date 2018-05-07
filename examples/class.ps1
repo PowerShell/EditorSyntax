@@ -1,3 +1,5 @@
+using namespace system.management.automation
+
 # Define a class
 class TypeName
 {
@@ -14,7 +16,7 @@ class TypeName
    # Constructor
    TypeName ([string] $s)
    {
-       $this.P1 = $s       
+       $this.P1 = $s
    }
 
    # Static method
