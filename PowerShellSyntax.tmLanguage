@@ -427,6 +427,10 @@
 							<string>#doubleQuotedStringEscapes</string>
 						</dict>
 						<dict>
+							<key>include</key>
+							<string>#numericConstant</string>
+						</dict>
+						<dict>
 							<key>match</key>
 							<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b(?:\s+)?(=)</string>
 							<key>captures</key>
