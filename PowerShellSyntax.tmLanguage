@@ -101,33 +101,8 @@
 			<string>#hashtable</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>(?&lt;!(?&lt;!`)")"</string>
-			<key>end</key>
-			<string>"(?!")</string>
-			<key>name</key>
-			<string>string.quoted.double.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#variableNoProperty</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#doubleQuotedStringEscapes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#interpolation</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>`\s*$</string>
-					<key>name</key>
-					<string>keyword.other.powershell</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#DoubleQuotedString</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -435,6 +410,10 @@
 							<string>#numericConstant</string>
 						</dict>
 						<dict>
+							<key>include</key>
+							<string>#doubleQuotedString</string>
+						</dict>
+						<dict>
 							<key>match</key>
 							<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b(?:\s+)?(=)</string>
 							<key>captures</key>
@@ -564,6 +543,36 @@
 					<string>(?i:\s*(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+([a-z0-9-_]+))</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>doubleQuotedString</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;!(?&lt;!`)")"</string>
+			<key>end</key>
+			<string>"(?!")</string>
+			<key>name</key>
+			<string>string.quoted.double.powershell</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#variableNoProperty</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#doubleQuotedStringEscapes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#interpolation</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>`\s*$</string>
+					<key>name</key>
+					<string>keyword.other.powershell</string>
 				</dict>
 			</array>
 		</dict>
