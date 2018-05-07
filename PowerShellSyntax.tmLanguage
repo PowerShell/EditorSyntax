@@ -1388,6 +1388,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#scriptblock</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>$self</string>
 				</dict>
 			</array>
