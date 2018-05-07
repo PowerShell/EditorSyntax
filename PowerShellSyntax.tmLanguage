@@ -428,6 +428,10 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#type</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#numericConstant</string>
 						</dict>
 						<dict>
