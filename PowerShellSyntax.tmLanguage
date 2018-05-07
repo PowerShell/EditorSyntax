@@ -1072,7 +1072,7 @@
 					</dict>
 				</dict>
 				<key>name</key>
-				<string>meta.hashtable</string>
+				<string>meta.hashtable.powershell</string>
 				<key>patterns</key>
 				<array>
 					<dict>
@@ -1102,7 +1102,7 @@
 						<key>match</key>
 						<string>\b((?:\'|\")?)(\w+)((?:\'|\")?)(?:\s+)?(=)(?:\s+)?</string>
 						<key>name</key>
-            			<string>meta.hashtable.assignment</string>
+            			<string>meta.hashtable.assignment.powershell</string>
 					</dict>
 					<dict>
 						<key>include</key>
