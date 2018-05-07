@@ -97,6 +97,10 @@
 			<string>#type</string>
 		</dict>
 		<dict>
+			<key>include</key>
+			<string>#hashtable</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>(?&lt;!(?&lt;!`)")"</string>
 			<key>end</key>
@@ -1434,6 +1438,67 @@
 					</dict>
 					<key>match</key>
 					<string>(?i:(\$\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))</string>
+				</dict>
+			</array>
+		</dict>
+		<key>hashtable</key>
+		<dict>
+			<key>begin</key>
+			<string>(@\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.braces.begin</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.braces.end</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.hashtable.powershell</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.powershell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b((?:\'|\")?)(\w+)((?:\'|\")?)(?:\s+)?(=)(?:\s+)?</string>
+					<key>name</key>
+					<string>meta.hashtable.assignment.powershell</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
