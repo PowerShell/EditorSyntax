@@ -1083,7 +1083,7 @@
 		<key>RequiresDirective</key>
 		<dict>
 			<key>begin</key>
-			<string>(?i:(requires))\s</string>
+			<string>(?<=#)(?i:(requires))\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
