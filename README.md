@@ -24,7 +24,7 @@ for more details.
 
 ## Build and Import (VS Code)
 
-> ***NOTE:*** You can grab a build of the current definitions as they existin in Github from [Appveyor](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master/artifacts) and skip ahead to step 3 below.
+> ***NOTE:*** You can grab a build of the current definitions as they exist in Github from [Appveyor](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master/artifacts) and skip ahead to step 3 below.
 
 ### Prerequisites
 
