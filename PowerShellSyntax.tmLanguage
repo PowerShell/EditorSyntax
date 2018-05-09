@@ -196,19 +196,32 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\$\(</string>
+			<string>(\$)(\()</string>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>punctuation.definition.variable.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.group.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>TODO: move to repo; make recursive.</string>
 			<key>end</key>
 			<string>\)</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.group.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.group.complex.subexpression.powershell</string>
 			<key>patterns</key>
@@ -637,13 +650,18 @@
 		<key>interpolation</key>
 		<dict>
 			<key>begin</key>
-			<string>(\$)\(</string>
+			<string>(\$)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>punctuation.definition.variable.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.group.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
@@ -655,7 +673,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>punctuation.section.group.end.powershell</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -871,7 +889,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -890,7 +908,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -914,7 +932,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -938,7 +956,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -962,7 +980,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -989,31 +1007,36 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>storage.modifier.scope.powershell</string>
+							<string>punctuation.section.braces.begin.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
+							<string>storage.modifier.scope.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.end.powershell</string>
+						</dict>
+						<key>6</key>
 						<dict>
 							<key>name</key>
 							<string>entity.name.function.invocation.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$\{)(global|local|private|script|using|workflow):([^}]*[^}`])(\}))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+					<string>(?i:(\$)(\{)(global|local|private|script|using|workflow):([^}]*[^}`])(\}))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1021,7 +1044,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1048,31 +1071,36 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>support.variable.drive.powershell</string>
+							<string>punctuation.section.braces.begin.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
+							<string>support.variable.drive.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.end.powershell</string>
+						</dict>
+						<key>6</key>
 						<dict>
 							<key>name</key>
 							<string>entity.name.function.invocation.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+					<string>(?i:(\$)(\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 			</array>
 		</dict>
@@ -1145,7 +1173,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1164,7 +1192,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1188,7 +1216,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1212,7 +1240,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1236,7 +1264,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1263,7 +1291,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1287,7 +1315,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$\{)(global|local|private|script|using|workflow):([^}]*[^}`])(\}))</string>
+					<string>(?i:(\$)(\{)(global|local|private|script|using|workflow):([^}]*[^}`])(\}))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1295,7 +1323,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1322,31 +1350,36 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>support.variable.drive.powershell</string>
+							<string>punctuation.section.braces.begin</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
+							<string>support.variable.drive.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
+							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>keyword.other.powershell</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.end</string>
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))</string>
+					<string>(?i:(\$)(\{)((?:\p{L}|\d|_)+:)?([^}]*[^}`])(\}))</string>
 				</dict>
 			</array>
 		</dict>
@@ -1431,17 +1464,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#variable</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#doubleQuotedStringEscapes</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#interpolation</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>`\s*$</string>
-					<key>name</key>
-					<string>keyword.other.powershell</string>
 				</dict>
 			</array>
 		</dict>
