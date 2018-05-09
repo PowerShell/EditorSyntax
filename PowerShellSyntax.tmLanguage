@@ -851,7 +851,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\])(?:(::)([\w]+))*(?:(?:(\.)([\w"']+))*)</string>
+			<string>(?:\])?\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -864,9 +864,13 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(\p{L}|\p{Nd})+</string>
+					<string>((\p{L}|\p{Nd})+</string>
 					<key>name</key>
 					<string>storage.type.powershell</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
