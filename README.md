@@ -1,4 +1,4 @@
-[![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build status](https://ci.appveyor.com/api/projects/status/github/powershell/editorsyntax?branch=master&svg=true)](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master) [![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # PowerShell Syntax Definition for Editors
 
@@ -23,6 +23,8 @@ that we need to track down and fix.  Please see [issue #1](https://github.com/Po
 for more details.
 
 ## Build and Import (VS Code)
+
+> ***NOTE:*** You can grab a build of the current definitions as they exist in Github from [Appveyor](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master/artifacts) and skip ahead to step 3 below.
 
 ### Prerequisites
 

@@ -1102,7 +1102,7 @@
 		<key>RequiresDirective</key>
 		<dict>
 			<key>begin</key>
-			<string>(?i:(requires))\s</string>
+			<string>(?<=#)(?i:(requires))\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1404,6 +1404,10 @@
 					<string>\b((?:\'|\")?)(\w+)((?:\'|\")?)(?:\s+)?(=)(?:\s+)?</string>
 					<key>name</key>
 					<string>meta.hashtable.assignment.powershell</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#scriptblock</string>
 				</dict>
 				<dict>
 					<key>include</key>

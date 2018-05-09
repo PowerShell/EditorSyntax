@@ -1,0 +1,32 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+skip_tags: true
+
+branches:
+  only:
+  - master
+  - development
+  - appveyor
+
+pull_requests:
+  do_not_increment_build_number: true
+
+skip_commits:
+  message: /skip\-build/
+  files:
+    - .vscode/
+    - README.md
+    - .gitattributes
+    - .gitignore
+
+install:
+  - ps: Install-Product node '8.9.1'
+  - ps: Set-Location (Join-Path $env:APPVEYOR_BUILD_FOLDER '\tools\')
+  - ps: npm install
+
+build_script:
+  - ps: Set-Location (Join-Path $env:APPVEYOR_BUILD_FOLDER '\tools\')
+  - ps: npm run build-grammar
+
+on_finish:
+  - ps: Push-AppveyorArtifact (Join-Path $env:APPVEYOR_BUILD_FOLDER '\syntaxes\powershell.tmLanguage.json')
