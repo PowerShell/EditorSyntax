@@ -338,12 +338,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.squarebracket.open.powershell</string>
+					<string>punctuation.section.bracket.begin.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.powershell</string>
+					<string>support.function.attribute.powershell</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -353,7 +353,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.squarebracket.close.powershell</string>
+					<string>punctuation.section.bracket.end.powershell</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -368,7 +368,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.bracket.open.powershell</string>
+							<string>punctuation.section.group.begin.powershell</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -378,7 +378,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.bracket.close.powershell</string>
+							<string>punctuation.section.group.end.powershell</string>
 						</dict>
 					</dict>
 					<key>name</key>
@@ -421,7 +421,7 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>variable.other.readwrite.powershell</string>
+									<string>variable.parameter.attribute.powershell</string>
 								</dict>
 								<key>2</key>
 								<dict>
@@ -838,7 +838,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.brackets.begin</string>
+					<string>punctuation.section.bracket.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -848,7 +848,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.brackets.end</string>
+					<string>punctuation.section.bracket.end.powershell</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -857,7 +857,7 @@
 					<key>match</key>
 					<string>(\p{L}|\p{Nd})+</string>
 					<key>name</key>
-					<string>entity.name.type.powershell</string>
+					<string>storage.type.powershell</string>
 				</dict>
 			</array>
 		</dict>
