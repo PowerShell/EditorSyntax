@@ -405,6 +405,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#doubleQuotedString</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type</string>
 				</dict>
 				<dict>
@@ -1460,6 +1464,12 @@
 				<dict>
 					<key>include</key>
 					<string>#interpolation</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>`\s*$<</string>
+					<key>name</key>
+					<string>keyword.other.powershell</string>
 				</dict>
 			</array>
 		</dict>
