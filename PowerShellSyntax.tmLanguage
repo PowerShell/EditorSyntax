@@ -202,7 +202,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.variable.powershell</string>
+					<string>keyword.other.variable.definition.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -647,7 +647,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.variable.powershell</string>
+					<string>keyword.other.variable.definition.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -880,7 +880,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -899,7 +899,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -923,7 +923,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -947,7 +947,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -971,7 +971,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -998,7 +998,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1035,7 +1035,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1062,7 +1062,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1164,7 +1164,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1183,7 +1183,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1207,7 +1207,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1231,7 +1231,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1255,7 +1255,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1282,7 +1282,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1314,7 +1314,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1341,7 +1341,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.variable.definition.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
