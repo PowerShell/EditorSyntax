@@ -345,7 +345,7 @@
 		<key>attribute</key>
 		<dict>
 			<key>begin</key>
-			<string>(\[)\b(?i)(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b(\()</string>
+			<string>(\[)\s*\b(?i)(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -358,22 +358,12 @@
 					<key>name</key>
 					<string>support.function.attribute.powershell</string>
 				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.begin.powershell</string>
-				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\))(?:\s+)?(\])</string>
+			<string>(\])</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.end.powershell</string>
-				</dict>
-				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.bracket.end.powershell</string>
@@ -384,72 +374,97 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#variable</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#variableNoProperty</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#hashtable</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#scriptblock</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#doubleQuotedStringEscapes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#doubleQuotedString</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#numericConstant</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#doubleQuotedString</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b(?:\s+)?(=)</string>
-					<key>captures</key>
+					<key>begin</key>
+					<string>\(</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>variable.parameter.attribute.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.assignment.powershell</string>
+							<string>punctuation.section.group.begin.powershell</string>
 						</dict>
 					</dict>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>(?&lt;!')'</string>
 					<key>end</key>
-					<string>'(?!')</string>
-					<key>name</key>
-					<string>string.quoted.single.powershell</string>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.end.powershell</string>
+						</dict>
+					</dict>
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>include</key>
+							<string>#variable</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#variableNoProperty</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#hashtable</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#scriptblock</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedStringEscapes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedString</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#numericConstant</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedString</string>
+						</dict>
+						<dict>
 							<key>match</key>
-							<string>''</string>
+							<string>(?i)\b(mandatory|valuefrompipeline|valuefrompipelinebypropertyname|valuefromremainingarguments|position|parametersetname|defaultparametersetname|supportsshouldprocess|positionalbinding|helpuri|confirmimpact|helpmessage)\b(?:\s+)?(=)</string>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.parameter.attribute.powershell</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment.powershell</string>
+								</dict>
+							</dict>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?&lt;!')'</string>
+							<key>end</key>
+							<string>'(?!')</string>
 							<key>name</key>
-							<string>constant.character.escape.powershell</string>
+							<string>string.quoted.single.powershell</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>''</string>
+									<key>name</key>
+									<string>constant.character.escape.powershell</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
