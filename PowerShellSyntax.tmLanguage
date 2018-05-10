@@ -864,7 +864,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(\p{L}|\.|``\d+)+?</string>
+					<string>(?!\d+|\.)(?:\p{L}|\p{N}|\.)+</string>
 					<key>name</key>
 					<string>storage.type.powershell</string>
 				</dict>
