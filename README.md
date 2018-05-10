@@ -62,11 +62,20 @@ send pull requests if you'd like to contribute.
 
 ## Maintainers
 
-- [Sergei Vorobev](https://github.com/vors) - [@xvorsx](https://twitter.com/xvorsx)
-- [Øyvind Kallstad](https://github.com/gravejester) - [@okallstad](https://twitter.com/okallstad)
+- [Nick James](https://github.com/omniomi) - [@omniomi](https://twitter.com/omniomi)
+- [Tyler Leonhardt](https://github.com/tylerl0706) - [@TylerLeonhardt](https://twitter.com/TylerLeonhardt)
 
 ## License
 
 This extension is [licensed under the MIT License](LICENSE).  Please see the
 [third-party notices](Third%20Party%20Notices.txt) file for details on the original
 source of the TextMate definition that we use.
+
+## Code of Conduct
+
+This project has adopted the [Microsoft Open Source Code of Conduct][conduct-code].
+For more information see the [Code of Conduct FAQ][conduct-faq] or contact [opencode@microsoft.com][conduct-email] with any additional questions or comments.
+
+[conduct-code]: http://opensource.microsoft.com/codeofconduct/
+[conduct-faq]: http://opensource.microsoft.com/codeofconduct/faq/
+[conduct-email]: mailto:opencode@microsoft.com
