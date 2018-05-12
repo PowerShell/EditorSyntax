@@ -38,6 +38,9 @@ param(
 
 # Load Helpers
 . .\tools\build-helpers.ps1
+. .\tools\banners.ps1
+
+SyntaxBanner
 
 if (-not(& npm -v)) {
     throw 'Requires Node.js - Could not find npm.'
@@ -47,6 +50,7 @@ if (-not(& npm -v)) {
 
 switch ($Task) {
     'Build'   {
+        BuildBanner
         try {
             Write-Host "Building grammar file(s)..."
             & npm run build-grammar
@@ -56,6 +60,7 @@ switch ($Task) {
     }
     'Test'    {
         try {
+            BuildBanner
             Write-Host "Rebuilding grammar file(s)..."
             & npm run build-grammar
         } catch {
@@ -63,16 +68,21 @@ switch ($Task) {
         }
 
         if (Get-Command atom.cmd -ErrorAction SilentlyContinue) {
+            TestBanner
             Write-Host "Atom already installed..."
             $script:ATOM_EXE_PATH = 'atom'
             RunSpecs
         } elseif (Test-Path '.\Atom') {
+            TestBanner
             Write-Host "Atom already downloaded..."
             $script:ATOM_EXE_PATH = Join-Path $pwd 'Atom\Atom.exe'
             RunSpecs
         } else {
+            TestBanner
             DownloadAtom
             RunSpecs
         }
     }
 }
+
+EndBanner
