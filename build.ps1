@@ -80,6 +80,7 @@ switch ($Task) {
         } else {
             TestBanner
             DownloadAtom
+            $script:ATOM_EXE_PATH = Join-Path $pwd 'Atom\Atom.exe'
             RunSpecs
         }
     }
