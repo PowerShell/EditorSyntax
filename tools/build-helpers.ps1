@@ -55,18 +55,31 @@ function ParseJasmine ($String) {
     $_
 }
 
+function ExitWithCode {
+    param (
+        $ExitCode
+    )
+
+    $Host.SetShouldExit($exitcode)
+    exit
+}
+
 function RunSpecs {
     Write-Host "Running specs..."
 
     $specpath = Join-Path . '\spec'
 
     if (Test-Path $specpath) {
-      & "$script:ATOM_EXE_PATH" --test spec *>&1 | ForEach-Object { ParseJasmine $_ } # & "$script:ATOM_EXE_PATH" --test spec *>&1 | ForEach-Object { if (-not($_ -match "^\s+at.*$")) { if ($_ -match "^\s+it.*$") { Write-Host ($_ -replace '^(\s+)(it)','$1[-] It') -ForegroundColor Red } else { $_ } } }
+      & "$script:ATOM_EXE_PATH" --test spec *>&1 | ForEach-Object { ParseJasmine $_ }
     } else {
         throw '.\spec\ not found.'
     }
 
     if ($LASTEXITCODE -ne 0) {
-        Throw "One or more tests failed."
+        if ($Env:APPVEYOR) {
+            ExitWithCode -exitcode $LASTEXITCODE
+        } else {
+            throw "One or more tests failed."
+        }
     }
 }
