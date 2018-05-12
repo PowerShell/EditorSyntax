@@ -20,7 +20,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.start.definition.comment.block.powershell</string>
+					<string>punctuation.definition.comment.block.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -30,7 +30,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.end.definition.comment.block.powershell</string>
+					<string>punctuation.definition.comment.block.end.powershell</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -46,10 +46,18 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;![`\\-])#</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
-			<string>comment.line.number-sign.powershell</string>
+			<string>comment.line.powershell</string>
 			<key>patterns</key>
 			<array>
 				<dict>

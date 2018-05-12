@@ -32,62 +32,17 @@ singleLineCommentOpen = 'punctuation.definition.comment.powershell'             
 commentBlockOpen      = 'punctuation.definition.comment.block.begin.powershell' # <#
 commentBlockClose     = 'punctuation.definition.comment.block.end.powershell'   # #>
 
-# Strings
-doubleQuote                = '' # "
-doubleQuoteHereStringOpen  = '' # @"
-doubleQuoteHereStringClose = '' # "@
-singleQuote                = '' # '
-singleQuoteHereStringOpen  = '' # @'
-singleQuoteHereStringClose = '' # '@
-
-# Variables
-# ..This should be punctuation.definition.variable.powershell but too many themes
-# ..do not define it. This makes it inherit from whatever the parent scope is.
-variableToken = 'keyword.other.variable.definition.powershell' # $, @
-variableColon = 'support.variable.drive.powershell'            # :
-
-# Sections
-braceOpen    = 'punctuation.section.block.begin.powershell'   # {
-braceClose   = 'punctuation.section.block.end.powershell'     # }
-bracketOpen  = 'punctuation.section.bracket.begin.powershell' # [
-bracketClose = 'punctuation.section.bracket.end.powershell'   # ]
-parensOpen   = 'punctuation.section.group.begin.powershell'   # (
-parensClose  = 'punctuation.section.group.end.powershell'     # )
-
-# Other
-range          = 'keyword.operator.range.powershell'        # ..
-assignment     = 'keyword.operator.assignment.powershell'   # =
-hashTableToken = 'keyword.other.hashtable.begin.powershell' # @
-
 # ------------------------------- Basic -------------------------------
 
 # Comments
 singleLineComment = 'comment.line.powershell'
-commentBlock      = 'comment.block.powershell'
 commentDocSection = 'comment.block.documentation.powershell'
 commentDocKeyword = 'keyword.operator.documentation.powershell'
 
-# Strings - simple
-
-# Strings - complex
-
-# Strings - here strings
-
-# Variables
-variableAutomatic  = ''
-variableConstant   = ''
-variableName       = ''
-variablePreference = ''
-variableProperty   = ''
-variableScope      = ''
-
-# -------------------------- Numbers and Math -------------------------
-
-# ----------------------------- Functions -----------------------------
-
-# ----------------------------- Constructs ----------------------------
-
 # ---------------------------- Meta Scopes ----------------------------
+
+# Comments
+metaCommentBlock = 'comment.block.powershell'
 
 #######################################################################
 #                                 Tests
@@ -107,11 +62,12 @@ describe 'PowerShell Grammar', ->
     expect(grammar).toBeTruthy()
     expect(grammar.scopeName).toBe docScope
 
+  # Directly test comments as comment tokens are used for atom-grammar-test
   describe 'Comments', ->
     it 'tokenizes single line comments correctly.', ->
       {tokens} = grammar.tokenizeLine '# This is a comment.'
 
-      expect(tokens[0]).toEqual value: '#', scopes: [docScope, singleLineCommentOpen]
+      expect(tokens[0]).toEqual value: '#', scopes: [docScope, singleLineComment, singleLineCommentOpen]
       expect(tokens[1]).toEqual value: ' This is a comment.', scopes: [docScope, singleLineComment]
 
     it 'tokenizes comment blocks correctly.', ->
@@ -124,12 +80,12 @@ describe 'PowerShell Grammar', ->
         #>
       '''
 
-      expect(lines[0][0]).toEqual value: '<#', scopes: [docScope, commentBlock, commentBlockOpen]
-      expect(lines[1][0]).toEqual value: '   This is a comment block', scopes: [docScope, commentBlock]
-      expect(lines[2][0]).toEqual value: '#>', scopes: [docScope, commentBlock, commentBlockClose]
-      expect(lines[3][0]).toEqual value: '<#', scopes: [docScope, commentBlock, commentBlockOpen]
-      expect(lines[4][0]).toEqual value: '# This is still a comment block', scopes: [docScope, commentBlock]
-      expect(lines[5][0]).toEqual value: '#>', scopes: [docScope, commentBlock, commentBlockClose]
+      expect(lines[0][0]).toEqual value: '<#', scopes: [docScope, metaCommentBlock, commentBlockOpen]
+      expect(lines[1][0]).toEqual value: '   This is a comment block', scopes: [docScope, metaCommentBlock]
+      expect(lines[2][0]).toEqual value: '#>', scopes: [docScope, metaCommentBlock, commentBlockClose]
+      expect(lines[3][0]).toEqual value: '<#', scopes: [docScope, metaCommentBlock, commentBlockOpen]
+      expect(lines[4][0]).toEqual value: '# This is still a comment block', scopes: [docScope, metaCommentBlock]
+      expect(lines[5][0]).toEqual value: '#>', scopes: [docScope, metaCommentBlock, commentBlockClose]
 
   describe 'Automated tests', ->
     # grammarTest path.join(__dirname, 'examples/syntax_test_advancedFunctions.ps1')
