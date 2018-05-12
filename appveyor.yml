@@ -28,5 +28,9 @@ build_script:
   - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
   - ps: npm run build-grammar
 
+test:
+  - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
+  - ps: . .\build.ps1 Test
+
 on_finish:
   - ps: Push-AppveyorArtifact (Join-Path $env:APPVEYOR_BUILD_FOLDER '\grammars\powershell.tmLanguage.json')
