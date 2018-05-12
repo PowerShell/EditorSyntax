@@ -18,10 +18,11 @@ function DownloadAtom {
 function ExtractAtom {
     Write-Host "Extracting Atom.zip"
 
-    $ZipFile = Join-Path . '\atom.zip'
+    $ZipFile = Join-Path (Split-Path $PSScriptRoot -Parent) '\atom.zip'
     $OutPath = Resolve-Path .
 
     try {
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
         [System.IO.Compression.ZipFile]::ExtractToDirectory($ZipFile, $OutPath)
     } catch {
         $PSCmdlet.ThrowTerminatingError($PSItem)

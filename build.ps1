@@ -54,11 +54,12 @@ switch ($Task) {
         }
     }
     'Test'    {
-        if (Get-Command atom.cmd) {
+        if (Get-Command atom.cmd -ErrorAction SilentlyContinue) {
             Write-Host "Atom already installed..."
             $script:ATOM_EXE_PATH = 'atom'
             RunSpecs
         } elseif (Test-Path '.\Atom') {
+            Write-Host "Atom already downloaded..."
             $script:ATOM_EXE_PATH = Join-Path $pwd 'Atom\Atom.exe'
             RunSpecs
         } else {
