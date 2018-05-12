@@ -28,7 +28,7 @@ build_script:
   - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
   - ps: npm run build-grammar
 
-test:
+test_script:
   - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
   - ps: . .\build.ps1 Test
 
