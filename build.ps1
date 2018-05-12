@@ -48,12 +48,20 @@ if (-not(& npm -v)) {
 switch ($Task) {
     'Build'   {
         try {
+            Write-Host "Building grammar file(s)..."
             & npm run build-grammar
         } catch {
             $PSCmdlet.ThrowTerminatingError($PSItem)
         }
     }
     'Test'    {
+        try {
+            Write-Host "Rebuilding grammar file(s)..."
+            & npm run build-grammar
+        } catch {
+            $PSCmdlet.ThrowTerminatingError($PSItem)
+        }
+
         if (Get-Command atom.cmd -ErrorAction SilentlyContinue) {
             Write-Host "Atom already installed..."
             $script:ATOM_EXE_PATH = 'atom'
