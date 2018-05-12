@@ -43,10 +43,11 @@ if (-not(& npm -v)) {
     throw 'Requires Node.js - Could not find npm.'
 }
 
+& npm install
+
 switch ($Task) {
     'Build'   {
         try {
-            & npm install
             & npm run build-grammar
         } catch {
             $PSCmdlet.ThrowTerminatingError($PSItem)
