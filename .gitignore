@@ -1,2 +1,5 @@
 syntaxes/
-tools/node_modules/
+grammars/
+node_modules/
+atom/
+atom.zip

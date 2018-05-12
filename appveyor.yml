@@ -21,12 +21,12 @@ skip_commits:
 
 install:
   - ps: Install-Product node '8.9.1'
-  - ps: Set-Location (Join-Path $env:APPVEYOR_BUILD_FOLDER '\tools\')
+  - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
   - ps: npm install
 
 build_script:
-  - ps: Set-Location (Join-Path $env:APPVEYOR_BUILD_FOLDER '\tools\')
+  - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
   - ps: npm run build-grammar
 
 on_finish:
-  - ps: Push-AppveyorArtifact (Join-Path $env:APPVEYOR_BUILD_FOLDER '\syntaxes\powershell.tmLanguage.json')
+  - ps: Push-AppveyorArtifact (Join-Path $env:APPVEYOR_BUILD_FOLDER '\grammars\powershell.tmLanguage.json')

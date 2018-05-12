@@ -1,0 +1,21 @@
+{
+  "name": "EditorSyntax",
+  "license": "MIT",
+  "description": "PowerShell language syntax",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PowerShell/EditorSyntax.git"
+  },
+  "version": "1.0.0",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "dependencies": {
+    "fast-plist": "0.1.2",
+    "atom-grammar-test": "^0.6.3"
+  },
+  "scripts": {
+    "build-grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json"
+  }
+}
