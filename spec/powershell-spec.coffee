@@ -88,8 +88,9 @@ describe 'PowerShell Grammar', ->
       expect(lines[5][0]).toEqual value: '#>', scopes: [docScope, metaCommentBlock, commentBlockClose]
 
   describe 'Automated tests', ->
-    # grammarTest path.join(__dirname, 'examples/syntax_test_advancedFunctions.ps1')
-    # grammarTest path.join(__dirname, 'examples/syntax_test_classes.ps1')
-    # grammarTest path.join(__dirname, 'examples/syntax_test_file1.ps1')
-    # grammarTest path.join(__dirname, 'examples/syntax_test_file2.ps1')
-    # grammarTest path.join(__dirname, 'examples/syntax_test_TheBigFile.ps1')
+    describe 'syntax_test_Function.ps1', ->
+      grammarTest path.join(__dirname, 'testfiles/syntax_test_Function.ps1')
+    # grammarTest path.join(__dirname, 'testfiles/syntax_test_classes.ps1')
+    # grammarTest path.join(__dirname, 'testfiles/syntax_test_file1.ps1')
+    # grammarTest path.join(__dirname, 'testfiles/syntax_test_file2.ps1')
+    # grammarTest path.join(__dirname, 'testfiles/syntax_test_TheBigFile.ps1')
