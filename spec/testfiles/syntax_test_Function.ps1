@@ -130,7 +130,7 @@ function Verb-Noun {
                    Position=0,
         #          ^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                  ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                   ^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #                   ^ meta.attribute.powershell constant.numeric.integer.powershell
         #                    ^ meta.attribute.powershell keyword.operator.other.powershell
                    ParameterSetName = 'Parameter Set 1')]
         #          ^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
@@ -160,9 +160,9 @@ function Verb-Noun {
         # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
         # ^ meta.attribute.powershell support.function.attribute.powershell
         #             ^ meta.attribute.powershell punctuation.section.group.begin.powershell
-        #              ^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #              ^ meta.attribute.powershell constant.numeric.integer.powershell
         #               ^ meta.attribute.powershell keyword.operator.other.powershell
-        #                ^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #                ^ meta.attribute.powershell constant.numeric.integer.powershell
         #                 ^ meta.attribute.powershell punctuation.section.group.end.powershell
         #                  ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
         [ValidateSet("sun", "moon", "earth")]
@@ -232,9 +232,9 @@ function Verb-Noun {
         # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
         # ^ meta.attribute.powershell support.function.attribute.powershell
         #             ^ meta.attribute.powershell punctuation.section.group.begin.powershell
-        #              ^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #              ^ meta.attribute.powershell constant.numeric.integer.powershell
         #               ^ meta.attribute.powershell keyword.operator.other.powershell
-        #                ^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #                ^ meta.attribute.powershell constant.numeric.integer.powershell
         #                 ^ meta.attribute.powershell punctuation.section.group.end.powershell
         #                  ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
         [int32]
@@ -269,9 +269,9 @@ function Verb-Noun {
         # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
         # ^ meta.attribute.powershell support.function.attribute.powershell
         #              ^ meta.attribute.powershell punctuation.section.group.begin.powershell
-        #               ^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #               ^ meta.attribute.powershell constant.numeric.integer.powershell
         #                ^ meta.attribute.powershell keyword.operator.other.powershell
-        #                 ^^ meta.attribute.powershell constant.numeric.decimal.powershell
+        #                 ^^ meta.attribute.powershell constant.numeric.integer.powershell
         #                   ^ meta.attribute.powershell punctuation.section.group.end.powershell
         #                    ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
         [String]

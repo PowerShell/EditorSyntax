@@ -720,7 +720,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.hexadecimal.powershell</string>
+							<string>constant.numeric.hex.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -731,7 +731,7 @@
 					<key>match</key>
 					<string>(?&lt;!\w)([-+]?0(?:x|X)[0-9a-fA-F_]+(?:U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
-					<string>constant.numeric.hexadecimal.powershell</string>
+					<string>constant.numeric.hex.powershell</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -750,7 +750,7 @@
 					<key>match</key>
 					<string>(?&lt;!\w)([-+]?(?:[0-9_]+)?\.[0-9_]+(?:(?:e|E)[0-9]+)?(?:F|f|D|d|M|m)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
-					<string>constant.numeric.scientific.powershell</string>
+					<string>constant.numeric.integer.powershell</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -758,7 +758,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.binary.powershell</string>
+							<string>constant.numeric.octal.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -769,7 +769,7 @@
 					<key>match</key>
 					<string>(?&lt;!\w)([-+]?0(?:b|B)[01_]+(?:U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
-					<string>constant.numeric.binary.powershell</string>
+					<string>constant.numeric.octal.powershell</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -777,7 +777,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.decimal.powershell</string>
+							<string>constant.numeric.integer.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -796,7 +796,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.decimal.powershell</string>
+							<string>constant.numeric.integer.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -807,7 +807,7 @@
 					<key>match</key>
 					<string>(?&lt;!\w)([-+]?[0-9_]+\.(?:e|E)(?:[0-9_])?+(?:F|f|D|d|M|m)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
-					<string>constant.numeric.decimal.powershell</string>
+					<string>constant.numeric.integer.powershell</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -815,7 +815,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.decimal.powershell</string>
+							<string>constant.numeric.integer.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -826,7 +826,7 @@
 					<key>match</key>
 					<string>(?&lt;!\w)([-+]?[0-9_]+[\.]?(?:F|f|D|d|M|m))((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
-					<string>constant.numeric.decimal.powershell</string>
+					<string>constant.numeric.integer.powershell</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -834,7 +834,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.decimal.powershell</string>
+							<string>constant.numeric.integer.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -845,7 +845,7 @@
 					<key>match</key>
 					<string>(?&lt;!\w)([-+]?[0-9_]+[\.]?(?:U|u|L|l|UL|Ul|uL|ul|LU|Lu|lU|lu)?)((?i:[kmgtp]b)?)\b</string>
 					<key>name</key>
-					<string>constant.numeric.decimal.powershell</string>
+					<string>constant.numeric.integer.powershell</string>
 				</dict>
 			</array>
 		</dict>
