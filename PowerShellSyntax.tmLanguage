@@ -737,7 +737,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>constant.numeric.scientific.powershell</string>
+							<string>constant.numeric.integer.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
