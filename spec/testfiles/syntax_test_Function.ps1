@@ -96,7 +96,7 @@ function Verb-Noun {
     Param
     # <- keyword.control.powershell
     (
-    # <- keyword.other.powershell
+    # <- punctuation.section.group.begin.powershell
         # Param1 help description
         # <- comment.line.powershell punctuation.definition.comment.powershell
         # ^^^^^^^^^^^^^^^^^^^^^^^ comment.line.powershell
@@ -344,7 +344,7 @@ function Verb-Noun {
         # <- keyword.other.variable.definition.powershell
         # ^ variable.other.readwrite.powershell
         )
-        # <- keyword.other.powershell
+        # <- punctuation.section.group.end.powershell
 
     Begin
     # <- keyword.control.powershell
@@ -354,13 +354,13 @@ function Verb-Noun {
     # <- keyword.control.powershell
         if ($pscmdlet.ShouldProcess("Target", "Operation")) {
         # <- keyword.control.powershell
-        #  ^ keyword.other.powershell
+        #  ^ punctuation.section.group.begin.powershell
         #   ^ keyword.other.variable.definition.powershell
         #    ^^^^^^^^ support.constant.automatic.powershell
         #             ^^^^^^^^^^^^^ entity.name.function.invocation.powershell
-        #                          ^ keyword.other.powershell
-        #                                                ^ keyword.other.powershell
-        #                                                 ^ keyword.other.powershell
+        #                          ^ punctuation.section.group.begin.powershell
+        #                                                ^ punctuation.section.group.end.powershell
+        #                                                 ^ punctuation.section.group.end.powershell
         }
     }
     End {

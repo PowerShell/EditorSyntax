@@ -54,13 +54,13 @@ class TypeName
     # <- punctuation.definition.comment.powershell
     # ^^^^^^^^^^^ comment.line.powershell
     TypeName ([string] $s) {
-        #    ^ keyword.other.powershell
+        #    ^ punctuation.section.group.begin.powershell
         #     ^ punctuation.section.bracket.begin.powershell
         #      ^^^^^^ storage.type.powershell
         #            ^ punctuation.section.bracket.end.powershell
         #              ^ keyword.other.variable.definition.powershell
         #               ^ variable.other.readwrite.powershell
-        #                ^ keyword.other.powershell
+        #                ^ punctuation.section.group.end.powershell
         $this.P1 = $s
         # <- keyword.other.variable.definition.powershell
         # ^ support.constant.automatic.powershell
@@ -78,13 +78,13 @@ class TypeName
     #      ^ punctuation.section.bracket.begin.powershell
     #       ^^^^ storage.type.powershell
     #           ^ punctuation.section.bracket.end.powershell
-    #                          ^ keyword.other.powershell
+    #                          ^ punctuation.section.group.begin.powershell
     #                           ^ punctuation.section.bracket.begin.powershell
     #                            ^^^^^^^^^ storage.type.powershell
     #                                     ^ punctuation.section.bracket.end.powershell
     #                                       ^ keyword.other.variable.definition.powershell
     #                                        ^ variable.other.readwrite.powershell
-    #                                         ^ keyword.other.powershell
+    #                                         ^ punctuation.section.group.end.powershell
         [TypeName]::P2 = $h
         # <- punctuation.section.bracket.begin.powershell
         # ^ storage.type.powershell
@@ -101,13 +101,13 @@ class TypeName
     # <- punctuation.section.bracket.begin.powershell
     # ^ storage.type.powershell
     #   ^ punctuation.section.bracket.end.powershell
-    #                  ^ keyword.other.powershell
+    #                  ^ punctuation.section.group.begin.powershell
     #                   ^ punctuation.section.bracket.begin.powershell
     #                    ^^^ storage.type.powershell
     #                       ^ punctuation.section.bracket.end.powershell
     #                         ^ keyword.other.variable.definition.powershell
     #                          ^ variable.other.readwrite.powershell
-    #                           ^ keyword.other.powershell
+    #                           ^ punctuation.section.group.end.powershell
         $this.P3 = $i
         # <- keyword.other.variable.definition.powershell
         # ^ support.constant.automatic.powershell

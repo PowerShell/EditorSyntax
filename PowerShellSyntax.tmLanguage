@@ -647,7 +647,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>punctuation.section.group.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
@@ -659,7 +659,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>punctuation.section.group.end.powershell</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
