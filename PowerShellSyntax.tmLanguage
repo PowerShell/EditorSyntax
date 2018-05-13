@@ -1392,11 +1392,6 @@
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.powershell</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
 							<string>punctuation.section.braces.end</string>
 						</dict>
 					</dict>
