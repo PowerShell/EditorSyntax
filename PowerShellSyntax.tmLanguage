@@ -343,7 +343,7 @@
 			<key>comment</key>
 			<string>This is very imprecise, is there a syntax for 'must come after...' </string>
 			<key>match</key>
-			<string>(?&lt;!\s|^)\.\.(?=\d|\(|\$)</string>
+			<string>(?&lt;!\s|^)\.\.(?=\-?\d|\(|\$)</string>
 			<key>name</key>
 			<string>keyword.operator.range.powershell</string>
 		</dict>
