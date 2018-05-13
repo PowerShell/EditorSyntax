@@ -1403,13 +1403,18 @@
 		<key>hashtable</key>
 		<dict>
 			<key>begin</key>
-			<string>(@\{)</string>
+			<string>(@)(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.braces.begin</string>
+					<string>keyword.other.hashtable.begin.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.braces.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1419,7 +1424,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.braces.end</string>
+					<string>punctuation.section.braces.end.powershell</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -1432,7 +1437,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.begin</string>
+							<string>punctuation.definition.string.begin.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1442,7 +1447,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.string.end</string>
+							<string>punctuation.definition.string.end.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
