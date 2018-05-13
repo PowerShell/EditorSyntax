@@ -113,6 +113,10 @@
 			<string>#doubleQuotedString</string>
 		</dict>
 		<dict>
+			<key>include</key>
+			<string>#scriptblock</string>
+		</dict>
+		<dict>
 			<key>comment</key>
 			<string>Needed to parse stuff correctly in 'argument mode'. (See about_parsing.)</string>
 			<key>include</key>
@@ -852,8 +856,24 @@
 		<dict>
 			<key>begin</key>
 			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.braces.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.braces.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.scriptblock.powershell</string>
 			<key>patterns</key>
