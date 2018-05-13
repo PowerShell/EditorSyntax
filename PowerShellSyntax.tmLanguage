@@ -1012,7 +1012,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.normal.powershell</string>
+							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1296,7 +1296,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other.normal.powershell</string>
+							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
