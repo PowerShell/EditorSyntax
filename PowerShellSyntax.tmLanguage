@@ -181,17 +181,30 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>@\(</string>
-			<key>captures</key>
+			<string>(@)(\()</string>
+			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>keyword.other.array.begin.powershell</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.group.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.group.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.group.array-expression.powershell</string>
 			<key>patterns</key>
