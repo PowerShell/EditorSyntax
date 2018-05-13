@@ -90,7 +90,8 @@ describe 'PowerShell Grammar', ->
   describe 'Automated tests', ->
     describe 'syntax_test_Function.ps1', ->
       grammarTest path.join(__dirname, 'testfiles/syntax_test_Function.ps1')
-    # grammarTest path.join(__dirname, 'testfiles/syntax_test_classes.ps1')
+    describe 'syntax_test_Class.ps1', ->
+      grammarTest path.join(__dirname, 'testfiles/syntax_test_Class.ps1')
     # grammarTest path.join(__dirname, 'testfiles/syntax_test_file1.ps1')
     # grammarTest path.join(__dirname, 'testfiles/syntax_test_file2.ps1')
     # grammarTest path.join(__dirname, 'testfiles/syntax_test_TheBigFile.ps1')
