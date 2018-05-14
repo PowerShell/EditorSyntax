@@ -1083,7 +1083,7 @@
 		<key>RequiresDirective</key>
 		<dict>
 			<key>begin</key>
-			<string>(?<=#)(?i:(requires))\s</string>
+			<string>(?&lt;=#)(?i:(requires))\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1106,7 +1106,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?<!-)\b\p{L}+|\d+(?:\.\d+)*</string>
+					<string>(?&lt;!-)\b\p{L}+|\d+(?:\.\d+)*</string>
 					<key>name</key>
 					<string>variable.parameter.powershell</string>
 				</dict>
