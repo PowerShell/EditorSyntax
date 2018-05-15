@@ -700,8 +700,10 @@ function New-File ($Name) { }
 function NewFile($Name) { }
 # <- storage.type.powershell
 #        ^^^^^^^ entity.name.function.powershell
+#               ^ punctuation.section.group.begin.powershell
 #                ^ keyword.other.variable.definition.powershell
 #                   ^ variable.other.readwrite.powershell
+#                     ^ punctuation.section.group.end.powershell
 #                       ^ punctuation.section.braces.begin.powershell
 #                         ^ punctuation.section.braces.end.powershell
 filter myfilter($param) {}
@@ -710,6 +712,7 @@ filter myfilter($param) {}
 #              ^ punctuation.section.group.begin.powershell
 #               ^ keyword.other.variable.definition.powershell
 #                ^ variable.other.readwrite.powershell
+#                     ^ punctuation.section.group.end.powershell
 #                       ^ punctuation.section.braces.begin.powershell
 #                        ^ punctuation.section.braces.end.powershell
 Filter my-Filter ($param){}
@@ -718,195 +721,453 @@ Filter my-Filter ($param){}
 #                ^ punctuation.section.group.begin.powershell
 #                 ^ keyword.other.variable.definition.powershell
 #                   ^ variable.other.readwrite.powershell
+#                       ^ punctuation.section.group.end.powershell
 #                        ^ punctuation.section.braces.begin.powershell
 #                         ^ punctuation.section.braces.end.powershell
 
 # Note that the # in the path should highlight as a comment!
 function Test-Drive([string]$roman) {
-	$roman | c:\users\Me\Documents\Programming\F#\test.exe $roman
+# <- storage.type.powershell
+#        ^^^^^^^^^^ entity.name.function.powershell
+#                  ^ punctuation.section.group.begin.powershell
+#                   ^ punctuation.section.bracket.begin.powershell
+#                    ^^^^^^ storage.type.powershell
+#                          ^ punctuation.section.bracket.end.powershell
+#                           ^ keyword.other.variable.definition.powershell
+#                            ^ variable.other.readwrite.powershell
+#                                 ^ punctuation.section.group.end.powershell
+#                                   ^ punctuation.section.braces.begin.powershell
+    $roman | c:\users\Me\Documents\Programming\F#\test.exe $roman
+#   ^ keyword.other.variable.definition.powershell
+#    ^ variable.other.readwrite.powershell
+#          ^ keyword.operator.other.powershell
+#                                               ^ punctuation.definition.comment.powershell
+#                                                       ^  ^ comment.line.powershell
 }
+# <- punctuation.section.braces.end.powershell
 
-function Get-EscapedPath
+function Verb-Noun
+# <- meta.function storage.type
+#        ^ meta.function entity.name.function.powershell
 {
-    param(
-    [Parameter(
-        Position=0,
-        Mandatory=$true,
-        ValueFromPipeline=$true,
-        ValueFromPipelineByPropertyName=$true)
-    ]
-    [string]$path
+# <- punctuation.section.braces.begin.powershell
+
+    Param
+    # <- keyword.control.powershell
+    (
+    # <- punctuation.section.group.begin.powershell
+        # Param1 help description
+        # <- comment.line.powershell punctuation.definition.comment.powershell
+        # ^^^^^^^^^^^^^^^^^^^^^^^ comment.line.powershell
+        [Parameter(Mandatory=$true,
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #         ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #          ^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                   ^ meta.attribute.powershell keyword.operator.assignment.powershell
+        #                    ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                     ^^^^ meta.attribute.powershell constant.language.powershell
+        #                         ^ meta.attribute.powershell keyword.operator.other.powershell
+                   ValueFromPipeline=$true,
+        #          ^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
+        #                            ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                             ^^^^ meta.attribute.powershell constant.language.powershell
+        #                                 ^ meta.attribute.powershell keyword.operator.other.powershell
+                   ValueFromPipelineByPropertyName = $true,
+        #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                                          ^ meta.attribute.powershell keyword.operator.assignment.powershell
+        #                                            ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                                             ^^^^ meta.attribute.powershell constant.language.powershell
+        #                                                 ^ meta.attribute.powershell keyword.operator.other.powershell
+                   ValueFromRemainingArguments=$false,
+        #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                                     ^ meta.attribute.powershell keyword.operator.assignment.powershell
+        #                                      ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                                       ^^^^^ meta.attribute.powershell constant.language.powershell
+        #                                            ^ meta.attribute.powershell keyword.operator.other.powershell
+                   Position=0,
+        #          ^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                  ^ meta.attribute.powershell keyword.operator.assignment.powershell
+        #                   ^ meta.attribute.powershell constant.numeric.integer.powershell
+        #                    ^ meta.attribute.powershell keyword.operator.other.powershell
+                   ParameterSetName = 'Parameter Set 1')]
+        #          ^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
+        #                             ^^^^^^^^^^^^^^^^^ meta.attribute.powershell string.quoted.single.powershell
+        #                                              ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #                                               ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        [ValidateNotNullOrEmpty()]
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #                      ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #                       ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #                        ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        [ValidateNotNull()]
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #               ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #                ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #                 ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        [ValidateNotNullOrEmpty()]
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #                      ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #                       ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #                        ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        [ValidateCount(0,5)]
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #             ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #              ^ meta.attribute.powershell constant.numeric.integer.powershell
+        #               ^ meta.attribute.powershell keyword.operator.other.powershell
+        #                ^ meta.attribute.powershell constant.numeric.integer.powershell
+        #                 ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #                  ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        [ValidateSet("sun", "moon", "earth")]
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #           ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #            ^^^^ meta.attribute.powershell string.quoted.double.powershell
+        #                 ^ meta.attribute.powershell keyword.operator.other.powershell
+        #                   ^^^^^^ meta.attribute.powershell string.quoted.double.powershell
+        #                         ^ meta.attribute.powershell keyword.operator.other.powershell
+        #                           ^^^^^^^ meta.attribute.powershell string.quoted.double.powershell
+        #                                  ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #                                   ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        [Alias("p1")]
+        # <- meta.attribute.powershell punctuation.section.bracket.begin.powershell
+        # ^ meta.attribute.powershell support.function.attribute.powershell
+        #     ^ meta.attribute.powershell punctuation.section.group.begin.powershell
+        #      ^^^^ meta.attribute.powershell string.quoted.double.powershell
+        #          ^ meta.attribute.powershell punctuation.section.group.end.powershell
+        #           ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
+        $Param1
+        # <- keyword.other.variable.definition.powershell
+        # ^ variable.other.readwrite.powershell
     )
+    # <- punctuation.section.group.end.powershell
 
-    process {
-        if ($path.Contains(' '))
-        {
-            return '"' + $path + '"'
-        }
-        return $path
-    }
-}
+    # Do Something....
 
-# Enum
-enum test
-{
-    listItem1
-    listItem2
-    listItem3
 }
+# <- punctuation.section.braces.end.powershell
 
 # Class
 class Vehicle {
+# <- storage.type.powershell
+#     ^ entity.name.function.powershell
+#             ^ punctuation.section.braces.begin.powershell
     Vehicle() {}
+#          ^ punctuation.section.group.begin.powershell
+#           ^ punctuation.section.group.end.powershell
+#             ^ punctuation.section.braces.begin.powershell
+#              ^ punctuation.section.braces.end.powershell
     Vehicle([string]$Owner) {
+#             ^ storage.type.powershell
+#                   ^ keyword.other.variable.definition.powershell
+#                    ^ variable.other.readwrite.powershell
+#                           ^ punctuation.section.braces.begin.powershell
         $this.Owner = $Owner
     }
 
     [int]$Mileage
+#    ^ storage.type.powershell
+#        ^ keyword.other.variable.definition.powershell
+#         ^ variable.other.readwrite.powershell
     [int]$Age
+#    ^ storage.type.powershell
+#        ^ keyword.other.variable.definition.powershell
+#         ^ variable.other.readwrite.powershell
     [string]$Owner
+#    ^ storage.type.powershell
+#           ^ keyword.other.variable.definition.powershell
+#            ^ variable.other.readwrite.powershell
 
     [void]Drive([int]$NumberOfMiles) {
+#    ^           ^ storage.type.powershell
+#                    ^ keyword.other.variable.definition.powershell
+#                     ^ variable.other.readwrite.powershell
         $this.Mileage += $NumberOfMiles
+#       ^ keyword.other.variable.definition.powershell
+#        ^^^^ support.constant.automatic.powershell
+#             ^ entity.name.function.invocation.powershell
+#                     ^^ keyword.operator.assignment.powershell
+
     }
+    # <- punctuation.section.braces.end.powershell
 }
-
-class Car: Vehicle {
-    Car() {}
-
-    Car([int]$Age) {
-        $this.Age = $Age
-    }
-
-    Car([int]$Age, [string]$Owner) : base([string]$Owner) {
-        $this.Age = $Age
-        $this.Owner = $Owner
-    }
-
-    hidden [int]$Length
-    static [int]$Width
-
-    SetLength([int]$Length) {
-        $this.Length = $Length
-    }
-}
+# <- punctuation.section.braces.end.powershell
 
 # Control words
 foreach ($item in $collection) {
-	try {
-		if ($item -gt 100) {
-			continue
-		}
-	}
-	catch {
-		break
-	}
+# <- keyword.control.powershell
+#       ^ punctuation.section.group.begin.powershell
+#              ^^ keyword.control.powershell
+#                            ^ punctuation.section.group.end.powershell
+#                              ^ punctuation.section.braces.begin.powershell
+#        ^        ^ keyword.other.variable.definition.powershell
 }
+# <- punctuation.section.braces.end.powershell
+
+try   { }
+# <- keyword.control.powershell
+#     ^ punctuation.section.braces.begin.powershell
+#       ^ punctuation.section.braces.end.powershell
+catch { }
+# <- keyword.control.powershell
+#     ^ punctuation.section.braces.begin.powershell
+#       ^ punctuation.section.braces.end.powershell
 
 # Reserved words
 Configuration Crazyness {
+# <- storage.type.powershell
+#             ^ entity.name.function.powershell
+#                       ^ punctuation.section.braces.begin.powershell
     Node Whatever {
+#                 ^ punctuation.section.braces.begin.powershell
     }
+    # <- punctuation.section.braces.end.powershell
 }
-param ($Var)
+# <- punctuation.section.braces.end.powershell
 
 # Redirection
 notepad.exe > log.txt
+# <- support.function.powershell
+#           ^ keyword.operator.redirection.powershell
 notepad.exe 1> log.txt
+# <- support.function.powershell
+#           ^^ keyword.operator.redirection.powershell
 notepad.exe 2>&1
+# <- support.function.powershell
+#           ^^^^ keyword.operator.redirection.powershell
 notepad.exe 3>&1
+# <- support.function.powershell
+#           ^^^^ keyword.operator.redirection.powershell
 notepad.exe 4>&1
+# <- support.function.powershell
+#           ^^^^ keyword.operator.redirection.powershell
 notepad.exe 5>&1
+# <- support.function.powershell
+#           ^^^^ keyword.operator.redirection.powershell
 notepad.exe 6>&1
+# <- support.function.powershell
+#           ^^^^ keyword.operator.redirection.powershell
 notepad.exe 2>&1> log.txt
+# <- support.function.powershell
+#           ^^^^^ keyword.operator.redirection.powershell
 
 # Operators
 if (10 -cgt 100) { }
+# <- keyword.control.powershell
+#  ^ punctuation.section.group.begin.powershell
+#   ^^      ^^^ constant.numeric.integer.powershell
+#      ^^^^ keyword.operator.logical.powershell
+#              ^ punctuation.section.group.end.powershell
+#                ^ punctuation.section.braces.begin.powershell
+#                  ^  punctuation.section.braces.end.powershell
 $a -is $b
+#  ^ keyword.operator.comparison.powershell
 $b -contains $c
+#  ^ keyword.operator.comparison.powershell
 $x -notcontains $c
+#  ^ keyword.operator.comparison.powershell
 $a -match $b
+#  ^ keyword.operator.comparison.powershell
 $a -notmatch $b
+#  ^ keyword.operator.comparison.powershell
 $x -like $c
+#  ^ keyword.operator.comparison.powershell
 100 -and 0
+#   ^ keyword.operator.logical.powershell
+#        ^ constant.numeric.integer.powershell
 $a -ceq 4 -and $a -ine $d -or
+#  ^              ^ keyword.operator.comparison.powershell
+#         ^               ^ keyword.operator.logical.powershell
+#       ^ constant.numeric.integer.powershell
+#              ^ keyword.other.variable.definition.powershell
 $c -is [Type]
+#  ^ keyword.operator.comparison.powershell
+#       ^ storage.type.powershell
 $c -isnot [Type]
+#  ^ keyword.operator.comparison.powershell
+#          ^ storage.type.powershell
 $c -as [Type]
+#  ^ keyword.operator.comparison.powershell
+#       ^ storage.type.powershell
 $k = $y -bor $k
+#  ^ keyword.operator.assignment.powershell
+#       ^ keyword.operator.bitwise.powershell
 $x = $y -band $x
+#  ^ keyword.operator.assignment.powershell
+#       ^ keyword.operator.bitwise.powershell
 $z = -bnot $x
+#  ^ keyword.operator.assignment.powershell
+#    ^ keyword.operator.bitwise.powershell
 $k = $y -xor $b
+#  ^ keyword.operator.assignment.powershell
+#       ^ keyword.operator.logical.powershell
 $k = $y -bxor $b
+#  ^ keyword.operator.assignment.powershell
+#       ^ keyword.operator.bitwise.powershell
 $a -icontains $c
+#  ^ keyword.operator.comparison.powershell
 $a -ccontains $c
+#  ^ keyword.operator.comparison.powershell
 $a -iNotContains $c
+#  ^ keyword.operator.comparison.powershell
 $a -cNotContains $c
+#  ^ keyword.operator.comparison.powershell
 $a -cmatch $c
+#  ^ keyword.operator.comparison.powershell
 $x -iMatch $c
+#  ^ keyword.operator.comparison.powershell
 $x -iNotMatch $c
+#  ^ keyword.operator.comparison.powershell
 $a -iLike $b
+#  ^ keyword.operator.comparison.powershell
 $b -cLike $c
+#  ^ keyword.operator.comparison.powershell
 "hey" -cgt "Hey"
+#     ^ keyword.operator.logical.powershell
 "Hey" -igt "hey"
+#     ^ keyword.operator.logical.powershell
 "hey" -cge "Hey"
+#     ^ keyword.operator.logical.powershell
 "Hey" -ige "hey"
+#     ^ keyword.operator.logical.powershell
 "HEY" -clt "hey"
+#     ^ keyword.operator.logical.powershell
 "HEY" -ilt "hey"
+#     ^ keyword.operator.logical.powershell
 "HEY" -cle "hey"
+#     ^ keyword.operator.logical.powershell
 "HEY" -ile "hey"
+#     ^ keyword.operator.logical.powershell
 
 # format
-"{0:N2}" -f $a
-"{0:D8}" -f $a
-"{0:C2}" -f $a
-"{0:P0}" -f $a
-"{0:X0}" -f $a
-(1.11).tostring("#.#")
-"{1,10} {0,10} {2,10:x}" -f "First", "Second", 255
-("{0,6}" -f 4.99), ("{0,6:##.00}" -f 15.9)
-"{0:R}" -f (1mb/2.0)
-"{0:00.0}" -f 4.12341234
-"{0:##.#}" -f 4.12341234
-"{0:#,#.#}" -f 1234.121234
-"{0:##,,.000}" -f 1048576
-"{this is not a #comment}"
-"{0:##.#E000}" -f 2.71828
-"{0:#.00'##'}" -f 2.71828
-"{0:POS;NEG;ZERO}" -f -14
-"{0:$## Please}" -f 14
-"{0,-8:P1}" -f 1.75
-"{0,10:N3}{1,10:N3}{2,10:N3}{3,10:N3}" -f 0.2, 0.3, 0.45, 0.91
-'{0:00000.000}' -f 7.125
+    "{0:N2}" -f $a
+#   ^^^^^^^^ string.quoted.double.powershell
+#            ^ keyword.operator.string-format.powershell
+    "{0:D8}" -f $a
+#   ^^^^^^^^ string.quoted.double.powershell
+#            ^ keyword.operator.string-format.powershell
+    "{0:C2}" -f $a
+#   ^^^^^^^^ string.quoted.double.powershell
+#            ^ keyword.operator.string-format.powershell
+    "{0:P0}" -f $a
+#   ^^^^^^^^ string.quoted.double.powershell
+#            ^ keyword.operator.string-format.powershell
+    "{0:X0}" -f $a
+#   ^^^^^^^^ string.quoted.double.powershell
+#            ^ keyword.operator.string-format.powershell
+    (1.11).ToString("#.#")
+#   ^              ^ punctuation.section.group.begin.powershell
+#    ^^^^ constant.numeric.integer.powershell
+#                    ^ string.quoted.double.powershell
+    "{1,10} {0,10} {2,10:x}" -f "First", "Second", 255
+#   ^          ^        ^ string.quoted.double.powershell
+#                            ^ keyword.operator.string-format.powershell
+#                                                  ^^^ constant.numeric.integer.powershell
+    ("{0,6}" -f 4.99), ("{0,6:##.00}" -f 15.9)
+#                                ^ string.quoted.double.powershell
+#            ^                        ^ keyword.operator.string-format.powershell
+    "{0:R}" -f (1mb/2.0)
+#                ^^ keyword.other.powershell
+#           ^ keyword.operator.string-format.powershell
+    "{0:00.0}" -f 4.12341234
+#              ^ keyword.operator.string-format.powershell
+    "{0:##.#}" -f 4.12341234
+#          ^ string.quoted.double.powershell
+#              ^ keyword.operator.string-format.powershell
+    "{0:#,#.#}" -f 1234.121234
+#         ^ string.quoted.double.powershell
+#               ^ keyword.operator.string-format.powershell
+    "{0:##,,.000}" -f 1048576
+#          ^ string.quoted.double.powershell
+#                  ^ keyword.operator.string-format.powershell
+    "{this is not a #comment}"
+#                   ^ not:comment
+    "{0:##.#E000}" -f 2.71828
+#           ^ string.quoted.double.powershell
+#                  ^ keyword.operator.string-format.powershell
+    "{0:#.00'##'}" -f 2.71828
+#            ^ string.quoted.double.powershell
+#                  ^ keyword.operator.string-format.powershell
+    "{0:POS;NEG;ZERO}" -f -14
+#              ^ string.quoted.double.powershell
+#                      ^ keyword.operator.string-format.powershell
+    "{0:$## Please}" -f 14
+#         ^ string.quoted.double.powershell
+#                    ^ keyword.operator.string-format.powershell
+    "{0,-8:P1}" -f 1.75
+#       ^ string.quoted.double.powershell
+#               ^ keyword.operator.string-format.powershell
+    "{0,10:N3}{1,10:N3}{2,10:N3}{3,10:N3}" -f 0.2, 0.3, 0.45, 0.91
+#                                          ^ keyword.operator.string-format.powershell
+    '{0:00000.000}' -f 7.125
+#         ^ string.quoted.single.powershell
+#                   ^ keyword.operator.string-format.powershell
 
 # Misc test cases
 @("any","array","has").foreach({ $_ })
+# <- keyword.other.array.begin.powershell
+# ^ meta.group.array-expression.powershell
+#                      ^ keyword.control.powershell
+#                               ^ meta.scriptblock.powershell
 @('any','array','has').foreach{ $_ }
+# <- keyword.other.array.begin.powershell
+# ^ meta.group.array-expression.powershell
+#                      ^ keyword.control.powershell
+#                               ^ meta.scriptblock.powershell
 @("any","array","has").where({ $_.Length -gt 3 })
+# <- keyword.other.array.begin.powershell
+# ^ meta.group.array-expression.powershell
+#                      ^ keyword.control.powershell
+#                               ^ meta.scriptblock.powershell
 @("any","array","has").where{ $_.Length -gt 3 }
-foo "$(x).exe"
+# <- keyword.other.array.begin.powershell
+# ^ meta.group.array-expression.powershell
+#                      ^ keyword.control.powershell
+#                               ^ meta.scriptblock.powershell
 $file = join-path $env:SystemDrive "$([System.io.path]::GetRandomFileName()).ps1"
+# <- keyword.other.variable.definition.powershell
+#            ^ support.function.powershell
+#                  ^ support.variable.drive.powershell
+#                         ^ variable.other.readwrite.powershell
+#                                   ^ string.quoted.double.powershell keyword.other.variable.definition.powershell
+#                                        ^ storage.type.powershell
 $ScriptBlock | Out-File $file -Force
+# <- keyword.other.variable.definition.powershell
+#            ^ keyword.operator.other.powershell
+#                       ^ keyword.other.variable.definition.powershell
+#                             ^ keyword.operator.assignment.powershell
 workflow w1 {}
+# <- storage.type.powershell
+#        ^ entity.name.function.powershell
+#           ^ punctuation.section.braces.begin.powershell
+#            ^ punctuation.section.braces.end.powershell
 Workflow work {}
+# <- storage.type.powershell
+#        ^ entity.name.function.powershell
+#             ^ punctuation.section.braces.begin.powershell
+#              ^ punctuation.section.braces.end.powershell
 get-thing | Out-WithYou > $null # destroy
+# ^          ^ support.function.powershell
+#         ^ keyword.operator.other.powershell
+#                       ^ keyword.operator.redirection.powershell
+#                         ^ keyword.other.variable.definition.powershell
+#                          ^ constant.language.powershell
+#                               ^ punctuation.definition.comment.powershell
 "Escaped chars: `", `n, `$, `b, `t, `""
+# <- string.quoted.double.powershell
+#               ^^  ^^  ^^  ^^  ^^  ^^ string.quoted.double.powershell constant.character.escape.powershell
 'But here they''re not escape chars: `", `n, `$, `b, `"'
+#             ^^ constant.character.escape.powershell
+#                                    ^^  ^^  ^^  ^^  ^^ not:constant.character.escape.powershell
 "When you call a method: $( get-number | %{ invoke-command $( [string]::format("Like (this{0})","what?") ) $var } )"
-foo
-$a = $("Guess what, happens ""here, hey""" | "Hm... $("this, is" strange.) you can't really pipe to a string, but nevermind for now.")
-this-isnot.ps1
-a_mistake.here.ps1
-"anothermistake.ps1"
-$users.Split(',').Trim()
-TestConfiguration -OutputPath $workingDirectory
-"blablabla $(invoke-foo baz $a.bar) blablabla"
-invoke-foo baz $a.bar
-var
--var
-_var
-jvar
-varj
-$foo.bar
-($foo).bar
-(Invoke-Something).bar
+#                        ^                                                                                 ^ keyword.other.variable.definition.powershell
+#                                      ^ keyword.operator.other.powershell
+#                                                           ^                 ^ meta.group.complex.subexpression.powershell punctuation.section.group.begin.powershell
+#                                                                ^ storage.type.powershell
+#                                                                                                      ^ ^ meta.group.complex.subexpression.powershell punctuation.section.group.end.powershell
