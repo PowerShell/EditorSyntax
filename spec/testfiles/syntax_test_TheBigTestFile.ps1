@@ -84,8 +84,8 @@ throw "Do not run this file!"
 & tool.exe /arg1 'value' /arg2 $value --% /arg3 $value /arg4 "value" # Comment
 # <- keyword.operator.other.powershell
 # ^^^^^^^^ support.function.powershell
-#          ^             ^            ^^  ^            ^ keyword.operator.assignment.powershell
-#                                       ^ keyword.control.powershell
+#          ^             ^                ^            ^ keyword.operator.assignment.powershell
+#                                     ^^^ keyword.control.powershell
 
 # Automatic variables
 $_
@@ -481,86 +481,245 @@ Isn't it "nice"??
 
 # Commands (functions)
 Invoke-Something -foobar
+# <- support.function.powershell
+#                ^ keyword.operator.assignment.powershell
 Invoke-Something -foobar value
+# <- support.function.powershell
+#                ^ keyword.operator.assignment.powershell
 Invoke-Something -foobar:$true
+# <- support.function.powershell
+#                ^ keyword.operator.assignment.powershell
+#                        ^ keyword.other.variable.definition.powershell
+#                         ^^^^ constant.language.powershell
 Invoke-Something -foobar: $true
+# <- support.function.powershell
+#                ^ keyword.operator.assignment.powershell
 Invoke-Something -p1 v1 -p2 10 -p3 'value' -switch -verbose
+# <- support.function.powershell
+#                ^      ^      ^           ^       ^ keyword.operator.assignment.powershell
+#                           ^^ constant.numeric.integer.powershell
+#                                           ^ source.powershell
 Invoke-Something (1..20 | Invoke-Something) -p2 'value'
+# <- support.function.powershell
 Invoke-Something -p1 v2 -p2 30 | Invoke-Something -switch
+# <- support.function.powershell
+#                ^      ^                         ^ keyword.operator.assignment.powershell
+#                           ^^ constant.numeric.integer.powershell
+#                              ^ keyword.operator.other.powershell
+#                                ^ support.function.powershell
+#                                                  ^ source.powershell
 Invoke-Something -p1 {
-	Invoke-Something -foobar:$true
+# <- support.function.powershell
+#                ^ keyword.operator.assignment.powershell
+#                    ^ punctuation.section.braces.begin.powershell
+    Invoke-Something -foobar:$true
+#   ^ support.function.powershell
+#                    ^ keyword.operator.assignment.powershell
+#                            ^ keyword.other.variable.definition.powershell
+#                             ^^^^ constant.language.powershell
 } | Invoke-Something
+# <- punctuation.section.braces.end.powershell
+# ^ keyword.operator.other.powershell
+#   ^ support.function.powershell
 Invoke-Something -p1 value `
-	-p2 14.4 `
-	-p3 $value | Invoke-Something -verbose
+# <- support.function.powershell
+#                ^ keyword.operator.assignment.powershell
+#                          ^ keyword.operator.other.powershell
+    -p2 14.4 `
+#   ^ keyword.operator.assignment.powershell
+#       ^^^^ constant.numeric.integer.powershell
+#            ^ keyword.operator.other.powershell
+    -p3 $value | Invoke-Something -verbose
+#   ^                             ^ keyword.operator.assignment.powershell
+#       ^ keyword.other.variable.definition.powershell
+#              ^ keyword.operator.other.powershell
+#                ^^^^^^^^^^^^^^^^ support.function.powershell
 
 # Commands (Built-in variables)
 ls *.ps1 -recurse
+#  ^     ^ keyword.operator.assignment.powershell
 
 # Commands (executable files)
 . .\scripts\myscript.ps1 -parameter 'value'
+# <- keyword.operator.other.powershell
+#                        ^ keyword.operator.assignment.powershell
+#                                   ^^^^^^^ string.quoted.single.powershell
 & tool.exe
+# <- keyword.operator.other.powershell
+# ^^^^^^^^ support.function.powershell
 something.cmd
+# <- support.function.powershell
 øyvind.com # this should also highlight - TODO
-
-# But this should not highlight anything
-file.1
-This.txt
-Function.txt
-Where.txt
-ForEach-Object.txt
 
 # switch
 switch ("fourteen") {}
+# <- keyword.control.powershell
+#      ^ punctuation.section.group.begin.powershell
+#       ^ string.quoted.double.powershell
+#                 ^ punctuation.section.group.end.powershell
+#                   ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#                    ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 switch -CaseSensitive ("fourteen") {}
-switch -Illegal ("fourteen") {} # Using illegal switch parameter
+# <- keyword.control.powershell
+#      ^ keyword.operator.assignment.powershell
+#                     ^ punctuation.section.group.begin.powershell
+#                      ^ string.quoted.double.powershell
+#                                ^ punctuation.section.group.end.powershell
+#                                  ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#                                   ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 switch -Regex ("fourteen") {}
+# <- keyword.control.powershell
+#      ^ keyword.operator.assignment.powershell
+#             ^ punctuation.section.group.begin.powershell
+#              ^ string.quoted.double.powershell
+#                        ^ punctuation.section.group.end.powershell
+#                          ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#                           ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 switch -Wildcard ($a) {}
+# <- keyword.control.powershell
+#      ^ keyword.operator.assignment.powershell
+#                ^ punctuation.section.group.begin.powershell
+#                 ^ keyword.other.variable.definition.powershell
+#                   ^ punctuation.section.group.end.powershell
+#                     ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#                      ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 switch -regex -file .\somefile.txt {}
+# <- keyword.control.powershell
+#      ^      ^ keyword.operator.assignment.powershell
+#                                  ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#                                   ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 switch (3) {}
+# <- keyword.control.powershell
+#      ^ punctuation.section.group.begin.powershell
+#       ^ constant.numeric.integer.powershell
+#        ^ punctuation.section.group.end.powershell
+#          ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#           ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 switch (4, 2) {}
+# <- keyword.control.powershell
+#      ^ punctuation.section.group.begin.powershell
+#       ^  ^ constant.numeric.integer.powershell
+#        ^ keyword.operator.other.powershell
+#           ^ punctuation.section.group.end.powershell
+#             ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#              ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 switch -Regex -File $filePath {
+# <- keyword.control.powershell
+#      ^      ^ keyword.operator.assignment.powershell
+#                   ^ keyword.other.variable.definition.powershell
+#                             ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     '.' {}
+#   ^^^ string.quoted.single.powershell
+#       ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#        ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
     default {}
+#   ^^^^^^^ keyword.control.powershell
+#           ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#            ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 }
+# <- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 switch -Wildcard -CaseSensitive ($something) {
+# <- keyword.control.powershell
+#      ^         ^ keyword.operator.assignment.powershell
+#                               ^ punctuation.section.group.begin.powershell
+#                                ^ keyword.other.variable.definition.powershell
+#                                 ^ variable.other.readwrite.powershell
+#                                          ^ punctuation.section.group.end.powershell
+#                                            ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     '.' {}
+#   ^^^ string.quoted.single.powershell
+#       ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#        ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
     default {}
+#   ^^^^^^^ keyword.control.powershell
+#           ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#            ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 }
+# <- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 switch ('this') {
+# <- keyword.control.powershell
+#      ^ punctuation.section.group.begin.powershell
+#       ^^^^^^ string.quoted.single.powershell
+#             ^ punctuation.section.group.end.powershell
+#               ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     'this' {}
+#   ^^^^^^ string.quoted.single.powershell
+#          ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#           ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
     default {}
+#   ^^^^^^^ keyword.control.powershell
+#           ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+#            ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 }
-
-# Illegal backtick
-Invoke-Command -arg1 $val1 `
-	           -arg2 $val2 `
+# <- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 # Functions and filters
 functioN MyFunction{}
+# <- storage.type.powershell
+#        ^^^^^^^^^^ entity.name.function.powershell
+#                  ^ punctuation.section.braces.begin.powershell
+#                   ^ punctuation.section.braces.end.powershell
 function My-Function         {}
+# <- storage.type.powershell
+#        ^^^^^^^^^^^ entity.name.function.powershell
+#                            ^ punctuation.section.braces.begin.powershell
+#                             ^ punctuation.section.braces.end.powershell
 Function My.Function{}
+# <- storage.type.powershell
+#        ^^^^^^^^^^^ entity.name.function.powershell
+#                   ^ punctuation.section.braces.begin.powershell
+#                    ^ punctuation.section.braces.end.powershell
 function My-Function.Other{}
+# <- storage.type.powershell
+#        ^^^^^^^^^^^^^^^^^ entity.name.function.powershell
+#                         ^ punctuation.section.braces.begin.powershell
+#                          ^ punctuation.section.braces.end.powershell
 function Some.other.function{}
+# <- storage.type.powershell
+#        ^^^^^^^^^^^^^^^^^^^ entity.name.function.powershell
+#                           ^ punctuation.section.braces.begin.powershell
+#                            ^ punctuation.section.braces.end.powershell
 FUNCTION MyFunction2 {}
-function MyFunction3
-{
-
-}
+# <- storage.type.powershell
+#        ^^^^^^^^^^^ entity.name.function.powershell
+#                    ^ punctuation.section.braces.begin.powershell
+#                     ^ punctuation.section.braces.end.powershell
 function New-File { }
+# <- storage.type.powershell
+#        ^^^^^^^^ entity.name.function.powershell
+#                 ^ punctuation.section.braces.begin.powershell
+#                   ^ punctuation.section.braces.end.powershell
 function New-File ($Name) { }
+# <- storage.type.powershell
+#        ^^^^^^^^ entity.name.function.powershell
+#                         ^ punctuation.section.braces.begin.powershell
+#                           ^ punctuation.section.braces.end.powershell
 function NewFile($Name) { }
-functionMyFunction{}
+# <- storage.type.powershell
+#        ^^^^^^^ entity.name.function.powershell
+#                ^ keyword.other.variable.definition.powershell
+#                   ^ variable.other.readwrite.powershell
+#                       ^ punctuation.section.braces.begin.powershell
+#                         ^ punctuation.section.braces.end.powershell
 filter myfilter($param) {}
+# <- storage.type.powershell
+#      ^^^^^^^^ entity.name.function.powershell
+#              ^ punctuation.section.group.begin.powershell
+#               ^ keyword.other.variable.definition.powershell
+#                ^ variable.other.readwrite.powershell
+#                       ^ punctuation.section.braces.begin.powershell
+#                        ^ punctuation.section.braces.end.powershell
 Filter my-Filter ($param){}
-
-function foo
-#comment
-{
-}
+# <- storage.type.powershell
+#      ^^^^^^^^^ entity.name.function.powershell
+#                ^ punctuation.section.group.begin.powershell
+#                 ^ keyword.other.variable.definition.powershell
+#                   ^ variable.other.readwrite.powershell
+#                        ^ punctuation.section.braces.begin.powershell
+#                         ^ punctuation.section.braces.end.powershell
 
 # Note that the # in the path should highlight as a comment!
 function Test-Drive([string]$roman) {
