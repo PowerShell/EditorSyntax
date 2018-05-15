@@ -1,12 +1,12 @@
 function SyntaxBanner {
     Write-Host ' ______    _ _ _             _____             _             ' -ForegroundColor Green
     Write-Host '|  ____|  | (_) |           / ____|           | |            ' -ForegroundColor Green
-    Write-Host '| |__   __| |_| |_ ___  _ _| (___  _ __  _   _| |_ __ ___  __' -ForegroundColor Green
-    Write-Host '|  __| / _` | | __/ _ \| ''__\___ \| ''_ \| | | | __/ _` \ \/ /' -ForegroundColor Green
-    Write-Host '| |___| (_| | | || (_) | |  ____) | | | | |_| | || (_| |>  < ' -ForegroundColor Green
-    Write-Host '|______\__,_|_|\__\___/|_| |_____/|_| |_|\__, |\__\__,_/_/\_\' -ForegroundColor Green
-    Write-Host '                                          __/ |              ' -ForegroundColor Green
-    Write-Host '                                         |___/               ' -ForegroundColor Green
+    Write-Host '| |__   __| |_| |_ ___  _ _| (___  _   _ _ __ | |_ __ ___  __' -ForegroundColor Green
+    Write-Host '|  __| / _` | | __/ _ \| ''__\___ \| | | | ''_ \| __/ _` \ \/ /' -ForegroundColor Green
+    Write-Host '| |___| (_| | | || (_) | |  ____) | |_| | | | | || (_| |>  < ' -ForegroundColor Green
+    Write-Host '|______\__,_|_|\__\___/|_| |_____/ \__, |_| |_|\__\__,_/_/\_\' -ForegroundColor Green
+    Write-Host '                                    __/ |                    ' -ForegroundColor Green
+    Write-Host '                                   |___/                     ' -ForegroundColor Green
 }
 
 function BuildBanner {
