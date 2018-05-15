@@ -28,9 +28,8 @@
 [cmdletbinding()]
 param(
     [parameter()]
-    [ValidateSet('Build','Test')]
-    [string]
-    $Task = 'Build'
+    [switch]
+    $Test
 )
 
 # Load Helpers
@@ -63,16 +62,12 @@ function RunTests() {
     }
 }
 
-switch ($Task) {
-    'Build'   {
-        RunBuild
-    }
-    'Test'    {
-        RunBuild
-        RunTests
-        TestBanner
-        RunSpecs
-    }
+RunBuild
+
+if ($Test) {
+    RunTests
+    TestBanner
+    RunSpecs
 }
 
 EndBanner

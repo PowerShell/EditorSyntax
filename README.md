@@ -45,10 +45,10 @@ for more details.
 
 > Requires the Atom text editor be installed.
 
-1. Run `.\build.ps1` with `test`.
+1. Run `.\build.ps1` with `-Test`. Which will build the grammar file and run all of the specs.
 
     ```
-    PS> .\build.ps1 test
+    PS> .\build.ps1 -Test
     ```
 
 ### Build (npm)
