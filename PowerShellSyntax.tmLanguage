@@ -44,33 +44,6 @@
 			</array>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>(?&lt;![`\\-])#</string>
-			<key>captures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.powershell</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>comment.line.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#commentEmbeddedDocs</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#RequiresDirective</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
 			<key>match</key>
 			<string>[2-6]&gt;&amp;1|&gt;&gt;|&gt;|&lt;&lt;|&lt;|&gt;|&gt;\||[1-6]&gt;|[1-6]&gt;&gt;</string>
 			<key>name</key>
@@ -79,6 +52,10 @@
 		<dict>
 			<key>include</key>
 			<string>#commands</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#commentLine</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -373,6 +350,34 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>commentLine</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;![`\\-])#</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.powershell</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>comment.line.powershell</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#commentEmbeddedDocs</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#RequiresDirective</string>
+				</dict>
+			</array>
+		</dict>
 		<key>attribute</key>
 		<dict>
 			<key>begin</key>
@@ -647,6 +652,13 @@
 			</dict>
 			<key>end</key>
 			<string>(?=\{|\()</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#commentLine</string>
+				</dict>
+			</array>
 		</dict>
 		<key>interpolatedStringContent</key>
 		<dict>
