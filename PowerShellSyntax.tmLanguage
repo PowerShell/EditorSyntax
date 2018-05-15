@@ -627,12 +627,12 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.function</string>
+					<string>meta.function.powershell</string>
 				</dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type</string>
+					<string>storage.type.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
