@@ -199,7 +199,7 @@
 		<dict>
 			<key>begin</key>
 			<string>(\$)(\()</string>
-			<key>captures</key>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -216,7 +216,7 @@
 			<string>TODO: move to repo; make recursive.</string>
 			<key>end</key>
 			<string>\)</string>
-			<key>captures</key>
+			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
