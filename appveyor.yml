@@ -26,6 +26,7 @@ install:
   - ps: Install-Product node '8.9.1'
   - ps: Set-Location $env:APPVEYOR_BUILD_FOLDER
   - ps: npm install
+  - ps: DownloadAtom
 
 build_script:
   - ps: BuildBanner
