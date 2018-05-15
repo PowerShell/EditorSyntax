@@ -24,9 +24,6 @@
 
         Finished in 0.281 seconds
         2 tests, 5 assertions, 0 failures, 0 skipped
-
-    .NOTES
-        This script is currently written for Windows. Someone with Mac OS X will need to add relevant paths.
 #>
 [cmdletbinding()]
 param(
@@ -48,41 +45,33 @@ if (-not(& npm -v)) {
 
 & npm install
 
+# helper tasks
+function RunBuild() {
+    BuildBanner
+    try {
+        Write-Host "Building grammar file(s)..."
+        & npm run build-grammar
+    } catch {
+        $PSCmdlet.ThrowTerminatingError($PSItem)
+    }
+}
+
+function RunTests() {
+    $script:ATOM_EXE_PATH = (Get-Command atom).Path
+    if (-not $script:ATOM_EXE_PATH) {
+        throw "Atom not found. Install it from https://atom.io/"
+    }
+}
+
 switch ($Task) {
     'Build'   {
-        BuildBanner
-        try {
-            Write-Host "Building grammar file(s)..."
-            & npm run build-grammar
-        } catch {
-            $PSCmdlet.ThrowTerminatingError($PSItem)
-        }
+        RunBuild
     }
     'Test'    {
-        try {
-            BuildBanner
-            Write-Host "Rebuilding grammar file(s)..."
-            & npm run build-grammar
-        } catch {
-            $PSCmdlet.ThrowTerminatingError($PSItem)
-        }
-
-        if (Get-Command atom.cmd -ErrorAction SilentlyContinue) {
-            TestBanner
-            Write-Host "Atom already installed..."
-            $script:ATOM_EXE_PATH = 'atom'
-            RunSpecs
-        } elseif (Test-Path '.\Atom') {
-            TestBanner
-            Write-Host "Atom already downloaded..."
-            $script:ATOM_EXE_PATH = Join-Path $pwd 'Atom\Atom.exe'
-            RunSpecs
-        } else {
-            TestBanner
-            DownloadAtom
-            $script:ATOM_EXE_PATH = Join-Path $pwd 'Atom\Atom.exe'
-            RunSpecs
-        }
+        RunBuild
+        RunTests
+        TestBanner
+        RunSpecs
     }
 }
 
