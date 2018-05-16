@@ -136,7 +136,7 @@ $sb = {
 
 # Numeric formatting
 # {index[,alignment][:formatString]}
-$a = 348 
+$a = 348
 "{0:N2}" -f $a
 "{0:D8}" -f $a
 "{0:C2}" -f $a
@@ -201,7 +201,7 @@ Filter my-Filter ($param){}
 function global:Invoke-Something {}
 
 # This variant don't work properly
-function 
+function
 #comment
 <# another comment #>
 test
@@ -251,9 +251,9 @@ switch ($variable)
     'Value' {
         return $false
     }
-    
+
     2 {}
-    
+
     {$value -le 100} {}
 
     default {
@@ -268,7 +268,7 @@ switch -Regex ("fourteen") {}
 switch -Wildcard ($a) {}
 switch -regex -file .\somefile.txt {}
 switch (3) {}
-switch (4, 2) {} 
+switch (4, 2) {}
 
 # Executable files
 . .\otherScript.ps1

@@ -1,6 +1,6 @@
 ﻿Third Party Notices for PowerShell Editor Syntax
 
-This Microsoft Open Source project incorporates material from the project(s) listed below (“Third Party Code”). Microsoft is not the original author of the Third Party Code. Microsoft reserves all other rights not expressly granted, whether by implication, estoppel or otherwise.  
+This Microsoft Open Source project incorporates material from the project(s) listed below (“Third Party Code”). Microsoft is not the original author of the Third Party Code. Microsoft reserves all other rights not expressly granted, whether by implication, estoppel or otherwise.
 
 Copyright (c) 2011 Guillermo López-Anglada
 
