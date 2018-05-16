@@ -1518,6 +1518,10 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>match</key>
+					<string>(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,64}\b</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#variableNoProperty</string>
 				</dict>
