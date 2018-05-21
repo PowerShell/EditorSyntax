@@ -22,17 +22,38 @@ both VS Code and Sublime Text.  There are a number of existing issues with the g
 that we need to track down and fix.  Please see [issue #1](https://github.com/PowerShell/EditorSyntax/issues/1)
 for more details.
 
-## Build and Import (VS Code)
+## Build and Test
 
-> ***NOTE:*** You can grab a build of the current definitions as they exist in Github from [Appveyor](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master/artifacts) and skip ahead to step 3 below.
+> ***NOTE:*** You can grab a build of the current definitions as they exist in Github from [Appveyor](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master/artifacts)
 
 ### Prerequisites
 
 - Node.JS, >= 8.9.1
+- Atom text editor (tests)
 
-### Build
+### Build (build.ps1)
 
-1. Navigate via command line to the `./tools/` directory and install dependencies:
+1. Run `build.ps1` to generate the grammar.
+
+    ```
+    PS> .\build.ps1
+    ```
+
+2. The .json file will be generated in `./grammars/` at the root of the project.
+
+### Test (build.ps1)
+
+> Requires the Atom text editor be installed.
+
+1. Run `.\build.ps1` with `-Test`. Which will build the grammar file and run all of the specs.
+
+    ```
+    PS> .\build.ps1 -Test
+    ```
+
+### Build (npm)
+
+1. Use `npm` to install dependencies:
 
     ```
     npm install
@@ -44,15 +65,17 @@ for more details.
     npm run build-grammar
     ```
 
-3. The .json file will be generated in `./syntaxes/` at the root of the project. You will need to copy it in to VS Code manually.
+3. The .json file will be generated in `./grammars/` at the root of the project.
 
-    1. Locate the VS Code installation directory and navigate to to `resources/app/extensions/powershell/syntaxes`
+### Test (Atom cli)
 
-    2. Rename `powershell.tmLanguage.json` to `powershell.tmLanguage.json_default`
+1. Build the grammar file using the above steps.
 
-    3. Copy `powershell.tmLanguage.json` from `./syntaxes/` within the project folder to where you just renamed the file under VS Code's path.
+3. Use the Atom cli command for your os (atom.cmd or atom.sh) to run the tests from the root of the EditorSystax project folder.
 
-4. If VS Code is already running you will need to run "Reload Window" from the command pallete.
+    ```
+    atom --test spec
+    ```
 
 ## Contributing
 
