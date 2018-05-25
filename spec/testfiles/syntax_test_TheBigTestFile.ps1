@@ -1110,6 +1110,10 @@ $b -cLike $c
 #                   ^ keyword.operator.string-format.powershell
 
 # Misc test cases
+New-Object -TypeName System.Diagnostics.Process
+#                                       ^ not:keyword.control.powershell
+New-Object -TypeName System.Data
+#                           ^ not:keyword.control.powershell
 @("any","array","has").foreach({ $_ })
 # <- keyword.other.array.begin.powershell
 # ^ meta.group.array-expression.powershell
