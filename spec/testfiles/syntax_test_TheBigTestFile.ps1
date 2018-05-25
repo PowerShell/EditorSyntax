@@ -1110,6 +1110,8 @@ $b -cLike $c
 #                   ^ keyword.operator.string-format.powershell
 
 # Misc test cases
+Test-Function -Class ClassName
+#              ^ not:storage.type.powershell
 New-Object -TypeName System.Diagnostics.Process
 #                                       ^ not:keyword.control.powershell
 New-Object -TypeName System.Data
