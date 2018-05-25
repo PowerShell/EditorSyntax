@@ -962,7 +962,7 @@ if (10 -cgt 100) { }
 # <- keyword.control.powershell
 #  ^ punctuation.section.group.begin.powershell
 #   ^^      ^^^ constant.numeric.integer.powershell
-#      ^^^^ keyword.operator.logical.powershell
+#      ^^^^ keyword.operator.comparison.powershell
 #              ^ punctuation.section.group.end.powershell
 #                ^ punctuation.section.braces.begin.powershell
 #                  ^  punctuation.section.braces.end.powershell
@@ -1029,21 +1029,21 @@ $a -iLike $b
 $b -cLike $c
 #  ^ keyword.operator.comparison.powershell
 "hey" -cgt "Hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "Hey" -igt "hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "hey" -cge "Hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "Hey" -ige "hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "HEY" -clt "hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "HEY" -ilt "hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "HEY" -cle "hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 "HEY" -ile "hey"
-#     ^ keyword.operator.logical.powershell
+#     ^ keyword.operator.comparison.powershell
 
 # format
     "{0:N2}" -f $a
