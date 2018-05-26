@@ -1007,11 +1007,11 @@ $z = -bnot $x
 $l = 1 -shl 10
 #  ^ keyword.operator.assignment.powershell
 #    ^      ^^ constant.numeric.integer.powershell
-#       ^ keyword.operator.bitwise.powershell
+#      ^ keyword.operator.bitwise.powershell
 $r = 10 -shr 1
 #  ^ keyword.operator.assignment.powershell
 #    ^^      ^ constant.numeric.integer.powershell
-#        ^ keyword.operator.bitwise.powershell
+#       ^ keyword.operator.bitwise.powershell
 $k = $y -xor $b
 #  ^ keyword.operator.assignment.powershell
 #       ^ keyword.operator.logical.powershell
