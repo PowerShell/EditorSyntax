@@ -20,17 +20,18 @@ Opening issues is very easy. Head to our [Issues tab](https://github.com/PowerSh
 If you encounter an error during usage of EditorSyntax, there are some basic details we need to be able to help you.
 
 1. The script you used. Feel free to strip out any incriminating details, but it must be able to be executed
-2. A screenshot of the highlighting bug
+1. A screenshot of the highlighting bug
 
 ### Fixing an issue
 
 Fixing issues also does not require a lot of administrative work. The basic steps are:
 
 1. Leave a comment to tell us that you are working on it
-2. Fork our repository, and base your changes off of the **master** branch. Please create a new branch from **master** which contains your changes. How you call it? We don't care.
-3. Fix the issue! No biggie...
-4. Make sure you have pushed your commits to your new branch and then create a pull request back to the EditorSyntax **master** branch
-5. If prompted to sign the CLA, please follow the action
+1. Fork our repository, and base your changes off of the **master** branch. Please create a new branch from **master** which contains your changes. What you call it? We don't care.
+1. Fix the issue! No biggie...
+1. Include a [test spec](spec/testfiles) to prevent regressions in the future.
+1. Make sure you have pushed your commits to your new branch and then create a pull request back to the EditorSyntax **master** branch
+1. If prompted to sign the CLA, please follow the action
 
 ## Reviews
 
