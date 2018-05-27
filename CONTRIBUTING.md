@@ -27,7 +27,7 @@ If you encounter an error during usage of EditorSyntax, there are some basic det
 Fixing issues also does not require a lot of administrative work. The basic steps are:
 
 1. Leave a comment to tell us that you are working on it
-1. Fork our repository, and base your changes off of the **master** branch. Please create a new branch from **master** which contains your changes. How you call it? We don't care.
+1. Fork our repository, and base your changes off of the **master** branch. Please create a new branch from **master** which contains your changes. What you call it? We don't care.
 1. Fix the issue! No biggie...
 1. Include a [test spec](spec/testfiles) to prevent regressions in the future.
 1. Make sure you have pushed your commits to your new branch and then create a pull request back to the EditorSyntax **master** branch
