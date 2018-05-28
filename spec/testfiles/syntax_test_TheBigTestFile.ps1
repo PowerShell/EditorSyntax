@@ -1161,11 +1161,14 @@ workflow w1 {}
 #        ^ entity.name.function.powershell
 #           ^ punctuation.section.braces.begin.powershell
 #            ^ punctuation.section.braces.end.powershell
-Workflow work {}
+Workflow work { sequence {} }
 # <- storage.type.powershell
 #        ^ entity.name.function.powershell
 #             ^ punctuation.section.braces.begin.powershell
-#              ^ punctuation.section.braces.end.powershell
+#               ^^^^^^^^ keyword.control.powershell
+#                        ^ punctuation.section.braces.begin.powershell
+#                         ^ punctuation.section.braces.end.powershell
+#                           ^ punctuation.section.braces.end.powershell
 get-thing | Out-WithYou > $null # destroy
 # ^          ^ support.function.powershell
 #         ^ keyword.operator.other.powershell
