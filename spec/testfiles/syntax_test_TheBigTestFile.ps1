@@ -84,8 +84,9 @@ throw "Do not run this file!"
 & tool.exe /arg1 'value' /arg2 $value --% /arg3 $value /arg4 "value" # Comment
 # <- keyword.operator.other.powershell
 # ^^^^^^^^ support.function.powershell
-#          ^             ^                ^            ^ keyword.operator.assignment.powershell
+#          ^             ^ keyword.operator.assignment.powershell
 #                                     ^^^ keyword.control.powershell
+#                                         ^^    ^^     ^^    ^^      ^ ^ string.unquoted.powershell
 
 # Automatic variables
 $_

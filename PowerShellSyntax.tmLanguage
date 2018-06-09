@@ -253,10 +253,29 @@
 			<string>keyword.control.powershell</string>
 		</dict>
 		<dict>
-			<key>match</key>
+			<key>begin</key>
 			<string>(?&lt;!\w)(--%)(?!\w)</string>
-			<key>name</key>
-			<string>keyword.control.powershell</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.powershell</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>.+</string>
+					<key>name</key>
+					<string>string.unquoted.powershell</string>
+				</dict>
+			</array>
+			<key>comment</key>
+			<string>This should be moved to the repository at some point.</string>
 		</dict>
 		<dict>
 			<key>comment</key>
