@@ -996,15 +996,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>constant.language.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1015,15 +1015,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>support.constant.variable.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>support.constant.variable.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1039,15 +1039,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>support.constant.automatic.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>support.constant.automatic.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1063,15 +1063,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1087,6 +1087,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1096,11 +1101,6 @@
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1114,6 +1114,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1128,11 +1133,6 @@
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
 						<dict>
@@ -1151,6 +1151,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1160,11 +1165,6 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1178,6 +1178,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1192,11 +1197,6 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
 						<dict>
@@ -1280,15 +1280,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>constant.language.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1299,15 +1299,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>support.constant.variable.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>support.constant.variable.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1323,15 +1323,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>support.variable.automatic.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>support.variable.automatic.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1347,15 +1347,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.powershell</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1371,6 +1371,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1380,11 +1385,6 @@
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1398,6 +1398,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1407,11 +1412,6 @@
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1430,6 +1430,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1439,11 +1444,6 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1457,6 +1457,11 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
@@ -1471,11 +1476,6 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
 						<dict>

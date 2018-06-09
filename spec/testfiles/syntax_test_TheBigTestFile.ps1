@@ -110,20 +110,20 @@ $variable
 # <- keyword.other.variable.definition.powershell
 # ^ variable.other.readwrite.powershell
 $script:variable
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ storage.modifier.scope.powershell
 #       ^ variable.other.readwrite.powershell
 $ENV:ComputerName
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ support.variable.drive.powershell
 #    ^ variable.other.readwrite.powershell
 ${variable}
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
  # <- punctuation.section.braces.begin.powershell
 # ^^^^^^^^ variable.other.readwrite.powershell
 #         ^ punctuation.section.braces.end.powershell
 ${script:variable}
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
  # <- punctuation.section.braces.begin.powershell
 # ^ storage.modifier.scope.powershell
 #        ^ variable.other.readwrite.powershell
@@ -131,7 +131,7 @@ ${script:variable}
 
 # Variable properties should be highlighted
 $variable.Name
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #        ^^^^^ entity.name.function.invocation.powershell
 
@@ -250,7 +250,7 @@ $sb = {
 
 # Arrays
 $a1 = @(1,2,3,4)
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #     ^ keyword.other.array.begin.powershell
@@ -259,7 +259,7 @@ $a1 = @(1,2,3,4)
 #       ^ ^ ^ ^ meta.group.array-expression.powershell constant.numeric.integer.powershell
 #        ^ ^ ^ meta.group.array-expression.powershell keyword.operator.other.powershell
 $a2 = ('one','two','three','four')
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #     ^ punctuation.section.group.begin.powershell
@@ -267,25 +267,25 @@ $a2 = ('one','two','three','four')
 #           ^     ^       ^ keyword.operator.other.powershell
 #                                ^ punctuation.section.group.end.powershell
 $a3 = $one, $two, $three, $four
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 #     ^     ^     ^       ^ keyword.other.variable.definition.powershell
 # ^    ^     ^     ^       ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #         ^     ^       ^ keyword.operator.other.powershell
 $a1[0]
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #  ^ punctuation.section.bracket.begin.powershell
 #   ^ constant.numeric.integer.powershell
 #    ^ punctuation.section.bracket.end.powershell
 $a2[-1]
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #  ^ punctuation.section.bracket.begin.powershell
 #   ^^ constant.numeric.integer.powershell
 #     ^ punctuation.section.bracket.end.powershell
 $a3[1..2]
-# <- keyword.other.variable.definition.powershell
+# <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #  ^ punctuation.section.bracket.begin.powershell
 #   ^  ^ constant.numeric.integer.powershell
@@ -294,13 +294,13 @@ $a3[1..2]
     @(@($a))
 #   ^ ^ keyword.other.array.begin.powershell
 #    ^ ^ punctuation.section.group.begin.powershell
-#       ^ keyword.other.variable.definition.powershell
+#       ^ keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 #        ^ variable.other.readwrite.powershell
 #         ^^ punctuation.section.group.end.powershell
     @(($i = 10); (++$j))
 #   ^ keyword.other.array.begin.powershell
 #    ^^          ^ punctuation.section.group.begin.powershell
-#      ^            ^ keyword.other.variable.definition.powershell
+#      ^            ^ keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 #       ^            ^ variable.other.readwrite.powershell
 #         ^ keyword.operator.assignment.powershell
 #           ^^ constant.numeric.integer.powershell
@@ -310,13 +310,13 @@ $a3[1..2]
     @($i = 10)
 #   ^ keyword.other.array.begin.powershell
 #    ^ punctuation.section.group.begin.powershell
-#     ^ keyword.other.variable.definition.powershell
+#     ^ keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 #      ^ variable.other.readwrite.powershell
 #        ^ keyword.operator.assignment.powershell
 #          ^^ constant.numeric.integer.powershell
 #            ^ punctuation.section.group.end.powershell
     $i[($y - 1) + $x]
-#   ^   ^         ^ keyword.other.variable.definition.powershell
+#   ^   ^         ^ keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 #    ^   ^         ^ variable.other.readwrite.powershell
 #     ^ punctuation.section.bracket.begin.powershell
 #      ^ punctuation.section.group.begin.powershell
@@ -345,7 +345,7 @@ $a3[1..2]
 #   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
     "$This is a double ""quoted"" string."
 #   ^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
-#    ^ keyword.other.variable.definition.powershell
+#    ^ keyword.other.variable.definition.powershell support.variable.automatic.powershell
 #     ^^^^ support.variable.automatic.powershell
     "This is a
     double quoted string."
@@ -436,7 +436,7 @@ Isn't it "nice"??
     -2..$null
 #   ^^ constant.numeric.integer.powershell
 #     ^^ keyword.operator.range.powershell
-#       ^ keyword.other.variable.definition.powershell
+#       ^ keyword.other.variable.definition.powershell constant.language.powershell
 #        ^^^^ constant.language.powershell
     -3..3
 #   ^^  ^ constant.numeric.integer.powershell
