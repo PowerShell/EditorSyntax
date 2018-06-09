@@ -357,7 +357,7 @@ function Verb-Noun {
         #  ^ punctuation.section.group.begin.powershell
         #   ^ keyword.other.variable.definition.powershell
         #    ^^^^^^^^ support.constant.automatic.powershell
-        #             ^^^^^^^^^^^^^ entity.name.function.invocation.powershell
+        #             ^^^^^^^^^^^^^ variable.other.member.powershell
         #                          ^ punctuation.section.group.begin.powershell
         #                                                ^ punctuation.section.group.end.powershell
         #                                                 ^ punctuation.section.group.end.powershell

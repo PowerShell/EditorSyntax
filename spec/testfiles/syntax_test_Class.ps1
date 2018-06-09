@@ -64,7 +64,7 @@ class TypeName
         $this.P1 = $s
         # <- keyword.other.variable.definition.powershell
         # ^ support.constant.automatic.powershell
-        #     ^^ entity.name.function.invocation.powershell
+        #     ^^ variable.other.member.powershell
         #        ^ keyword.operator.assignment.powershell
         #          ^ keyword.other.variable.definition.powershell
         #           ^ variable.other.readwrite.powershell
@@ -111,7 +111,7 @@ class TypeName
         $this.P3 = $i
         # <- keyword.other.variable.definition.powershell
         # ^ support.constant.automatic.powershell
-        #     ^^ entity.name.function.invocation.powershell
+        #     ^^ variable.other.member.powershell
         #        ^ keyword.operator.assignment.powershell
         #          ^ keyword.other.variable.definition.powershell
         #           ^ variable.other.readwrite.powershell
@@ -119,6 +119,6 @@ class TypeName
         # <- keyword.control.powershell
         #      ^ keyword.other.variable.definition.powershell
         #       ^^^^ support.constant.automatic.powershell
-        #            ^^ entity.name.function.invocation.powershell
+        #            ^^ variable.other.member.powershell
     }
 }

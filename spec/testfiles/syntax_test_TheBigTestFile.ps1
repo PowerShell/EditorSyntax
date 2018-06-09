@@ -133,7 +133,7 @@ ${script:variable}
 $variable.Name
 # <- keyword.other.variable.definition.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
-#        ^^^^^ entity.name.function.invocation.powershell
+#         ^^^^ variable.other.member.powershell
 
 # In double-quoted strings, only the variable should be highlighted, not the property
 "This is my $variable.Name!"
@@ -151,7 +151,7 @@ $variable.Name
 #            ^ punctuation.section.group.begin.powershell
 #                           ^ punctuation.section.group.end.powershell
 #              ^^^^^^^^ variable.other.readwrite.powershell
-#                       ^^^^ entity.name.function.invocation.powershell
+#                       ^^^^ variable.other.member.powershell
 #                             ^ punctuation.definition.string.end.powershell
 
 # $ENV:ComputerName should be highlighted
@@ -904,7 +904,7 @@ class Vehicle {
         $this.Mileage += $NumberOfMiles
 #       ^ keyword.other.variable.definition.powershell
 #        ^^^^ support.constant.automatic.powershell
-#             ^ entity.name.function.invocation.powershell
+#             ^ variable.other.member.powershell
 #                     ^^ keyword.operator.assignment.powershell
 
     }
