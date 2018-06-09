@@ -61,12 +61,12 @@ function Verb-Noun {
                    SupportsShouldProcess    = $true,
                 #  ^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
                 #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
-                #                             ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+                #                             ^ meta.attribute.powershell punctuation.definition.variable.powershell
                 #                              ^^^^ meta.attribute.powershell constant.language.powershell
                    PositionalBinding        = $false,
                 #  ^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
                 #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
-                #                             ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+                #                             ^ meta.attribute.powershell punctuation.definition.variable.powershell
                 #                              ^^^^^ meta.attribute.powershell constant.language.powershell
                    HelpUri                  = 'http://www.microsoft.com/',
                 #  ^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
@@ -106,25 +106,25 @@ function Verb-Noun {
         #         ^ meta.attribute.powershell punctuation.section.group.begin.powershell
         #          ^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                   ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                    ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                    ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                     ^^^^ meta.attribute.powershell constant.language.powershell
         #                         ^ meta.attribute.powershell keyword.operator.other.powershell
                    ValueFromPipeline=$true,
         #          ^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                            ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                            ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                             ^^^^ meta.attribute.powershell constant.language.powershell
         #                                 ^ meta.attribute.powershell keyword.operator.other.powershell
                    ValueFromPipelineByPropertyName = $true,
         #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                                          ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                                            ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                                            ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                                             ^^^^ meta.attribute.powershell constant.language.powershell
         #                                                 ^ meta.attribute.powershell keyword.operator.other.powershell
                    ValueFromRemainingArguments=$false,
         #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                                     ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                                      ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                                      ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                                       ^^^^^ meta.attribute.powershell constant.language.powershell
         #                                            ^ meta.attribute.powershell keyword.operator.other.powershell
                    Position=0,
@@ -184,7 +184,7 @@ function Verb-Noun {
         #          ^ meta.attribute.powershell punctuation.section.group.end.powershell
         #           ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
         $Param1,
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ variable.other.readwrite.powershell
         #      ^ keyword.operator.other.powershell
 
@@ -223,7 +223,7 @@ function Verb-Noun {
         # ^ meta.attribute.powershell support.function.attribute.powershell
         #              ^ meta.attribute.powershell punctuation.section.group.begin.powershell
         #               ^ meta.scriptblock.powershell meta.attribute.powershell
-        #                ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                 ^^^^ meta.scriptblock.powershell constant.language.powershell
         #                     ^ meta.scriptblock.powershell meta.attribute.powershell
         #                      ^ meta.attribute.powershell punctuation.section.group.end.powershell
@@ -242,7 +242,7 @@ function Verb-Noun {
         # ^ storage.type.powershell
         #     ^ punctuation.section.bracket.end.powershell
         $Param2,
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ variable.other.readwrite.powershell
         #      ^ keyword.operator.other.powershell
 
@@ -279,7 +279,7 @@ function Verb-Noun {
         # ^ storage.type.powershell
         #      ^ punctuation.section.bracket.end.powershell
         $Param3,
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ variable.other.readwrite.powershell
         #      ^ keyword.operator.other.powershell
 
@@ -301,7 +301,7 @@ function Verb-Noun {
         #              ^ meta.attribute.powershell punctuation.section.group.begin.powershell
         #               ^ meta.attribute.powershell meta.scriptblock.powershell
         #                ^^^^^^^^^ meta.scriptblock.powershell support.function.powershell
-        #                          ^ meta.scriptblock.powershell keyword.other.variable.definition.powershell
+        #                          ^ meta.scriptblock.powershell punctuation.definition.variable.powershell
         #                           ^ meta.scriptblock.powershell support.constant.automatic.powershell
         #                            ^ meta.attribute.powershell meta.scriptblock.powershell
         #                             ^ meta.attribute.powershell punctuation.section.group.end.powershell
@@ -311,7 +311,7 @@ function Verb-Noun {
         # ^ storage.type.powershell
         #      ^ punctuation.section.bracket.end.powershell
         $Param4,
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ variable.other.readwrite.powershell
         #      ^ keyword.operator.other.powershell
 
@@ -341,7 +341,7 @@ function Verb-Noun {
         # ^ storage.type.powershell
         #      ^ punctuation.section.bracket.end.powershell
         $Param5
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ variable.other.readwrite.powershell
         )
         # <- punctuation.section.group.end.powershell
@@ -355,7 +355,7 @@ function Verb-Noun {
         if ($pscmdlet.ShouldProcess("Target", "Operation")) {
         # <- keyword.control.powershell
         #  ^ punctuation.section.group.begin.powershell
-        #   ^ keyword.other.variable.definition.powershell
+        #   ^ punctuation.definition.variable.powershell
         #    ^^^^^^^^ support.constant.automatic.powershell
         #             ^^^^^^^^^^^^^ variable.other.member.powershell
         #                          ^ punctuation.section.group.begin.powershell
