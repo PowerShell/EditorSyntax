@@ -791,6 +791,9 @@ function Verb-Noun
         #                  ^ meta.attribute.powershell keyword.operator.assignment.powershell
         #                   ^ meta.attribute.powershell constant.numeric.integer.powershell
         #                    ^ meta.attribute.powershell keyword.operator.other.powershell
+                   SupportsPaging,
+        #          ^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
+        #                        ^ meta.attribute.powershell keyword.operator.other.powershell
                    ParameterSetName = 'Parameter Set 1')]
         #          ^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
