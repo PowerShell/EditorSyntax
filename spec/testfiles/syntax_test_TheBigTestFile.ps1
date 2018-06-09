@@ -71,7 +71,7 @@ using namespace System.Management.Automation
 #                                ^^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell variable.other.readwrite.powershell
 #                                          ^ meta.requires.powershell meta.hashtable.powershell
 #                                           ^^^^^^^^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell string.quoted.double.powershell
-#                                                           ^ meta.requires.powershell meta.hashtable.powershell keyword.other.statement-separator.powershell
+#                                                           ^ meta.requires.powershell meta.hashtable.powershell punctuation.terminator.statement.powershell
 #                                                             ^^^^^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell variable.other.readwrite.powershell
 #                                                                          ^ meta.requires.powershell meta.hashtable.powershell
 #                                                                           ^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell string.quoted.double.powershell
@@ -294,7 +294,7 @@ $a3[1..2]
 #       ^            ^ variable.other.readwrite.powershell
 #         ^ keyword.operator.assignment.powershell
 #           ^^ constant.numeric.integer.powershell
-#              ^ keyword.other.statement-separator.powershell
+#              ^ punctuation.terminator.statement.powershell
 #                 ^^ keyword.operator.assignment.powershell
 #             ^       ^^ punctuation.section.group.end.powershell
     @($i = 10)
