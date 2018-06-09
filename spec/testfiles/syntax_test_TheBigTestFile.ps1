@@ -137,38 +137,47 @@ $variable.Name
 
 # In double-quoted strings, only the variable should be highlighted, not the property
 "This is my $variable.Name!"
-# <- string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^         ^^^^^^^ string.quoted.double.powershell
 #           ^ keyword.other.variable.definition.powershell
 #            ^^^^^^^^ variable.other.readwrite.powershell
+#                          ^ punctuation.definition.string.end.powershell
 
 # When used in a subexpression, both should be highlighted
 "This is my $($variable.Name)!"
-# <- string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^                 ^^ string.quoted.double.powershell
 #           ^ ^ keyword.other.variable.definition.powershell
 #            ^ punctuation.section.group.begin.powershell
 #                           ^ punctuation.section.group.end.powershell
 #              ^^^^^^^^ variable.other.readwrite.powershell
 #                       ^^^^ entity.name.function.invocation.powershell
+#                             ^ punctuation.definition.string.end.powershell
 
 # $ENV:ComputerName should be highlighted
 "This is the name of my computer: $ENV:ComputerName"
-# <- string.quoted.double.powershell
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                 ^ string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
 #                                 ^ keyword.other.variable.definition.powershell
 #                                  ^^^^ support.variable.drive.powershell
 #                                      ^^^^^^^^^^^^ variable.other.readwrite.powershell
+#                                                  ^ punctuation.definition.string.end.powershell
 
 # Here as well
 "This is the name of my computer: ${ENV:ComputerName}"
-# <- string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                   ^ string.quoted.double.powershell
 #                                 ^ keyword.other.variable.definition.powershell
 #                                  ^ punctuation.section.braces.begin.powershell
 #                                   ^^^^ support.variable.drive.powershell
 #                                       ^^^^^^^^^^^^ variable.other.readwrite.powershell
-#                                                   ^ punctuation.section.braces.end.powershell
+#                                                    ^ punctuation.definition.string.end.powershell
+
+# Single quotes string
+'This is a string'
+# <- punctuation.definition.string.begin.powershell string.quoted.single.powershell
+# ^^^^^^^^^^^^^^^ string.quoted.single.powershell
+#                ^ punctuation.definition.string.end.powershell
 
 # Hashtable
 $properties = @{

@@ -102,8 +102,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!')'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>'(?!')</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.single.powershell</string>
 			<key>patterns</key>
@@ -511,8 +527,24 @@
 						<dict>
 							<key>begin</key>
 							<string>(?&lt;!')'</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.begin.powershell</string>
+								</dict>
+							</dict>
 							<key>end</key>
 							<string>'(?!')</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.end.powershell</string>
+								</dict>
+							</dict>
 							<key>name</key>
 							<string>string.quoted.single.powershell</string>
 							<key>patterns</key>
@@ -1530,8 +1562,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!(?&lt;!`)")"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>"(?!")</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.double.powershell</string>
 			<key>patterns</key>
