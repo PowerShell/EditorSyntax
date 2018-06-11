@@ -71,7 +71,7 @@ using namespace System.Management.Automation
 #                                ^^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell variable.other.readwrite.powershell
 #                                          ^ meta.requires.powershell meta.hashtable.powershell
 #                                           ^^^^^^^^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell string.quoted.double.powershell
-#                                                           ^ meta.requires.powershell meta.hashtable.powershell keyword.other.statement-separator.powershell
+#                                                           ^ meta.requires.powershell meta.hashtable.powershell punctuation.terminator.statement.powershell
 #                                                             ^^^^^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell variable.other.readwrite.powershell
 #                                                                          ^ meta.requires.powershell meta.hashtable.powershell
 #                                                                           ^^^^^^^^^ meta.requires.powershell meta.hashtable.powershell string.quoted.double.powershell
@@ -84,45 +84,46 @@ throw "Do not run this file!"
 & tool.exe /arg1 'value' /arg2 $value --% /arg3 $value /arg4 "value" # Comment
 # <- keyword.operator.other.powershell
 # ^^^^^^^^ support.function.powershell
-#          ^             ^                ^            ^ keyword.operator.assignment.powershell
+#          ^             ^ keyword.operator.assignment.powershell
 #                                     ^^^ keyword.control.powershell
+#                                         ^^    ^^     ^^    ^^      ^ ^ string.unquoted.powershell
 
 # Automatic variables
 $_
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
  # <- support.constant.automatic.powershell
 $args
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ support.constant.automatic.powershell
 $error
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ support.constant.variable.powershell
 $home
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ support.constant.variable.powershell
 $foreach
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ support.constant.automatic.powershell
 
 # Normal variables
 $variable
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ variable.other.readwrite.powershell
 $script:variable
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ storage.modifier.scope.powershell
 #       ^ variable.other.readwrite.powershell
 $ENV:ComputerName
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ support.variable.drive.powershell
 #    ^ variable.other.readwrite.powershell
 ${variable}
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
  # <- punctuation.section.braces.begin.powershell
 # ^^^^^^^^ variable.other.readwrite.powershell
 #         ^ punctuation.section.braces.end.powershell
 ${script:variable}
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
  # <- punctuation.section.braces.begin.powershell
 # ^ storage.modifier.scope.powershell
 #        ^ variable.other.readwrite.powershell
@@ -130,48 +131,57 @@ ${script:variable}
 
 # Variable properties should be highlighted
 $variable.Name
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
-#        ^^^^^ entity.name.function.invocation.powershell
+#         ^^^^ variable.other.member.powershell
 
 # In double-quoted strings, only the variable should be highlighted, not the property
 "This is my $variable.Name!"
-# <- string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^         ^^^^^^^ string.quoted.double.powershell
-#           ^ keyword.other.variable.definition.powershell
+#           ^ punctuation.definition.variable.powershell
 #            ^^^^^^^^ variable.other.readwrite.powershell
+#                          ^ punctuation.definition.string.end.powershell
 
 # When used in a subexpression, both should be highlighted
 "This is my $($variable.Name)!"
-# <- string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^                 ^^ string.quoted.double.powershell
-#           ^ ^ keyword.other.variable.definition.powershell
+#           ^ ^ punctuation.definition.variable.powershell
 #            ^ punctuation.section.group.begin.powershell
 #                           ^ punctuation.section.group.end.powershell
 #              ^^^^^^^^ variable.other.readwrite.powershell
-#                       ^^^^ entity.name.function.invocation.powershell
+#                       ^^^^ variable.other.member.powershell
+#                             ^ punctuation.definition.string.end.powershell
 
 # $ENV:ComputerName should be highlighted
 "This is the name of my computer: $ENV:ComputerName"
-# <- string.quoted.double.powershell
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                 ^ string.quoted.double.powershell
-#                                 ^ keyword.other.variable.definition.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
+#                                 ^ punctuation.definition.variable.powershell
 #                                  ^^^^ support.variable.drive.powershell
 #                                      ^^^^^^^^^^^^ variable.other.readwrite.powershell
+#                                                  ^ punctuation.definition.string.end.powershell
 
 # Here as well
 "This is the name of my computer: ${ENV:ComputerName}"
-# <- string.quoted.double.powershell
+# <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                   ^ string.quoted.double.powershell
-#                                 ^ keyword.other.variable.definition.powershell
+#                                 ^ punctuation.definition.variable.powershell
 #                                  ^ punctuation.section.braces.begin.powershell
 #                                   ^^^^ support.variable.drive.powershell
 #                                       ^^^^^^^^^^^^ variable.other.readwrite.powershell
-#                                                   ^ punctuation.section.braces.end.powershell
+#                                                    ^ punctuation.definition.string.end.powershell
+
+# Single quotes string
+'This is a string'
+# <- punctuation.definition.string.begin.powershell string.quoted.single.powershell
+# ^^^^^^^^^^^^^^^ string.quoted.single.powershell
+#                ^ punctuation.definition.string.end.powershell
 
 # Hashtable
 $properties = @{
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ variable.other.readwrite.powershell
 #           ^ keyword.operator.assignment.powershell
 #             ^ keyword.other.hashtable.begin.powershell
@@ -208,39 +218,39 @@ $properties = @{
 # Spatting
     Invoke-Something @properties
 #   ^^^^^^^^^^^^^^^^ support.function.powershell
-#                    ^ keyword.other.variable.definition.powershell
+#                    ^ punctuation.definition.variable.powershell
 #                     ^ variable.other.readwrite.powershell
 
 # ScriptBlock
     {Invoke-Something @properties}
 #   ^ punctuation.section.braces.begin.powershell
 #    ^^^^^^^^^^^^^^^^ support.function.powershell
-#                     ^ keyword.other.variable.definition.powershell
+#                     ^ punctuation.definition.variable.powershell
 #                      ^ variable.other.readwrite.powershell
 #                                ^ punctuation.section.braces.end.powershell
 {
 # <- punctuation.section.braces.begin.powershell
     Invoke-Something @properties
 #   ^^^^^^^^^^^^^^^^ support.function.powershell
-#                    ^ keyword.other.variable.definition.powershell
+#                    ^ punctuation.definition.variable.powershell
 #                     ^ variable.other.readwrite.powershell
 }
 # <- punctuation.section.braces.end.powershell
 $sb = {
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #     ^ punctuation.section.braces.begin.powershell
     Invoke-Something @properties
 #   ^^^^^^^^^^^^^^^^ support.function.powershell
-#                    ^ keyword.other.variable.definition.powershell
+#                    ^ punctuation.definition.variable.powershell
 #                     ^ variable.other.readwrite.powershell
 }
 # <- punctuation.section.braces.end.powershell
 
 # Arrays
 $a1 = @(1,2,3,4)
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #     ^ keyword.other.array.begin.powershell
@@ -249,7 +259,7 @@ $a1 = @(1,2,3,4)
 #       ^ ^ ^ ^ meta.group.array-expression.powershell constant.numeric.integer.powershell
 #        ^ ^ ^ meta.group.array-expression.powershell keyword.operator.other.powershell
 $a2 = ('one','two','three','four')
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #     ^ punctuation.section.group.begin.powershell
@@ -257,25 +267,25 @@ $a2 = ('one','two','three','four')
 #           ^     ^       ^ keyword.operator.other.powershell
 #                                ^ punctuation.section.group.end.powershell
 $a3 = $one, $two, $three, $four
-# <- keyword.other.variable.definition.powershell
-#     ^     ^     ^       ^ keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
+#     ^     ^     ^       ^ punctuation.definition.variable.powershell
 # ^    ^     ^     ^       ^ variable.other.readwrite.powershell
 #   ^ keyword.operator.assignment.powershell
 #         ^     ^       ^ keyword.operator.other.powershell
 $a1[0]
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #  ^ punctuation.section.bracket.begin.powershell
 #   ^ constant.numeric.integer.powershell
 #    ^ punctuation.section.bracket.end.powershell
 $a2[-1]
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #  ^ punctuation.section.bracket.begin.powershell
 #   ^^ constant.numeric.integer.powershell
 #     ^ punctuation.section.bracket.end.powershell
 $a3[1..2]
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
 # ^ variable.other.readwrite.powershell
 #  ^ punctuation.section.bracket.begin.powershell
 #   ^  ^ constant.numeric.integer.powershell
@@ -284,29 +294,29 @@ $a3[1..2]
     @(@($a))
 #   ^ ^ keyword.other.array.begin.powershell
 #    ^ ^ punctuation.section.group.begin.powershell
-#       ^ keyword.other.variable.definition.powershell
+#       ^ punctuation.definition.variable.powershell variable.other.readwrite.powershell
 #        ^ variable.other.readwrite.powershell
 #         ^^ punctuation.section.group.end.powershell
     @(($i = 10); (++$j))
 #   ^ keyword.other.array.begin.powershell
 #    ^^          ^ punctuation.section.group.begin.powershell
-#      ^            ^ keyword.other.variable.definition.powershell
+#      ^            ^ punctuation.definition.variable.powershell variable.other.readwrite.powershell
 #       ^            ^ variable.other.readwrite.powershell
 #         ^ keyword.operator.assignment.powershell
 #           ^^ constant.numeric.integer.powershell
-#              ^ keyword.other.statement-separator.powershell
+#              ^ punctuation.terminator.statement.powershell
 #                 ^^ keyword.operator.assignment.powershell
 #             ^       ^^ punctuation.section.group.end.powershell
     @($i = 10)
 #   ^ keyword.other.array.begin.powershell
 #    ^ punctuation.section.group.begin.powershell
-#     ^ keyword.other.variable.definition.powershell
+#     ^ punctuation.definition.variable.powershell variable.other.readwrite.powershell
 #      ^ variable.other.readwrite.powershell
 #        ^ keyword.operator.assignment.powershell
 #          ^^ constant.numeric.integer.powershell
 #            ^ punctuation.section.group.end.powershell
     $i[($y - 1) + $x]
-#   ^   ^         ^ keyword.other.variable.definition.powershell
+#   ^   ^         ^ punctuation.definition.variable.powershell variable.other.readwrite.powershell
 #    ^   ^         ^ variable.other.readwrite.powershell
 #     ^ punctuation.section.bracket.begin.powershell
 #      ^ punctuation.section.group.begin.powershell
@@ -335,7 +345,7 @@ $a3[1..2]
 #   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
     "$This is a double ""quoted"" string."
 #   ^     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
-#    ^ keyword.other.variable.definition.powershell
+#    ^ punctuation.definition.variable.powershell support.variable.automatic.powershell
 #     ^^^^ support.variable.automatic.powershell
     "This is a
     double quoted string."
@@ -344,7 +354,7 @@ $a3[1..2]
 #   ^^^^^^^^^^^^ string.quoted.double.powershell
     "$(Invoke-Something)"
 #   ^                   ^ string.quoted.double.powershell
-#    ^ keyword.other.variable.definition.powershell
+#    ^ punctuation.definition.variable.powershell
 #     ^ punctuation.section.group.begin.powershell
 #      ^ interpolated.complex.source.powershell support.function.powershell
 #                      ^ punctuation.section.group.end.powershell
@@ -356,7 +366,7 @@ $a3[1..2]
 # <- string.quoted.double.heredoc.powershell
  # <- string.quoted.double.heredoc.powershell
 $This is a 'double quoted'
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 # ^ string.quoted.double.heredoc.powershell support.variable.automatic.powershell
 Isn't it "nice"??
 "@
@@ -411,7 +421,7 @@ Isn't it "nice"??
     -10.002L
 #   ^^^^^^^^ constant.numeric.integer.powershell
     $x..5.40D
-#   ^ keyword.other.variable.definition.powershell
+#   ^ punctuation.definition.variable.powershell
 #    ^ variable.other.readwrite.powershell
 #     ^^ keyword.operator.range.powershell
 #       ^^^^^ constant.numeric.integer.powershell
@@ -419,14 +429,14 @@ Isn't it "nice"??
 #   ^^^^  ^^^^ constant.numeric.integer.powershell
 #       ^^ keyword.operator.range.powershell
     $true..3
-#   ^ keyword.other.variable.definition.powershell
+#   ^ punctuation.definition.variable.powershell
 #    ^^^^ constant.language.powershell
 #        ^^ keyword.operator.range.powershell
 #          ^ constant.numeric.integer.powershell
     -2..$null
 #   ^^ constant.numeric.integer.powershell
 #     ^^ keyword.operator.range.powershell
-#       ^ keyword.other.variable.definition.powershell
+#       ^ punctuation.definition.variable.powershell constant.language.powershell
 #        ^^^^ constant.language.powershell
     -3..3
 #   ^^  ^ constant.numeric.integer.powershell
@@ -489,7 +499,7 @@ Invoke-Something -foobar value
 Invoke-Something -foobar:$true
 # <- support.function.powershell
 #                ^ keyword.operator.assignment.powershell
-#                        ^ keyword.other.variable.definition.powershell
+#                        ^ punctuation.definition.variable.powershell
 #                         ^^^^ constant.language.powershell
 Invoke-Something -foobar: $true
 # <- support.function.powershell
@@ -515,7 +525,7 @@ Invoke-Something -p1 {
     Invoke-Something -foobar:$true
 #   ^ support.function.powershell
 #                    ^ keyword.operator.assignment.powershell
-#                            ^ keyword.other.variable.definition.powershell
+#                            ^ punctuation.definition.variable.powershell
 #                             ^^^^ constant.language.powershell
 } | Invoke-Something
 # <- punctuation.section.braces.end.powershell
@@ -531,7 +541,7 @@ Invoke-Something -p1 value `
 #            ^ keyword.operator.other.powershell
     -p3 $value | Invoke-Something -verbose
 #   ^                             ^ keyword.operator.assignment.powershell
-#       ^ keyword.other.variable.definition.powershell
+#       ^ punctuation.definition.variable.powershell
 #              ^ keyword.operator.other.powershell
 #                ^^^^^^^^^^^^^^^^ support.function.powershell
 
@@ -579,7 +589,7 @@ switch -Wildcard ($a) {}
 # <- keyword.control.powershell
 #      ^ keyword.operator.assignment.powershell
 #                ^ punctuation.section.group.begin.powershell
-#                 ^ keyword.other.variable.definition.powershell
+#                 ^ punctuation.definition.variable.powershell
 #                   ^ punctuation.section.group.end.powershell
 #                     ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
 #                      ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
@@ -607,7 +617,7 @@ switch (4, 2) {}
 switch -Regex -File $filePath {
 # <- keyword.control.powershell
 #      ^      ^ keyword.operator.assignment.powershell
-#                   ^ keyword.other.variable.definition.powershell
+#                   ^ punctuation.definition.variable.powershell
 #                             ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     '.' {}
 #   ^^^ string.quoted.single.powershell
@@ -624,7 +634,7 @@ switch -Wildcard -CaseSensitive ($something) {
 # <- keyword.control.powershell
 #      ^         ^ keyword.operator.assignment.powershell
 #                               ^ punctuation.section.group.begin.powershell
-#                                ^ keyword.other.variable.definition.powershell
+#                                ^ punctuation.definition.variable.powershell
 #                                 ^ variable.other.readwrite.powershell
 #                                          ^ punctuation.section.group.end.powershell
 #                                            ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
@@ -701,7 +711,7 @@ function NewFile($Name) { }
 # <- storage.type.powershell
 #        ^^^^^^^ entity.name.function.powershell
 #               ^ punctuation.section.group.begin.powershell
-#                ^ keyword.other.variable.definition.powershell
+#                ^ punctuation.definition.variable.powershell
 #                   ^ variable.other.readwrite.powershell
 #                     ^ punctuation.section.group.end.powershell
 #                       ^ punctuation.section.braces.begin.powershell
@@ -710,7 +720,7 @@ filter myfilter($param) {}
 # <- storage.type.powershell
 #      ^^^^^^^^ entity.name.function.powershell
 #              ^ punctuation.section.group.begin.powershell
-#               ^ keyword.other.variable.definition.powershell
+#               ^ punctuation.definition.variable.powershell
 #                ^ variable.other.readwrite.powershell
 #                     ^ punctuation.section.group.end.powershell
 #                       ^ punctuation.section.braces.begin.powershell
@@ -719,7 +729,7 @@ Filter my-Filter ($param){}
 # <- storage.type.powershell
 #      ^^^^^^^^^ entity.name.function.powershell
 #                ^ punctuation.section.group.begin.powershell
-#                 ^ keyword.other.variable.definition.powershell
+#                 ^ punctuation.definition.variable.powershell
 #                   ^ variable.other.readwrite.powershell
 #                       ^ punctuation.section.group.end.powershell
 #                        ^ punctuation.section.braces.begin.powershell
@@ -733,12 +743,12 @@ function Test-Drive([string]$roman) {
 #                   ^ punctuation.section.bracket.begin.powershell
 #                    ^^^^^^ storage.type.powershell
 #                          ^ punctuation.section.bracket.end.powershell
-#                           ^ keyword.other.variable.definition.powershell
+#                           ^ punctuation.definition.variable.powershell
 #                            ^ variable.other.readwrite.powershell
 #                                 ^ punctuation.section.group.end.powershell
 #                                   ^ punctuation.section.braces.begin.powershell
     $roman | c:\users\Me\Documents\Programming\F#\test.exe $roman
-#   ^ keyword.other.variable.definition.powershell
+#   ^ punctuation.definition.variable.powershell
 #    ^ variable.other.readwrite.powershell
 #          ^ keyword.operator.other.powershell
 #                                               ^ punctuation.definition.comment.powershell
@@ -765,25 +775,25 @@ function Verb-Noun
         #         ^ meta.attribute.powershell punctuation.section.group.begin.powershell
         #          ^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                   ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                    ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                    ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                     ^^^^ meta.attribute.powershell constant.language.powershell
         #                         ^ meta.attribute.powershell keyword.operator.other.powershell
                    ValueFromPipeline=$true,
         #          ^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                           ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                            ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                            ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                             ^^^^ meta.attribute.powershell constant.language.powershell
         #                                 ^ meta.attribute.powershell keyword.operator.other.powershell
                    ValueFromPipelineByPropertyName = $true,
         #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                                          ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                                            ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                                            ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                                             ^^^^ meta.attribute.powershell constant.language.powershell
         #                                                 ^ meta.attribute.powershell keyword.operator.other.powershell
                    ValueFromRemainingArguments=$false,
         #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell variable.parameter.attribute.powershell
         #                                     ^ meta.attribute.powershell keyword.operator.assignment.powershell
-        #                                      ^ meta.attribute.powershell keyword.other.variable.definition.powershell
+        #                                      ^ meta.attribute.powershell punctuation.definition.variable.powershell
         #                                       ^^^^^ meta.attribute.powershell constant.language.powershell
         #                                            ^ meta.attribute.powershell keyword.operator.other.powershell
                    Position=0,
@@ -846,7 +856,7 @@ function Verb-Noun
         #          ^ meta.attribute.powershell punctuation.section.group.end.powershell
         #           ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
         $Param1
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ variable.other.readwrite.powershell
     )
     # <- punctuation.section.group.end.powershell
@@ -868,7 +878,7 @@ class Vehicle {
 #              ^ punctuation.section.braces.end.powershell
     Vehicle([string]$Owner) {
 #             ^ storage.type.powershell
-#                   ^ keyword.other.variable.definition.powershell
+#                   ^ punctuation.definition.variable.powershell
 #                    ^ variable.other.readwrite.powershell
 #                           ^ punctuation.section.braces.begin.powershell
         $this.Owner = $Owner
@@ -876,25 +886,25 @@ class Vehicle {
 
     [int]$Mileage
 #    ^ storage.type.powershell
-#        ^ keyword.other.variable.definition.powershell
+#        ^ punctuation.definition.variable.powershell
 #         ^ variable.other.readwrite.powershell
     [int]$Age
 #    ^ storage.type.powershell
-#        ^ keyword.other.variable.definition.powershell
+#        ^ punctuation.definition.variable.powershell
 #         ^ variable.other.readwrite.powershell
     [string]$Owner
 #    ^ storage.type.powershell
-#           ^ keyword.other.variable.definition.powershell
+#           ^ punctuation.definition.variable.powershell
 #            ^ variable.other.readwrite.powershell
 
     [void]Drive([int]$NumberOfMiles) {
 #    ^           ^ storage.type.powershell
-#                    ^ keyword.other.variable.definition.powershell
+#                    ^ punctuation.definition.variable.powershell
 #                     ^ variable.other.readwrite.powershell
         $this.Mileage += $NumberOfMiles
-#       ^ keyword.other.variable.definition.powershell
+#       ^ punctuation.definition.variable.powershell
 #        ^^^^ support.constant.automatic.powershell
-#             ^ entity.name.function.invocation.powershell
+#             ^ variable.other.member.powershell
 #                     ^^ keyword.operator.assignment.powershell
 
     }
@@ -909,7 +919,7 @@ foreach ($item in $collection) {
 #              ^^ keyword.control.powershell
 #                            ^ punctuation.section.group.end.powershell
 #                              ^ punctuation.section.braces.begin.powershell
-#        ^        ^ keyword.other.variable.definition.powershell
+#        ^        ^ punctuation.definition.variable.powershell
 }
 # <- punctuation.section.braces.end.powershell
 
@@ -988,7 +998,7 @@ $a -ceq 4 -and $a -ine $d -or
 #  ^              ^ keyword.operator.comparison.powershell
 #         ^               ^ keyword.operator.logical.powershell
 #       ^ constant.numeric.integer.powershell
-#              ^ keyword.other.variable.definition.powershell
+#              ^ punctuation.definition.variable.powershell
 $c -is [Type]
 #  ^ keyword.operator.comparison.powershell
 #       ^ storage.type.powershell
@@ -1148,16 +1158,16 @@ New-Object -TypeName System.Data
 #                      ^ keyword.control.powershell
 #                               ^ meta.scriptblock.powershell
 $file = join-path $env:SystemDrive "$([System.io.path]::GetRandomFileName()).ps1"
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 #            ^ support.function.powershell
 #                  ^ support.variable.drive.powershell
 #                         ^ variable.other.readwrite.powershell
-#                                   ^ string.quoted.double.powershell keyword.other.variable.definition.powershell
+#                                   ^ string.quoted.double.powershell punctuation.definition.variable.powershell
 #                                        ^ storage.type.powershell
 $ScriptBlock | Out-File $file -Force
-# <- keyword.other.variable.definition.powershell
+# <- punctuation.definition.variable.powershell
 #            ^ keyword.operator.other.powershell
-#                       ^ keyword.other.variable.definition.powershell
+#                       ^ punctuation.definition.variable.powershell
 #                             ^ keyword.operator.assignment.powershell
 workflow w1 {}
 # <- storage.type.powershell
@@ -1176,7 +1186,7 @@ get-thing | Out-WithYou > $null # destroy
 # ^          ^ support.function.powershell
 #         ^ keyword.operator.other.powershell
 #                       ^ keyword.operator.redirection.powershell
-#                         ^ keyword.other.variable.definition.powershell
+#                         ^ punctuation.definition.variable.powershell
 #                          ^ constant.language.powershell
 #                               ^ punctuation.definition.comment.powershell
 "Escaped chars: `", `n, `$, `b, `t, `""
@@ -1186,7 +1196,7 @@ get-thing | Out-WithYou > $null # destroy
 #             ^^ constant.character.escape.powershell
 #                                    ^^  ^^  ^^  ^^  ^^ not:constant.character.escape.powershell
 "When you call a method: $( get-number | %{ invoke-command $( [string]::format("Like (this{0})","what?") ) $var } )"
-#                        ^                                                                                 ^ keyword.other.variable.definition.powershell
+#                        ^                                                                                 ^ punctuation.definition.variable.powershell
 #                                      ^ keyword.operator.other.powershell
 #                                                           ^                 ^ meta.group.complex.subexpression.powershell punctuation.section.group.begin.powershell
 #                                                                ^ storage.type.powershell

@@ -102,8 +102,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!')'</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>'(?!')</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.single.powershell</string>
 			<key>patterns</key>
@@ -204,7 +220,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.variable.definition.powershell</string>
+					<string>punctuation.definition.variable.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -253,10 +269,29 @@
 			<string>keyword.control.powershell</string>
 		</dict>
 		<dict>
-			<key>match</key>
+			<key>begin</key>
 			<string>(?&lt;!\w)(--%)(?!\w)</string>
-			<key>name</key>
-			<string>keyword.control.powershell</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.powershell</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>.+</string>
+					<key>name</key>
+					<string>string.unquoted.powershell</string>
+				</dict>
+			</array>
+			<key>comment</key>
+			<string>This should be moved to the repository at some point.</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -331,7 +366,7 @@
 			<key>match</key>
 			<string>\|{2}|&amp;{2}|;</string>
 			<key>name</key>
-			<string>keyword.other.statement-separator.powershell</string>
+			<string>punctuation.terminator.statement.powershell</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -492,8 +527,24 @@
 						<dict>
 							<key>begin</key>
 							<string>(?&lt;!')'</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.begin.powershell</string>
+								</dict>
+							</dict>
 							<key>end</key>
 							<string>'(?!')</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.string.end.powershell</string>
+								</dict>
+							</dict>
 							<key>name</key>
 							<string>string.quoted.single.powershell</string>
 							<key>patterns</key>
@@ -709,7 +760,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.other.variable.definition.powershell</string>
+					<string>punctuation.definition.variable.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -945,15 +996,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>constant.language.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -964,20 +1015,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>support.constant.variable.powershell</string>
 						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -988,20 +1039,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>support.constant.automatic.powershell</string>
 						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1012,20 +1063,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>variable.language.powershell</string>
 						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1036,25 +1087,25 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1063,10 +1114,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1078,11 +1134,6 @@
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
 						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
@@ -1091,7 +1142,7 @@
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1100,25 +1151,25 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1127,10 +1178,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1142,11 +1198,6 @@
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
 						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
 						<key>5</key>
 						<dict>
 							<key>name</key>
@@ -1155,7 +1206,7 @@
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1229,15 +1280,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>constant.language.powershell</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1248,20 +1299,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>support.constant.variable.powershell</string>
 						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1272,20 +1323,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>support.variable.automatic.powershell</string>
 						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1296,20 +1347,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>variable.language.powershell</string>
 						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1320,25 +1371,25 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1347,20 +1398,20 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>4</key>
 						<dict>
@@ -1370,7 +1421,7 @@
 						<key>5</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1379,25 +1430,25 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.invocation.powershell</string>
+							<string>variable.other.member.powershell</string>
 						</dict>
 					</dict>
 					<key>match</key>
@@ -1406,10 +1457,15 @@
 				<dict>
 					<key>captures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.variable.definition.powershell</string>
+							<string>punctuation.definition.variable.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
@@ -1420,11 +1476,6 @@
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
 						</dict>
 						<key>5</key>
 						<dict>
@@ -1511,8 +1562,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!(?&lt;!`)")"</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>"(?!")</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.double.powershell</string>
 			<key>patterns</key>

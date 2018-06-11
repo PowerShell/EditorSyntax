@@ -25,7 +25,7 @@ class TypeName
     # <- punctuation.section.bracket.begin.powershell
     # ^ storage.type.powershell
     #      ^ punctuation.section.bracket.end.powershell
-    #        ^ keyword.other.variable.definition.powershell
+    #        ^ punctuation.definition.variable.powershell
     #         ^^ variable.other.readwrite.powershell
 
     # Static property
@@ -36,7 +36,7 @@ class TypeName
     #      ^ punctuation.section.bracket.begin.powershell
     #       ^ storage.type.powershell
     #                ^ punctuation.section.bracket.end.powershell
-    #                  ^ keyword.other.variable.definition.powershell
+    #                  ^ punctuation.definition.variable.powershell
     #                   ^^ variable.other.readwrite.powershell
 
     # Hidden property does not show as result of Get-Member
@@ -47,7 +47,7 @@ class TypeName
     #      ^ punctuation.section.bracket.begin.powershell
     #       ^ storage.type.powershell
     #          ^ punctuation.section.bracket.end.powershell
-    #            ^ keyword.other.variable.definition.powershell
+    #            ^ punctuation.definition.variable.powershell
     #             ^^ variable.other.readwrite.powershell
 
     # Constructor
@@ -58,15 +58,15 @@ class TypeName
         #     ^ punctuation.section.bracket.begin.powershell
         #      ^^^^^^ storage.type.powershell
         #            ^ punctuation.section.bracket.end.powershell
-        #              ^ keyword.other.variable.definition.powershell
+        #              ^ punctuation.definition.variable.powershell
         #               ^ variable.other.readwrite.powershell
         #                ^ punctuation.section.group.end.powershell
         $this.P1 = $s
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ support.constant.automatic.powershell
-        #     ^^ entity.name.function.invocation.powershell
+        #     ^^ variable.other.member.powershell
         #        ^ keyword.operator.assignment.powershell
-        #          ^ keyword.other.variable.definition.powershell
+        #          ^ punctuation.definition.variable.powershell
         #           ^ variable.other.readwrite.powershell
     }
 
@@ -82,7 +82,7 @@ class TypeName
     #                           ^ punctuation.section.bracket.begin.powershell
     #                            ^^^^^^^^^ storage.type.powershell
     #                                     ^ punctuation.section.bracket.end.powershell
-    #                                       ^ keyword.other.variable.definition.powershell
+    #                                       ^ punctuation.definition.variable.powershell
     #                                        ^ variable.other.readwrite.powershell
     #                                         ^ punctuation.section.group.end.powershell
         [TypeName]::P2 = $h
@@ -90,7 +90,7 @@ class TypeName
         # ^ storage.type.powershell
         #        ^ punctuation.section.bracket.end.powershell
         #              ^ keyword.operator.assignment.powershell
-        #                ^ keyword.other.variable.definition.powershell
+        #                ^ punctuation.definition.variable.powershell
         #                 ^ variable.other.readwrite.powershell
     }
 
@@ -105,20 +105,20 @@ class TypeName
     #                   ^ punctuation.section.bracket.begin.powershell
     #                    ^^^ storage.type.powershell
     #                       ^ punctuation.section.bracket.end.powershell
-    #                         ^ keyword.other.variable.definition.powershell
+    #                         ^ punctuation.definition.variable.powershell
     #                          ^ variable.other.readwrite.powershell
     #                           ^ punctuation.section.group.end.powershell
         $this.P3 = $i
-        # <- keyword.other.variable.definition.powershell
+        # <- punctuation.definition.variable.powershell
         # ^ support.constant.automatic.powershell
-        #     ^^ entity.name.function.invocation.powershell
+        #     ^^ variable.other.member.powershell
         #        ^ keyword.operator.assignment.powershell
-        #          ^ keyword.other.variable.definition.powershell
+        #          ^ punctuation.definition.variable.powershell
         #           ^ variable.other.readwrite.powershell
         return $this.P3
         # <- keyword.control.powershell
-        #      ^ keyword.other.variable.definition.powershell
+        #      ^ punctuation.definition.variable.powershell
         #       ^^^^ support.constant.automatic.powershell
-        #            ^^ entity.name.function.invocation.powershell
+        #            ^^ variable.other.member.powershell
     }
 }
