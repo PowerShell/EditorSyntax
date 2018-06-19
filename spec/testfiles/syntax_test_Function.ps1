@@ -46,6 +46,9 @@ using module Microsoft.PowerShell.Management
     # <- constant.string.documentation.powershell
     # ^ keyword.operator.documentation.powershell
         The functionality that best describes this cmdlet
+
+    This should not be considered documentaton -> .role
+                                                  # ^ not:keyword.operator.documentation.powershell
 #>
 # <- punctuation.definition.comment.block.end.powershell
 function Verb-Noun {
