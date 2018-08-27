@@ -28,7 +28,7 @@ Ready to go deeper and fix an existing issue?
 1. Make sure you have [pushed your commits](https://help.github.com/articles/pushing-to-a-remote/) to your new branch up to Github and then [create a pull request](https://help.github.com/articles/creating-a-pull-request/) to the EditorSyntax **master** branch.
 1. If prompted to sign the CLA, please follow the steps provided.
 
-See the [Contributing Guide](#Contributing-Guide) for a detailed step-by-step guide.
+See the [Contributing Guide](#contributing-guide) for a detailed step-by-step guide.
 
 #### Helpful tools/links
 
