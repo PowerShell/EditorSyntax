@@ -134,7 +134,7 @@ In order to prevent against regression we've included a number of specs in `.\sp
 
 If installing Atom is not an option or you cannot get it working you can submit a PR with "[WIP]" for Work-In-Progress in the title and our continuous integration tools will run the tests for you.
 
-If you get any errors that were unexpected make sure to fix them and run the tests again. If your change caused a test to break on purpose or if you need to create tests for something entirely new continue to the next section.
+If you get any errors that were unexpected make sure to fix them and run the tests again. If your change caused a test to break on purpose or if you need to create tests for something entirely new, continue to the next section.
 
 ## Create tests and/or modify existing tests
 
