@@ -60,10 +60,6 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#doubleQuotedString</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#scriptblock</string>
 		</dict>
 		<dict>
@@ -73,70 +69,8 @@
 			<string>#argumentModeEscapes</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>['\x{2018}-\x{201B}]</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.powershell</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>['\x{2018}-\x{201B}]</string>
-			<key>applyEndPatternLast</key>
-			<true/>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.single.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>['\x{2018}-\x{201B}]{2}</string>
-					<key>name</key>
-					<string>constant.character.escape.powershell</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>@(?:["\x{201C}-\x{201E}])(?=\s*$)</string>
-			<key>end</key>
-			<string>^(?:["\x{201C}-\x{201E}])@</string>
-			<key>name</key>
-			<string>string.quoted.double.heredoc.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#variableNoProperty</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#doubleQuotedHereStringEscapes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#stringInterpolation</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>@['\x{2018}-\x{201B}](?=\s*$)</string>
-			<key>end</key>
-			<string>^['\x{2018}-\x{201B}]@</string>
-			<key>name</key>
-			<string>string.quoted.single.heredoc.powershell</string>
+			<key>include</key>
+			<string>#quotedStrings_Members</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -144,52 +78,67 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(@)(\()</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.other.array.begin.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.begin.powershell</string>
-				</dict>
-			</dict>
+			<string>(?=@\()</string>
 			<key>end</key>
-			<string>(\))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?((#).*$)?</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.end.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>variable.other.member.powershell</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.powershell</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>comment.line.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.group.array-expression.powershell</string>
+			<string>(?!.\G)</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>$self</string>
+					<key>begin</key>
+					<string>(@)(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.array.begin.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.end.powershell</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.group.array-expression.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=\))(?=\.(?!\.)|::|\[)</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -785,6 +734,14 @@
 							</array>
 						</dict>
 						<dict>
+							<key>include</key>
+							<string>#commentBlock</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#commentLine</string>
+						</dict>
+						<dict>
 							<key>match</key>
 							<string>[^;\s][^;]+</string>
 						</dict>
@@ -1067,6 +1024,25 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>when nothing else matches in usual tokenizing, consume it to prevent other patterns from striking in the middle of what might be a command name.</string>
+			<key>begin</key>
+			<string>(?=[^\s])</string>
+			<key>end</key>
+			<string>(?=[(){}|;&amp;\s])</string>
+			<key>applyEndPatternLast</key>
+			<true/>
+			<key>contentName</key>
+			<string>unquoted.text.powershell</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#unquotedStrings_text</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -1105,7 +1081,7 @@
 		<key>commentLine</key>
 		<dict>
 			<key>begin</key>
-			<string>(?:(?&lt;![`\\\w*\[\]/.?=:~!$^%+-])|\G)(#)#*</string>
+			<string>(#)#*</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -1392,7 +1368,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;![\w-])(?:(global|local|script|private)(:))?([\p{L}:_\\/\[\]`-][[`\\\w*\[\]/.?&lt;&gt;=:~!@#$^%+-]]*)</string>
+					<string>(?&lt;![\w-])(?:(global|local|script|private)(:))?(?:(?=[\p{L}:_\\/\[\]`-])|(?&lt;=:)(?=["\x{201C}-\x{201E}'\x{2018}-\x{201B}]))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1405,11 +1381,6 @@
 							<key>name</key>
 							<string>punctuation.separator.colon.powershell</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.powershell</string>
-						</dict>
 					</dict>
 					<key>end</key>
 					<string>(?=[//s])|(?&lt;=})</string>
@@ -1419,50 +1390,78 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>{</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.section.braces.begin.powershell</string>
-								</dict>
-							</dict>
+							<string>\G</string>
 							<key>end</key>
-							<string>}</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.section.braces.end.powershell</string>
-								</dict>
-							</dict>
-							<key>name</key>
-							<string>meta.function.powershell</string>
+							<string>(?=[(){}|;&amp;\s])</string>
+							<key>applyEndPatternLast</key>
+							<false/>
+							<key>contentName</key>
+							<string>entity.name.function.powershell</string>
 							<key>patterns</key>
 							<array>
 								<dict>
 									<key>include</key>
-									<string>$self</string>
+									<string>#unquotedStrings_text</string>
 								</dict>
 							</array>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#invocationParameterSet</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#commentBlock</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#commentLine</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>(?&lt;!})[^\s{}()]+</string>
+							<key>begin</key>
+							<string>(?&lt;!\G)(?&lt;!})</string>
+							<key>end</key>
+							<string>(?=[//s])|(?&lt;=})</string>
+							<key>applyEndPatternLast</key>
+							<true/>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>begin</key>
+									<string>{</string>
+									<key>beginCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.section.braces.begin.powershell</string>
+										</dict>
+									</dict>
+									<key>end</key>
+									<string>}</string>
+									<key>endCaptures</key>
+									<dict>
+										<key>0</key>
+										<dict>
+											<key>name</key>
+											<string>punctuation.section.braces.end.powershell</string>
+										</dict>
+									</dict>
+									<key>name</key>
+									<string>meta.function.powershell</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>$self</string>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#invocationParameterSet</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#commentBlock</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#commentLine</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>(?&lt;!})[^\s{}()]+</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -1517,139 +1516,129 @@
 		<key>interpolatedStringContent</key>
 		<dict>
 			<key>begin</key>
-			<string>\(</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.begin.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>interpolated.simple.source.powershell</string>
+			<string>(?=\()</string>
 			<key>end</key>
-			<string>(\))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?((#).*$)?</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.end.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>variable.other.member.powershell</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.powershell</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>comment.line.powershell</string>
-				</dict>
-			</dict>
+			<string>(?!.\G)</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>$self</string>
+					<key>begin</key>
+					<string>\(</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>interpolated.simple.source.powershell</string>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.end.powershell</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#interpolation</string>
+					<key>begin</key>
+					<string>(?&lt;=\))(?=\.(?!\.)|::|\[)</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
 		<key>interpolation</key>
 		<dict>
 			<key>begin</key>
-			<string>(\$)(\()</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.other.subexpression.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.begin.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.group.complex.subexpression.powershell</string>
+			<string>(?=\$\()</string>
 			<key>end</key>
-			<string>(\))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?((#).*$)?</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.group.end.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>variable.other.member.powershell</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.powershell</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>comment.line.powershell</string>
-				</dict>
-			</dict>
+			<string>(?!.\G)</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>$self</string>
+					<key>begin</key>
+					<string>(\$)(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.other.subexpression.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.group.complex.subexpression.powershell</string>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.group.end.powershell</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
-					<key>comment</key>
-					<string>#commands</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#variable</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#interpolatedStringContent</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#function</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#attribute</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#type</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#hashtable</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#doubleQuotedString</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#scriptblock</string>
+					<key>begin</key>
+					<string>(?&lt;=\))(?=\.(?!\.)|::|\[)</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -1687,48 +1676,8 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>comment</key>
-					<string>#interpolation</string>
-				</dict>
-				<dict>
 					<key>include</key>
 					<string>$self</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#commands</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#variable</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#interpolatedStringContent</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#function</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#attribute</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#type</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#hashtable</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#doubleQuotedString</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#scriptblock</string>
 				</dict>
 			</array>
 		</dict>
@@ -1751,7 +1700,7 @@
 						</dict>
 					</dict>
 					<key>begin</key>
-					<string>(?:(?&lt;!\w)|\G)([-+]?(?:[0-9]+(?i:(?![ed\.])|(?:\.[0-9]*)?((?:(?i:e)[-+]?[0-9]+)?l))|(?:\.[0-9]+)\g&lt;2&gt;))((?i:[kmgtp]b)?)\b</string>
+					<string>(?:(?&lt;!\w)|\G)([-+]?(?:[0-9]+(?i:(?![ed]|\.(?!\.))|(?:\.[0-9]*)?((?:(?i:e)[-+]?[0-9]+)?l))|(?:\.[0-9]+)\g&lt;2&gt;))((?i:[kmgtp]b)?)\b</string>
 					<key>end</key>
 					<string>\G</string>
 				</dict>
@@ -1815,75 +1764,123 @@
 		<key>scriptblock</key>
 		<dict>
 			<key>begin</key>
-			<string>{</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.braces.begin.powershell</string>
-				</dict>
-			</dict>
+			<string>(?={)</string>
 			<key>end</key>
-			<string>(})((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?((#).*$)?</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.braces.end.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>variable.other.member.powershell</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.powershell</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>comment.line.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.scriptblock.powershell</string>
+			<string>(?!.\G)</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>$self</string>
+					<key>begin</key>
+					<string>{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.braces.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.scriptblock.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=})(?=\.(?!\.)|::|\[)</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
 		<key>type</key>
 		<dict>
 			<key>comment</key>
-			<string>This is used by both type and index references</string>
+			<string>This is used by both type attribute references, attribute references need to be moved here</string>
 			<key>begin</key>
-			<string>\[</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.bracket.begin.powershell</string>
-				</dict>
-			</dict>
+			<string>(?=\[)</string>
 			<key>end</key>
-			<string>(?&lt;=])(?!\.(?!\.)|::)|(?=[^\p{L}\[\]\s])|(?=\s(?&lt;=\w))</string>
+			<string>(?!.\G)</string>
 			<key>applyEndPatternLast</key>
-			<false/>
+			<true/>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>](?=\.(?!\.)|::)</string>
+					<string>\[</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.bracket.begin.powershell</string>
+						</dict>
+					</dict>
 					<key>end</key>
-					<string>(?!\G(?=\.(?!\.)|::))</string>
+					<string>]</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.bracket.end.powershell</string>
+						</dict>
+					</dict>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>Name</key>
+					<string>meta.type-reference.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>(?i:ref)(?=\])</string>
+							<key>name</key>
+							<string>storage.modifier.powershell</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type_SubType</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=])(?=\.(?!\.)|::|\[)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1892,29 +1889,68 @@
 							<string>punctuation.section.bracket.end.powershell</string>
 						</dict>
 					</dict>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#members</string>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#type</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
 						</dict>
 					</array>
 				</dict>
+			</array>
+		</dict>
+		<key>type_SubType</key>
+		<dict>
+			<key>patterns</key>
+			<array>
 				<dict>
-					<key>match</key>
-					<string>\s+</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>]</string>
-					<key>name</key>
-					<string>punctuation.section.bracket.end.powershell</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>(?i:ref)(?=\])</string>
-					<key>name</key>
-					<string>storage.modifier.powershell</string>
+					<key>begin</key>
+					<string>(\[)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.bracket.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(])|(?&gt;[^\s\p{L},])</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.bracket.end.powershell</string>
+						</dict>
+					</dict>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>comment:contentName</key>
+					<string>meta.type-reference.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#type_SubType</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>(?&lt;!])[^\s\[\]+]+</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -1958,15 +1994,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#type</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#commentBlock</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#commentLine</string>
+							<string>#type_SubType</string>
 						</dict>
 						<dict>
 							<key>match</key>
@@ -1976,16 +2004,13 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type</string>
+					<string>#commentBlock</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>$self</string>
+					<string>#commentLine</string>
 				</dict>
 			</array>
-		</dict>
-		<key>typeAdditive</key>
-		<dict>
 		</dict>
 		<key>type_keywords</key>
 		<dict>
@@ -1995,7 +2020,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;![\w-])(?i:type|void|string|(?:ps(?:custom)?)?object|hashtable|single|float|double|decimal|s?byte|bool(?:ean)?|char|valuetype|datetime|array|u?int(?:32|16|64)|int|long)(?!\w)</string>
+					<string>(?&lt;![\w-])(?i:type|void|switch|(?:ps(?:custom)?)?object|hashtable|string|single|float|double|decimal|s?byte|bool(?:ean)?|char|valuetype|datetime|array|u?int(?:32|16|64)|int|long)(?!\w)</string>
 					<key>name</key>
 					<string>keyword.type.powershell</string>
 				</dict>
@@ -2007,21 +2032,157 @@
 				</dict>
 			</array>
 		</dict>
-		<key>members</key>
+		<key>accessors</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\G(\.|::)([\p{L}_]\w*)(?=\()</string>
-					<key>captures</key>
+					<key>begin</key>
+					<string>\G(?:\.(?!\.)|::)</string>
+					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.accessor.powershell</string>
 						</dict>
-						<key>2</key>
+					</dict>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#members</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#commentLine</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#commentBlock</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>consume spaces and comments and line ends until the next token appears</string>
+							<key>begin</key>
+							<string>\G(?&lt;=\.|::)(?!\S)</string>
+							<key>end</key>
+							<string>(?=.)</string>
+							<key>applyEndPatternLast</key>
+							<true/>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>\s+</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#commentLine</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#commentBlock</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?=\[)</string>
+					<key>end</key>
+					<string>(?!.\G)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\[</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.section.bracket.begin.powershell</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>]</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.section.bracket.end.powershell</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>meta.index.powershell</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>$self</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?&lt;=])(?=\.(?!\.)|::|\[)</string>
+							<key>end</key>
+							<string>(?=[^\s\p{L}]|\n)</string>
+							<key>applyEndPatternLast</key>
+							<true/>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#accessors</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[^\s\W]+</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#commentLine</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#commentBlock</string>
+				</dict>
+			</array>
+		</dict>
+		<key>members</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\w-)((?i:(foreach|where)(?=[\({])))</string>
+					<key>name</key>
+					<string>support.function.powershell</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[\p{L}_]\w*(?=\()</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>variable.function.powershell</string>
@@ -2030,20 +2191,42 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\G(\.|::)([\p{L}_]\w*)(?=\.(?!\.)|::)</string>
+					<string>[\p{L}_]\w*(?=\.(?!\.)|::|\[)</string>
 					<key>end</key>
-					<string>(?!\G(?=\.(?!\.)|::))</string>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
 					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.accessor.powershell</string>
-						</dict>
-						<key>2</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>variable.other.object.property.powershell</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>[\p{L}_]\w*</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.property.powershell</string>
 						</dict>
 					</dict>
 					<key>patterns</key>
@@ -2054,37 +2237,24 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#commentblock</string>
+							<string>#commentBlock</string>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#members</string>
+							<key>match</key>
+							<string>[^\s\W]+</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>\G(\.|::)([\p{L}_]\w*)</string>
-					<key>end</key>
-					<string>(?!.\G)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.accessor.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.property.powershell</string>
-						</dict>
-					</dict>
+					<key>include</key>
+					<string>#quotedStrings_Members</string>
 				</dict>
 			</array>
 		</dict>
-		<key>variable</key>
+		<key>variable_inner</key>
 		<dict>
+			<key>comment</key>
+			<string>seperate the parts of the variable name and scope them</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -2100,21 +2270,11 @@
 							<key>name</key>
 							<string>punctuation.definition.variable.powershell</string>
 						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>comment.line.powershell</string>
-						</dict>
 					</dict>
 					<key>comment</key>
 					<string>These are special constants.</string>
 					<key>match</key>
-					<string>((\$)(?i:(:?(?:False|Null|True)))\b)((#).*$)?</string>
+					<string>((\$)(?i:(:?(?:False|Null|True)))\b)</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2128,27 +2288,12 @@
 						<dict>
 							<key>name</key>
 							<string>punctuation.definition.variable.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.member.powershell</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.powershell</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>comment.line.powershell</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>These are the other built-in constants.</string>
 					<key>match</key>
-					<string>((\$)(?i:(:?(?:Error|ExecutionContext|Host|Home|PID|PsHome|PsVersionTable|ShellID)))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?\b)((#).*$)?</string>
+					<string>((\$)(?i:(:?(?:Error|ExecutionContext|Host|Home|PID|PsHome|PsVersionTable|ShellID)\b)))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2163,24 +2308,9 @@
 							<key>name</key>
 							<string>punctuation.definition.variable.powershell</string>
 						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.member.powershell</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.powershell</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>comment.line.powershell</string>
-						</dict>
 					</dict>
 					<key>match</key>
-					<string>((\$)(?i:((?:[$^?])|:\?|:?(?:_|Args|ConsoleFileName|Event|EventArgs|EventSubscriber|ForEach|Input|LastExitCode|Matches|MyInvocation|NestedPromptLevel|Profile|PSBoundParameters|PsCmdlet|PsCulture|PSDebugContext|PSItem|PSCommandPath|PSScriptRoot|PsUICulture|Pwd|Sender|SourceArgs|SourceEventArgs|StackTrace|Switch|This)\b))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?)((#).*$)?</string>
+					<string>((\$)(?i:((?:[$^?])|:\?|:?(?:_|Args|ConsoleFileName|Event|EventArgs|EventSubscriber|ForEach|Input|LastExitCode|Matches|MyInvocation|NestedPromptLevel|Profile|PSBoundParameters|PsCmdlet|PsCulture|PSDebugContext|PSItem|PSCommandPath|PSScriptRoot|PsUICulture|Pwd|Sender|SourceArgs|SourceEventArgs|StackTrace|Switch|This)\b)))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2195,26 +2325,11 @@
 							<key>name</key>
 							<string>punctuation.definition.variable.powershell</string>
 						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.member.powershell</string>
-						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.powershell</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>comment.line.powershell</string>
-						</dict>
 					</dict>
 					<key>comment</key>
 					<string>Style preference variables as language variables so that they stand out.</string>
 					<key>match</key>
-					<string>((\$)(?i:(:?(?:ConfirmPreference|DebugPreference|ErrorActionPreference|ErrorView|FormatEnumerationLimit|MaximumAliasCount|MaximumDriveCount|MaximumErrorCount|MaximumFunctionCount|MaximumHistoryCount|MaximumVariableCount|OFS|OutputEncoding|ProgressPreference|PsCulture|PSDebugContext|PSDefaultParameterValues|PSEmailServer|PSItem|PSModuleAutoloadingPreference|PSSenderInfo|PSSessionApplicationName|PSSessionConfigurationName|PSSessionOption|VerbosePreference|WarningPreference|WhatIfPreference)))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?\b)((#).*$)?</string>
+					<string>((\$)(?i:(:?(?:ConfirmPreference|DebugPreference|ErrorActionPreference|ErrorView|FormatEnumerationLimit|MaximumAliasCount|MaximumDriveCount|MaximumErrorCount|MaximumFunctionCount|MaximumHistoryCount|MaximumVariableCount|OFS|OutputEncoding|ProgressPreference|PsCulture|PSDebugContext|PSDefaultParameterValues|PSEmailServer|PSItem|PSModuleAutoloadingPreference|PSSenderInfo|PSSessionApplicationName|PSSessionConfigurationName|PSSessionOption|VerbosePreference|WarningPreference|WhatIfPreference)\b)))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2235,28 +2350,18 @@
 							<string>storage.modifier.scope.powershell</string>
 						</dict>
 						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.colon.powershell</string>
+						</dict>
+						<key>5</key>
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
 						</dict>
-						<key>6</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.member.powershell</string>
-						</dict>
-						<key>8</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.powershell</string>
-						</dict>
-						<key>7</key>
-						<dict>
-							<key>name</key>
-							<string>comment.line.powershell</string>
-						</dict>
 					</dict>
 					<key>match</key>
-					<string>((?i:(\$)(?:(?:(global|local|private|script|using|workflow):|((?:[\p{L}_]\w*):|:))(?!:))?+((?:\p{L}|\d|[_?]|:(?!:))+))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?)((#).*$)?</string>
+					<string>((?i:(\$)(?:(?:(global|local|private|script|using|workflow)(:)|((?:[\p{L}_]\w*):|:))(?!:))?+((?:\p{L}|\d|[_?]|:(?!:))+)))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2277,6 +2382,11 @@
 							<string>storage.modifier.scope.powershell</string>
 						</dict>
 						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.colon.powershell</string>
+						</dict>
+						<key>5</key>
 						<dict>
 							<key>name</key>
 							<string>support.variable.drive.powershell</string>
@@ -2285,7 +2395,7 @@
 					<key>comment</key>
 					<string>splatting cannot have members and certain characters following, including no line comment</string>
 					<key>match</key>
-					<string>((?i:(\@)(?:(?:(global|local|private|script|using|workflow):|((?:[\p{L}_]\w*):|:))(?!:))?+((?:\p{L}|\d|[_?]|:(?!:))++)))(?![~`!@#$%^*&lt;&gt;\]\\/+-])</string>
+					<string>((?i:(\@)(?:(?:(global|local|private|script|using|workflow)(:)|((?:[\p{L}_]\w*):|:))(?!:))?+((?:\p{L}|\d|[_?]|:(?!:))++)))(?![~`!@#$%^*&lt;&gt;\]\\/+-])</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -2320,24 +2430,96 @@
 							<key>name</key>
 							<string>punctuation.definition.variable.braces.end.powershell</string>
 						</dict>
-						<key>8</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.member.powershell</string>
-						</dict>
-						<key>10</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.comment.powershell</string>
-						</dict>
-						<key>9</key>
-						<dict>
-							<key>name</key>
-							<string>comment.line.powershell</string>
-						</dict>
 					</dict>
 					<key>match</key>
-					<string>((?i:(\$)(\{)(?:(?:(global|local|private|script|using|workflow):|((?:[^`{}:]|`[`{}]?)+:|:)))?+([^`{}]|`[`{}]?)+(\}))((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?)((#).*$)?</string>
+					<string>((?i:(\$)(\{)(?:(?:(global|local|private|script|using|workflow):|((?:[^`{}:]|`[`{}]?+)+:|:)))?+([^`{}]|`[`{}]?+)+(\})))</string>
+				</dict>
+			</array>
+		</dict>
+		<key>variable</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?=\$(?:(?:(?:(?:[\p{L}_]\w*):|:)(?!:))?+(?:\p{L}|\d|[_?]|:(?!:))+|\{(?:(?:(?:[^`{}:]|`[`{}]?)+:|:))?+([^`{}]|`[`{}]?)+(\})))</string>
+					<key>end</key>
+					<string>(?!.\G)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\$(?:(?:(?:(?:[\p{L}_]\w*):|:)(?!:))?+(?:\p{L}|\d|[_?]|:(?!:))+|\{(?:(?:(?:[^`{}:]|`[`{}]?)+:|:))?+([^`{}]|`[`{}]?)+(\}))(?=\.(?!\.)|::|\[)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#variable_inner</string>
+										</dict>
+									</array>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=[^\s\p{L}]|\n)</string>
+							<key>applyEndPatternLast</key>
+							<true/>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#accessors</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>[^\s\W]+</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\$(?:(?:(?:(?:[\p{L}_]\w*):|:)(?!:))?+(?:\p{L}|\d|[_?]|:(?!:))+|\{(?:(?:(?:[^`{}:]|`[`{}]?)+:|:))?+([^`{}]|`[`{}]?)+(\}))</string>
+							<key>end</key>
+							<string>(?!.\G)</string>
+							<key>applyEndPatternLast</key>
+							<true/>
+							<key>captures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#variable_inner</string>
+										</dict>
+									</array>
+								</dict>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>@(?:(?:(?:[\p{L}_]\w*):|:)(?!:))?+(?:\p{L}|\d|[_?]|:(?!:))++(?![~`!@#$%^*&lt;&gt;\]\\/"\x{201C}-\x{201E}'\x{2018}-\x{201B}+-])</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#variable_inner</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
 				</dict>
 			</array>
 		</dict>
@@ -2402,271 +2584,300 @@
 		</dict>
 		<key>variableNoProperty</key>
 		<dict>
+			<key>match</key>
+			<string>(\$)((?:(?:(?:[\p{L}_]\w*):|:)(?!:))?+(?:\p{L}|\d|[_?]|:(?!:))+|\{(?:(?:(?:[^`{}:]|`[`{}]?)+:|:))?+([^`{}]|`[`{}]?)+(\}))</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#variable_inner</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.embedded.interpolated.powershell</string>
+		</dict>
+		<key>hashtable</key>
+		<dict>
+			<key>begin</key>
+			<string>(?=@\{)</string>
+			<key>end</key>
+			<string>(?!.\G)</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
+					<key>begin</key>
+					<string>(@)(\{)</string>
+					<key>beginCaptures</key>
 					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>constant.language.powershell</string>
-						</dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.embedded.interpolated.powershell</string>
-					<key>comment</key>
-					<string>These are special constants.</string>
-					<key>match</key>
-					<string>(\$)(?i:(:?(?:False|Null|True)))\b</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.builtin.powershell</string>
-						</dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.embedded.interpolated.powershell</string>
-					<key>match</key>
-					<string>(\$)(?i:(:?(?:Error|ExecutionContext|Host|Home|PID|PsHome|PsVersionTable|ShellID)))\b</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.builtin.powershell</string>
-						</dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.embedded.interpolated.powershell</string>
-					<key>comment</key>
-					<string>Automatic variables are not constants, but they are read-only...</string>
-					<key>match</key>
-					<string>(\$)(?i:((?:[$^?])|:\?|:?(?:_|Args|ConsoleFileName|Event|EventArgs|EventSubscriber|ForEach|Input|LastExitCode|Matches|MyInvocation|NestedPromptLevel|Profile|PSBoundParameters|PsCmdlet|PsCulture|PSDebugContext|PSItem|PSCommandPath|PSScriptRoot|PsUICulture|Pwd|Sender|SourceArgs|SourceEventArgs|StackTrace|Switch|This)\b))</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>variable.language.builtin.powershell</string>
-						</dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.embedded.interpolated.powershell</string>
-					<key>comment</key>
-					<string>Style preference variables as language variables so that they stand out.</string>
-					<key>match</key>
-					<string>(\$)(?i:(:?(?:ConfirmPreference|DebugPreference|ErrorActionPreference|ErrorView|FormatEnumerationLimit|MaximumAliasCount|MaximumDriveCount|MaximumErrorCount|MaximumFunctionCount|MaximumHistoryCount|MaximumVariableCount|OFS|OutputEncoding|ProgressPreference|PsCulture|PSDebugContext|PSDefaultParameterValues|PSEmailServer|PSItem|PSModuleAutoloadingPreference|PSSenderInfo|PSSessionApplicationName|PSSessionConfigurationName|PSSessionOption|VerbosePreference|WarningPreference|WhatIfPreference)))\b</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>support.variable.drive.powershell</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>meta.embedded.interpolated.powershell</string>
-					<key>match</key>
-					<string>(?i:(\$)(?:(?:(global|local|private|script|using|workflow):|((?:[\p{L}_]\w*):|:))(?!:))?+((?:\p{L}|\d|[_?]|:(?!:))+))</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>variable.other.readwrite.powershell</string>
-						</dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.variable.powershell</string>
+							<string>keyword.other.hashtable.begin.powershell</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.section.braces.begin.powershell</string>
 						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>storage.modifier.scope.powershell</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>support.variable.drive.powershell</string>
-						</dict>
-						<key>6</key>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.section.braces.end.powershell</string>
 						</dict>
 					</dict>
 					<key>name</key>
-					<string>meta.embedded.interpolated.powershell</string>
-					<key>match</key>
-					<string>(?i:(\$)(\{)(?:(?:(global|local|private|script|using|workflow):|((?:[^`{}:]|`[`{}]?)+:|:)))?+([^`{}]|`[`{}]?)+(\}))</string>
+					<string>meta.hashtable.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\b(\w+)(?=\s*=)</string>
+							<key>name</key>
+							<string>entity.name.variable.property.powershell</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>#scriptblock</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=\})(?=\.(?!\.)|::|\[)</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
-		<key>hashtable</key>
+		<key>quotedStrings_Members</key>
 		<dict>
 			<key>begin</key>
-			<string>(@)(\{)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.other.hashtable.begin.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.braces.begin.powershell</string>
-				</dict>
-			</dict>
+			<string>(?=@?(['\x{2018}-\x{201B}"\x{201C}-\x{201E}]))(?:(?&lt;!@\g&lt;1&gt;)|\s*$)</string>
 			<key>end</key>
-			<string>(\})((?:(?:\.|::)(?:[\p{L}_]\w*))*\b)?((#).*$)?</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.braces.end.powershell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>variable.other.member.powershell</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.comment.powershell</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>comment.line.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.hashtable.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\b(\w+)(?=\s*=)</string>
-					<key>name</key>
-					<string>entity.name.variable.property.powershell</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>#scriptblock</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>$self</string>
-				</dict>
-			</array>
-		</dict>
-		<key>doubleQuotedString</key>
-		<dict>
-			<key>begin</key>
-			<string>(?:["\x{201C}-\x{201E}])</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.powershell</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(?:["\x{201C}-\x{201E}])</string>
+			<string>(?!.\G)</string>
 			<key>applyEndPatternLast</key>
 			<true/>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.powershell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.double.powershell</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>comment</key>
-					<string>(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,64}\b</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#variableNoProperty</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#doubleQuotedStringEscapes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#stringInterpolation</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>`\s*$</string>
+					<key>begin</key>
+					<string>['\x{2018}-\x{201B}]</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>['\x{2018}-\x{201B}]</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.powershell</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>keyword.other.powershell</string>
+					<string>string.quoted.single.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>['\x{2018}-\x{201B}]{2}</string>
+							<key>name</key>
+							<string>constant.character.escape.powershell</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>@(?:["\x{201C}-\x{201E}])(?=\s*$)</string>
+					<key>end</key>
+					<string>^(?:["\x{201C}-\x{201E}])@</string>
+					<key>name</key>
+					<string>string.quoted.double.heredoc.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#variableNoProperty</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedHereStringEscapes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#stringInterpolation</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>@['\x{2018}-\x{201B}](?=\s*$)</string>
+					<key>end</key>
+					<string>^['\x{2018}-\x{201B}]@</string>
+					<key>name</key>
+					<string>string.quoted.single.heredoc.powershell</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?:["\x{201C}-\x{201E}])</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.powershell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?:["\x{201C}-\x{201E}])</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.powershell</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.double.powershell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#variableNoProperty</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedStringEscapes</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#stringInterpolation</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;=^(['\x{2018}-\x{201B}"\x{201C}-\x{201E}])@|(?&lt;=\g&lt;1&gt;))(?=\.(?!\.)|::|\[)</string>
+					<key>end</key>
+					<string>(?=[^\s\p{L}]|\n)</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#accessors</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\W]+</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>unquotedStrings_text</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>['\x{2018}-\x{201B}]</string>
+					<key>end</key>
+					<string>['\x{2018}-\x{201B}]</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>['\x{2018}-\x{201B}]{2}</string>
+							<key>name</key>
+							<string>constant.character.escape.powershell</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>["\x{201C}-\x{201E}]</string>
+					<key>end</key>
+					<string>["\x{201C}-\x{201E}]</string>
+					<key>applyEndPatternLast</key>
+					<true/>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#doubleQuotedStringEscapes</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\$\(</string>
+							<key>end</key>
+							<string>\)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#unquotedStrings_text</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\$\(</string>
+					<key>end</key>
+					<string>\)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#unquotedStrings_text</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
