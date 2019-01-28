@@ -1120,7 +1120,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>`(?:['\x{2018}-\x{201B}0abnfrvt"\x{201C}-\x{201E}$`\n])</string>
+					<string>`(?:['0abnfrvt\x{2018}-\x{201B}"\x{201C}-\x{201E}$`\n])</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
@@ -1312,7 +1312,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>`(?:[0abnfrvt\s"\x{201C}-\x{201E}$`]|(?=$))</string>
+					<string>`(?:[`0abnfrvt\s"\x{201C}-\x{201E}$])</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
@@ -1336,7 +1336,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>`(?:[0abnfrvt\s"\x{201C}-\x{201E}'\x{2018}-\x{201B}$`]|(?=$))</string>
+					<string>`(?:[`0abnfrvt\s"\x{201C}-\x{201E}'\x{2018}-\x{201B}$])</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
@@ -1368,7 +1368,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;![\w-])(?:(global|local|script|private)(:))?(?:(?=[\p{L}:_\\/\[\]`-])|(?&lt;=:)(?=["\x{201C}-\x{201E}'\x{2018}-\x{201B}]))</string>
+					<string>(?&lt;![\w-])(?:(global|local|script|private)(:))?(?:(?=[\p{L}:_\\/\[\]-]|`(?!\s))|(?&lt;=:)(?=[`"\x{201C}-\x{201E}'\x{2018}-\x{201B}]))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1464,6 +1464,12 @@
 							</array>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>`\s</string>
+					<key>name</key>
+					<string>invalid.character.escape.powershell</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2826,6 +2832,16 @@
 		<dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>match</key>
+					<string>`\s</string>
+					<key>name</key>
+					<string>constant.character.escape.powershell</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#argumentModeEscapes</string>
+				</dict>
 				<dict>
 					<key>begin</key>
 					<string>['\x{2018}-\x{201B}]</string>
