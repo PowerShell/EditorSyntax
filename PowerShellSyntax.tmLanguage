@@ -63,16 +63,6 @@
 			<string>#scriptblock</string>
 		</dict>
 		<dict>
-			<key>comment</key>
-			<string>Needed to parse stuff correctly in 'argument mode'. (See about_parsing.)</string>
-			<key>include</key>
-			<string>#argumentModeEscapes</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#quotedStrings_Members</string>
-		</dict>
-		<dict>
 			<key>include</key>
 			<string>#numericConstant</string>
 		</dict>
@@ -1025,6 +1015,10 @@
 			</array>
 		</dict>
 		<dict>
+			<key>include</key>
+			<string>#quotedStrings_Members</string>
+		</dict>
+		<dict>
 			<key>comment</key>
 			<string>when nothing else matches in usual tokenizing, consume it to prevent other patterns from striking in the middle of what might be a command name.</string>
 			<key>begin</key>
@@ -1042,6 +1036,12 @@
 					<string>#unquotedStrings_text</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Needed to parse stuff correctly in 'argument mode'. (See about_parsing.)</string>
+			<key>include</key>
+			<string>#argumentModeEscapes</string>
 		</dict>
 	</array>
 	<key>repository</key>
