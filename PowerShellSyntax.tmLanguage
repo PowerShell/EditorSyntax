@@ -1393,7 +1393,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$|@)(global|local|private|script|using|workflow):((?:\p{L}|\d|_)+))</string>
+					<string>(?i:(\$)(global|local|private|script|using|workflow):((?:\p{L}|\d|_)+))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1591,10 +1591,6 @@
 				<dict>
 					<key>include</key>
 					<string>#variableNoProperty</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#variable</string>
 				</dict>
 				<dict>
 					<key>include</key>
