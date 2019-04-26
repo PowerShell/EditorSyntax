@@ -173,6 +173,12 @@ $variable.Name
 #                                       ^^^^^^^^^^^^ variable.other.readwrite.powershell
 #                                                    ^ punctuation.definition.string.end.powershell
 
+# @splat references only work in argument mode, should not highlight in strings
+"This is a @double quoted string."
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
+#          ^ not:punctuation.definition.variable.powershell
+#           ^ not:variable.other.readwrite.powershell
+
 # Single quotes string
 'This is a string'
 # <- punctuation.definition.string.begin.powershell string.quoted.single.powershell
@@ -369,6 +375,9 @@ $This is a 'double quoted'
 # <- punctuation.definition.variable.powershell
 # ^ string.quoted.double.heredoc.powershell support.variable.automatic.powershell
 Isn't it "nice"??
+There is no @platting here!
+#           ^ not:punctuation.definition.variable.powershell
+#            ^ not:variable.other.readwrite.powershell
 "@
 # <- string.quoted.double.heredoc.powershell
  # <- string.quoted.double.heredoc.powershell
