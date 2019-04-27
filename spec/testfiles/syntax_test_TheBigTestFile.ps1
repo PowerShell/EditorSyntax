@@ -91,10 +91,10 @@ throw "Do not run this file!"
 # Automatic variables
 $_
 # <- punctuation.definition.variable.powershell
- # <- support.constant.automatic.powershell
+ # <- support.variable.automatic.powershell
 $args
 # <- punctuation.definition.variable.powershell
-# ^ support.constant.automatic.powershell
+# ^ support.variable.automatic.powershell
 $error
 # <- punctuation.definition.variable.powershell
 # ^ support.constant.variable.powershell
@@ -103,7 +103,7 @@ $home
 # ^ support.constant.variable.powershell
 $foreach
 # <- punctuation.definition.variable.powershell
-# ^ support.constant.automatic.powershell
+# ^ support.variable.automatic.powershell
 
 # Normal variables
 $variable
@@ -912,7 +912,7 @@ class Vehicle {
 #                     ^ variable.other.readwrite.powershell
         $this.Mileage += $NumberOfMiles
 #       ^ punctuation.definition.variable.powershell
-#        ^^^^ support.constant.automatic.powershell
+#        ^^^^ support.variable.automatic.powershell
 #             ^ variable.other.member.powershell
 #                     ^^ keyword.operator.assignment.powershell
 

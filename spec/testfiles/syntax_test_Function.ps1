@@ -305,7 +305,7 @@ function Verb-Noun {
         #               ^ meta.attribute.powershell meta.scriptblock.powershell
         #                ^^^^^^^^^ meta.scriptblock.powershell support.function.powershell
         #                          ^ meta.scriptblock.powershell punctuation.definition.variable.powershell
-        #                           ^ meta.scriptblock.powershell support.constant.automatic.powershell
+        #                           ^ meta.scriptblock.powershell support.variable.automatic.powershell
         #                            ^ meta.attribute.powershell meta.scriptblock.powershell
         #                             ^ meta.attribute.powershell punctuation.section.group.end.powershell
         #                              ^ meta.attribute.powershell punctuation.section.bracket.end.powershell
@@ -359,7 +359,7 @@ function Verb-Noun {
         # <- keyword.control.powershell
         #  ^ punctuation.section.group.begin.powershell
         #   ^ punctuation.definition.variable.powershell
-        #    ^^^^^^^^ support.constant.automatic.powershell
+        #    ^^^^^^^^ support.variable.automatic.powershell
         #             ^^^^^^^^^^^^^ variable.other.member.powershell
         #                          ^ punctuation.section.group.begin.powershell
         #                                                ^ punctuation.section.group.end.powershell
