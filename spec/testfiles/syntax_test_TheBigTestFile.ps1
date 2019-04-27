@@ -89,9 +89,15 @@ throw "Do not run this file!"
 #                                         ^^    ^^     ^^    ^^      ^ ^ string.unquoted.powershell
 
 # Automatic variables
-$_
+$_, $$, $^, $?
 # <- punctuation.definition.variable.powershell
  # <- support.variable.automatic.powershell
+#   ^ punctuation.definition.variable.powershell
+#    ^ support.variable.automatic.powershell
+#       ^ punctuation.definition.variable.powershell
+#        ^ support.variable.automatic.powershell
+#           ^ punctuation.definition.variable.powershell
+#            ^ support.variable.automatic.powershell
 $args
 # <- punctuation.definition.variable.powershell
 # ^ support.variable.automatic.powershell
@@ -178,6 +184,12 @@ $variable.Name
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
 #          ^ not:punctuation.definition.variable.powershell
 #           ^ not:variable.other.readwrite.powershell
+
+# double check scopes for automatic variables in strings
+"$_ $$ $Pwd"
+# ^ support.variable.automatic.powershell
+#    ^ support.variable.automatic.powershell
+#       ^ support.variable.automatic.powershell
 
 # Single quotes string
 'This is a string'
