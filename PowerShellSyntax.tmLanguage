@@ -416,7 +416,7 @@
 		<key>attribute</key>
 		<dict>
 			<key>begin</key>
-			<string>(\[)\s*\b(?i)(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength)\b</string>
+			<string>(\[)\s*\b(?i)(cmdletbinding|alias|outputtype|parameter|validatenotnull|validatenotnullorempty|validatecount|validateset|allownull|allowemptycollection|allowemptystring|validatescript|validaterange|validatepattern|validatelength|supportswildcards)\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
