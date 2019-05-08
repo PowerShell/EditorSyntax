@@ -469,42 +469,6 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#variable</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#variableNoProperty</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#hashtable</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#scriptblock</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#doubleQuotedStringEscapes</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#doubleQuotedString</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#type</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#numericConstant</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#doubleQuotedString</string>
-						</dict>
-						<dict>
-							<key>include</key>
 							<string>$self</string>
 						</dict>
 						<dict>
@@ -523,39 +487,6 @@
 									<string>keyword.operator.assignment.powershell</string>
 								</dict>
 							</dict>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>(?&lt;!')'</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.string.begin.powershell</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>'(?!')</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.string.end.powershell</string>
-								</dict>
-							</dict>
-							<key>name</key>
-							<string>string.quoted.single.powershell</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>match</key>
-									<string>''</string>
-									<key>name</key>
-									<string>constant.character.escape.powershell</string>
-								</dict>
-							</array>
 						</dict>
 					</array>
 				</dict>
