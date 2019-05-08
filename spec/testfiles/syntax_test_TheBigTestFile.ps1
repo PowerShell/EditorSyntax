@@ -89,12 +89,18 @@ throw "Do not run this file!"
 #                                         ^^    ^^     ^^    ^^      ^ ^ string.unquoted.powershell
 
 # Automatic variables
-$_
+$_, $$, $^, $?
 # <- punctuation.definition.variable.powershell
- # <- support.constant.automatic.powershell
+ # <- support.variable.automatic.powershell
+#   ^ punctuation.definition.variable.powershell
+#    ^ support.variable.automatic.powershell
+#       ^ punctuation.definition.variable.powershell
+#        ^ support.variable.automatic.powershell
+#           ^ punctuation.definition.variable.powershell
+#            ^ support.variable.automatic.powershell
 $args
 # <- punctuation.definition.variable.powershell
-# ^ support.constant.automatic.powershell
+# ^ support.variable.automatic.powershell
 $error
 # <- punctuation.definition.variable.powershell
 # ^ support.constant.variable.powershell
@@ -103,7 +109,7 @@ $home
 # ^ support.constant.variable.powershell
 $foreach
 # <- punctuation.definition.variable.powershell
-# ^ support.constant.automatic.powershell
+# ^ support.variable.automatic.powershell
 
 # Normal variables
 $variable
@@ -178,6 +184,12 @@ $variable.Name
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
 #          ^ not:punctuation.definition.variable.powershell
 #           ^ not:variable.other.readwrite.powershell
+
+# double check scopes for automatic variables in strings
+"$_ $$ $Pwd"
+# ^ support.variable.automatic.powershell
+#    ^ support.variable.automatic.powershell
+#       ^ support.variable.automatic.powershell
 
 # Single quotes string
 'This is a string'
@@ -912,7 +924,7 @@ class Vehicle {
 #                     ^ variable.other.readwrite.powershell
         $this.Mileage += $NumberOfMiles
 #       ^ punctuation.definition.variable.powershell
-#        ^^^^ support.constant.automatic.powershell
+#        ^^^^ support.variable.automatic.powershell
 #             ^ variable.other.member.powershell
 #                     ^^ keyword.operator.assignment.powershell
 

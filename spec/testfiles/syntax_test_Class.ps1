@@ -63,7 +63,7 @@ class TypeName
         #                ^ punctuation.section.group.end.powershell
         $this.P1 = $s
         # <- punctuation.definition.variable.powershell
-        # ^ support.constant.automatic.powershell
+        # ^ support.variable.automatic.powershell
         #     ^^ variable.other.member.powershell
         #        ^ keyword.operator.assignment.powershell
         #          ^ punctuation.definition.variable.powershell
@@ -110,7 +110,7 @@ class TypeName
     #                           ^ punctuation.section.group.end.powershell
         $this.P3 = $i
         # <- punctuation.definition.variable.powershell
-        # ^ support.constant.automatic.powershell
+        # ^ support.variable.automatic.powershell
         #     ^^ variable.other.member.powershell
         #        ^ keyword.operator.assignment.powershell
         #          ^ punctuation.definition.variable.powershell
@@ -118,7 +118,7 @@ class TypeName
         return $this.P3
         # <- keyword.control.powershell
         #      ^ punctuation.definition.variable.powershell
-        #       ^^^^ support.constant.automatic.powershell
+        #       ^^^^ support.variable.automatic.powershell
         #            ^^ variable.other.member.powershell
     }
 }
