@@ -1222,3 +1222,8 @@ get-thing | Out-WithYou > $null # destroy
 #                                                           ^                 ^ meta.group.complex.subexpression.powershell punctuation.section.group.begin.powershell
 #                                                                ^ storage.type.powershell
 #                                                                                                      ^ ^ meta.group.complex.subexpression.powershell punctuation.section.group.end.powershell
+"This is the Debugreference variable: $DebugPreference"
+# <- string.quoted.double.powershell
+#                                     ^ variable.language.powershell
+$ConfirmPreference
+# <- variable.language.powershell
