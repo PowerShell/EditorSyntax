@@ -662,15 +662,39 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>`[0abnfrvt"'$`]</string>
+					<string>`[`0abefnrtv"'$]</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#unicodeEscape</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>""</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>unicodeEscape</key>
+		<dict>
+			<key>comment</key>
+			<string>`u{xxxx} added in PowerShell 6.0</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>`u\{(?:(?:10)?([0-9a-fA-F]){1,4}|0?\g&lt;1&gt;{1,5})}</string>
+					<key>name</key>
+					<string>constant.character.escape.powershell</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>`u(?:\{[0-9a-fA-F]{,6}.)?</string>
+					<key>name</key>
+					<string>invalid.character.escape.powershell</string>
 				</dict>
 			</array>
 		</dict>
