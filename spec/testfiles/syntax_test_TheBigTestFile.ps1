@@ -1198,9 +1198,9 @@ get-thing | Out-WithYou > $null # destroy
 #                         ^ punctuation.definition.variable.powershell
 #                          ^ constant.language.powershell
 #                               ^ punctuation.definition.comment.powershell
-"Escaped chars: `", `n, `$, `b, `t, `""
+"Escaped chars: `", `n, `$, `b, `t, `e, `u{10ffff}, `""
 # <- string.quoted.double.powershell
-#               ^^  ^^  ^^  ^^  ^^  ^^ string.quoted.double.powershell constant.character.escape.powershell
+#               ^^  ^^  ^^  ^^  ^^  ^^  ^^^^^^^^^^  ^^ string.quoted.double.powershell constant.character.escape.powershell
 'But here they''re not escape chars: `", `n, `$, `b, `"'
 #             ^^ constant.character.escape.powershell
 #                                    ^^  ^^  ^^  ^^  ^^ not:constant.character.escape.powershell
