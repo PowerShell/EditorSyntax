@@ -101,7 +101,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!')'</string>
+			<string>['\x{2018}-\x{201B}]</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -111,7 +111,9 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>'(?!')</string>
+			<string>['\x{2018}-\x{201B}]</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -126,7 +128,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>''</string>
+					<string>['\x{2018}-\x{201B}]{2}</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
@@ -134,9 +136,9 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\@"\s*$</string>
+			<string>\@["\x{201C}-\x{201E}]\s*$</string>
 			<key>end</key>
-			<string>^"@</string>
+			<string>^["\x{201C}-\x{201E}]@</string>
 			<key>name</key>
 			<string>string.quoted.double.heredoc.powershell</string>
 			<key>patterns</key>
@@ -157,9 +159,9 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\@'\s*$</string>
+			<string>\@['\x{2018}-\x{201B}]\s*$</string>
 			<key>end</key>
-			<string>^'@</string>
+			<string>^['\x{2018}-\x{201B}]@</string>
 			<key>name</key>
 			<string>string.quoted.single.heredoc.powershell</string>
 		</dict>
@@ -584,7 +586,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>`[`0abefnrtv"'$]</string>
+					<string>`[`0abefnrtv'"\x{2018}-\x{201E}$]</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
@@ -1501,7 +1503,7 @@
 		<key>doubleQuotedString</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!(?&lt;!`)")"</string>
+			<string>["\x{201C}-\x{201E}]</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1511,7 +1513,9 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>"(?!")</string>
+			<string>["\x{201C}-\x{201E}]</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1538,7 +1542,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>""</string>
+					<string>["\x{201C}-\x{201E}]{2}</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
