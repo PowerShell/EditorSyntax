@@ -379,20 +379,37 @@ $a3[1..2]
     "This 'string' is nice."
 #   ^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
 
-# Double quoted here-string
-@"
+# Double quoted here-string, white space at end of start token allowed
+@"  
 # <- string.quoted.double.heredoc.powershell
  # <- string.quoted.double.heredoc.powershell
 $This is a 'double quoted'
 # <- punctuation.definition.variable.powershell
 # ^ string.quoted.double.heredoc.powershell support.variable.automatic.powershell
-Isn't it "nice"??
+Isn't it ""nice""??
+#        ^^ not:constant.character.escape.powershell
 There is no @platting here!
 #           ^ not:punctuation.definition.variable.powershell
 #            ^ not:variable.other.readwrite.powershell
 "@
 # <- string.quoted.double.heredoc.powershell
  # <- string.quoted.double.heredoc.powershell
+
+# Single quoted here-string, white space at end of start token allowed
+@'  
+# <- string.quoted.single.heredoc.powershell
+ # <- string.quoted.single.heredoc.powershell
+$This is a ''single quoted''
+#          ^^ not:constant.character.escape.powershell
+# <- not:punctuation.definition.variable.powershell
+# ^ string.quoted.single.heredoc.powershell not:support.variable.automatic.powershell
+Isn't it "nice"??
+There is no @platting here!
+#           ^ not:punctuation.definition.variable.powershell
+#            ^ not:variable.other.readwrite.powershell
+'@
+# <- string.quoted.single.heredoc.powershell
+ # <- string.quoted.single.heredoc.powershell
 
 # Numeric constants
     -3
