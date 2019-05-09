@@ -162,15 +162,6 @@
 			<string>^'@</string>
 			<key>name</key>
 			<string>string.quoted.single.heredoc.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>''</string>
-					<key>name</key>
-					<string>constant.character.escape.powershell</string>
-				</dict>
-			</array>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -600,12 +591,6 @@
 				<dict>
 					<key>include</key>
 					<string>#unicodeEscape</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>""</string>
-					<key>name</key>
-					<string>constant.character.escape.powershell</string>
 				</dict>
 			</array>
 		</dict>
@@ -1550,6 +1535,12 @@
 				<dict>
 					<key>include</key>
 					<string>#doubleQuotedStringEscapes</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>""</string>
+					<key>name</key>
+					<string>constant.character.escape.powershell</string>
 				</dict>
 				<dict>
 					<key>include</key>
