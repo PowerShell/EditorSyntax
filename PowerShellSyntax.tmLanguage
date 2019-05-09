@@ -136,9 +136,25 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\@["\x{201C}-\x{201E}]\s*$</string>
+			<string>(@["\x{201C}-\x{201E}])\s*$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>^["\x{201C}-\x{201E}]@</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.double.heredoc.powershell</string>
 			<key>patterns</key>
@@ -159,9 +175,25 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\@['\x{2018}-\x{201B}]\s*$</string>
+			<string>(@['\x{2018}-\x{201B}])\s*$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>^['\x{2018}-\x{201B}]@</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.single.heredoc.powershell</string>
 		</dict>
