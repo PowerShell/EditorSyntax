@@ -370,4 +370,8 @@ function Verb-Noun {
     # <- keyword.control.powershell
 
     }
+    Dispose{
+    # <- keyword.control.powershell
+    }
+
 }
