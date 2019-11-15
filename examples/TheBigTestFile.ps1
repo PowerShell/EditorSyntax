@@ -390,6 +390,8 @@ if (10 -cgt 100) { }
 $a -is $b
 $b -contains $c
 $x -notcontains $c
+$c -in $b
+$c -notin $x
 $a -match $b
 $a -notmatch $b
 $x -like $c
