@@ -392,6 +392,8 @@ $b -contains $c
 $x -notcontains $c
 $c -in $b
 $c -notin $x
+$c -any { $true }
+$c -all { $true }
 $a -match $b
 $a -notmatch $b
 $x -like $c

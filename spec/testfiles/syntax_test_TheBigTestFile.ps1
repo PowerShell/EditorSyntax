@@ -1010,6 +1010,10 @@ $c -in $b
 #  ^ keyword.operator.comparison.powershell
 $c -notin $x
 #  ^ keyword.operator.comparison.powershell
+$c -any { $true }
+#  ^ keyword.operator.comparison.powershell
+$c -all { $true }
+#  ^ keyword.operator.comparison.powershell
 $a -match $b
 #  ^ keyword.operator.comparison.powershell
 $a -notmatch $b
