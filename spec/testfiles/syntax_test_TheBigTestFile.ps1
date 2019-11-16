@@ -1006,6 +1006,10 @@ $b -contains $c
 #  ^ keyword.operator.comparison.powershell
 $x -notcontains $c
 #  ^ keyword.operator.comparison.powershell
+$c -in $b
+#  ^ keyword.operator.comparison.powershell
+$c -notin $x
+#  ^ keyword.operator.comparison.powershell
 $a -match $b
 #  ^ keyword.operator.comparison.powershell
 $a -notmatch $b
