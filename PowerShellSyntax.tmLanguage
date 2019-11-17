@@ -328,7 +328,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\w)-(?i:[ic]?(?:eq|ne|[gl][te]|(?:not)?(?:like|match|contains|in)|any|all|replace))(?!\p{L})</string>
+			<string>(?&lt;!\w)-(?i:(?:[ic]?(?:eq|ne|[gl][te]|(?:not)?(?:like|match|contains|in)|replace))|any|all)(?!\p{L})</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.powershell</string>
 		</dict>
