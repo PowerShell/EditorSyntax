@@ -1212,7 +1212,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\-(?i:Modules|PSSnapin|RunAsAdministrator|ShellId|Version)</string>
+					<string>\-(?i:Modules|PSSnapin|RunAsAdministrator|ShellId|Version|Assembly|PSEdition)</string>
 					<key>name</key>
 					<string>keyword.other.powershell</string>
 				</dict>
