@@ -101,7 +101,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!')'</string>
+			<string>['\x{2018}-\x{201B}]</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -111,7 +111,9 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>'(?!')</string>
+			<string>['\x{2018}-\x{201B}]</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -126,7 +128,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>''</string>
+					<string>['\x{2018}-\x{201B}]{2}</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
@@ -134,9 +136,25 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\@"(?=$)</string>
+			<string>(@["\x{201C}-\x{201E}])\s*$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>^"@</string>
+			<string>^["\x{201C}-\x{201E}]@</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.double.heredoc.powershell</string>
 			<key>patterns</key>
@@ -157,20 +175,27 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\@'(?=$)</string>
+			<string>(@['\x{2018}-\x{201B}])\s*$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.powershell</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>^'@</string>
+			<string>^['\x{2018}-\x{201B}]@</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.powershell</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>string.quoted.single.heredoc.powershell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>''</string>
-					<key>name</key>
-					<string>constant.character.escape.powershell</string>
-				</dict>
-			</array>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -593,19 +618,13 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>`[`0abefnrtv"'$]</string>
+					<string>`[`0abefnrtv'"\x{2018}-\x{201E}$]</string>
 					<key>name</key>
 					<string>constant.character.escape.powershell</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#unicodeEscape</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>""</string>
-					<key>name</key>
-					<string>constant.character.escape.powershell</string>
 				</dict>
 			</array>
 		</dict>
@@ -1516,7 +1535,7 @@
 		<key>doubleQuotedString</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!(?&lt;!`)")"</string>
+			<string>["\x{201C}-\x{201E}]</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1526,7 +1545,9 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>"(?!")</string>
+			<string>["\x{201C}-\x{201E}]</string>
+			<key>applyEndPatternLast</key>
+			<true/>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1550,6 +1571,12 @@
 				<dict>
 					<key>include</key>
 					<string>#doubleQuotedStringEscapes</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>["\x{201C}-\x{201E}]{2}</string>
+					<key>name</key>
+					<string>constant.character.escape.powershell</string>
 				</dict>
 				<dict>
 					<key>include</key>
