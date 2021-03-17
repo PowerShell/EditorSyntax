@@ -10,6 +10,8 @@ using namespace System.Management.Automation
 #Requires -Modules PSWorkflow, ActiveDirectory
 #Requires -Modules PSWorkflow,ActiveDirectory
 #Requires -ShellId MyLocalShell
+#Requires -PSEdition Core
+#Requires -Assembly System
 #Requires -Modules PSWorkflow @{
     ModuleName="PSScheduledJob"
     ModuleVersion="1.0.0.0"

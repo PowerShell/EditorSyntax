@@ -63,6 +63,16 @@ using namespace System.Management.Automation
 # ^ meta.requires.powershell keyword.control.requires.powershell
 #         ^^^^^^^^ meta.requires.powershell keyword.other.powershell
 #                  ^^^^^^^^^^^^ meta.requires.powershell variable.parameter.powershell
+#Requires -PSEdition Core
+# <- punctuation.definition.comment.powershell
+# ^ meta.requires.powershell keyword.control.requires.powershell
+#         ^^^^^^^^^^ meta.requires.powershell keyword.other.powershell
+#                    ^^^^ meta.requires.powershell variable.parameter.powershell
+#Requires -Assembly System
+# <- punctuation.definition.comment.powershell
+# ^ meta.requires.powershell keyword.control.requires.powershell
+#         ^^^^^^^^^ meta.requires.powershell keyword.other.powershell
+#                   ^^^^^^ meta.requires.powershell variable.parameter.powershell
 #Requires -Modules PSWorkflow, @{ModuleName="PSScheduledJob"; ModuleVersion="1.0.0.0"}
 # <- punctuation.definition.comment.powershell
 # ^ meta.requires.powershell keyword.control.requires.powershell
