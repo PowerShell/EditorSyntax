@@ -413,10 +413,10 @@
 		<key>commentLine</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;![`\\-])#</string>
+			<string>(?&lt;![`\\-])(#)#*</string>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.definition.comment.powershell</string>
@@ -581,8 +581,10 @@
 							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>these embedded doc keywords do not support arguments, must be the only thing on the line</string>
 					<key>match</key>
-					<string>^(?i:(?:\s?|#)+(\.)(COMPONENT|DESCRIPTION|EXAMPLE|EXTERNALHELP|FORWARDHELPCATEGORY|FORWARDHELPTARGETNAME|FUNCTIONALITY|INPUTS|LINK|NOTES|OUTPUTS|REMOTEHELPRUNSPACE|ROLE|SYNOPSIS))</string>
+					<string>(?:^|\G)(?i:\s*(\.)(COMPONENT|DESCRIPTION|EXAMPLE|FUNCTIONALITY|INPUTS|LINK|NOTES|OUTPUTS|ROLE|SYNOPSIS))\s*$</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
@@ -605,8 +607,10 @@
 							<string>keyword.operator.documentation.powershell</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>these embedded doc keywords require arguments though the type required may be inconsistent, they may not all be able to use the same argument match</string>
 					<key>match</key>
-					<string>(?i:\s?(\.)(PARAMETER|FORWARDHELPTARGETNAME|FORWARDHELPCATEGORY|REMOTEHELPRUNSPACE|EXTERNALHELP)\s+([a-z0-9-_]+))</string>
+					<string>(?:^|\G)(?i:\s*(\.)(EXTERNALHELP|FORWARDHELP(?:CATEGORY|TARGETNAME)|PARAMETER|REMOTEHELPRUNSPACE))\s+(.+?)\s*$</string>
 					<key>name</key>
 					<string>comment.documentation.embedded.powershell</string>
 				</dict>
