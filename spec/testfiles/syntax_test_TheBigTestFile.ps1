@@ -153,7 +153,11 @@ $variable.Name
 "This is my $($variable.Name)!"
 # <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
 # ^^^^^^^^^^                 ^^ string.quoted.double.powershell
-#           ^ ^ punctuation.definition.variable.powershell
+#           ^^ punctuation.section.embedded.substatement.begin.powershell
+#                           ^ punctuation.section.embedded.substatement.end.powershell
+#           ^^^^^^^^^^^^^^^^^ meta.embedded.substatement.powershell
+#           ^ keyword.other.substatement.powershell
+#             ^ punctuation.definition.variable.powershell
 #            ^ punctuation.section.group.begin.powershell
 #                           ^ punctuation.section.group.end.powershell
 #              ^^^^^^^^ variable.other.readwrite.powershell
@@ -372,7 +376,10 @@ $a3[1..2]
 #   ^^^^^^^^^^^^ string.quoted.double.powershell
     "$(Invoke-Something)"
 #   ^                   ^ string.quoted.double.powershell
-#    ^ punctuation.definition.variable.powershell
+#    ^^ punctuation.section.embedded.substatement.begin.powershell
+#                      ^ punctuation.section.embedded.substatement.end.powershell
+#    ^^^^^^^^^^^^^^^^^^^ meta.embedded.substatement.powershell
+#    ^ keyword.other.substatement.powershell
 #     ^ punctuation.section.group.begin.powershell
 #      ^ interpolated.complex.source.powershell support.function.powershell
 #                      ^ punctuation.section.group.end.powershell
@@ -1204,7 +1211,7 @@ $file = join-path $env:SystemDrive "$([System.io.path]::GetRandomFileName()).ps1
 #            ^ support.function.powershell
 #                  ^ support.variable.drive.powershell
 #                         ^ variable.other.readwrite.powershell
-#                                   ^ string.quoted.double.powershell punctuation.definition.variable.powershell
+#                                   ^ string.quoted.double.powershell punctuation.definition.substatement.powershell punctuation.section.embedded.substatement.begin.powershell
 #                                        ^ storage.type.powershell
 $ScriptBlock | Out-File $file -Force
 # <- punctuation.definition.variable.powershell
@@ -1238,7 +1245,8 @@ get-thing | Out-WithYou > $null # destroy
 #             ^^ constant.character.escape.powershell
 #                                    ^^  ^^  ^^  ^^  ^^ not:constant.character.escape.powershell
 "When you call a method: $( get-number | %{ invoke-command $( [string]::format("Like (this{0})","what?") ) $var } )"
-#                        ^                                                                                 ^ punctuation.definition.variable.powershell
+#                        ^ string.quoted.double.powershell punctuation.definition.substatement.powershell punctuation.section.embedded.substatement.begin.powershell
+#                                                                                                          ^ punctuation.definition.variable.powershell
 #                                      ^ keyword.operator.other.powershell
 #                                                           ^                 ^ meta.group.complex.subexpression.powershell punctuation.section.group.begin.powershell
 #                                                                ^ storage.type.powershell

@@ -63,7 +63,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#interpolatedStringContent</string>
+			<string>#subexpression</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -239,15 +239,20 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\$)(\()</string>
+			<string>((\$))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.variable.powershell</string>
+					<string>keyword.other.substatement.powershell</string>
 				</dict>
 				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.subexpression.powershell</string>
+				</dict>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.group.begin.powershell</string>
@@ -689,7 +694,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>interpolatedStringContent</key>
+		<key>subexpression</key>
 		<dict>
 			<key>begin</key>
 			<string>\(</string>
@@ -701,8 +706,6 @@
 					<string>punctuation.section.group.begin.powershell</string>
 				</dict>
 			</dict>
-			<key>contentName</key>
-			<string>interpolated.simple.source.powershell</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
@@ -713,43 +716,52 @@
 					<string>punctuation.section.group.end.powershell</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>meta.group.simple.subexpression.powershell</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#interpolation</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#interpolatedStringContent</string>
 				</dict>
 			</array>
 		</dict>
 		<key>interpolation</key>
 		<dict>
 			<key>begin</key>
-			<string>(\$)(\()</string>
+			<string>(((\$)))((\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.variable.powershell</string>
+					<string>keyword.other.substatement.powershell</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
+					<string>punctuation.definition.substatement.powershell</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.embedded.substatement.begin.powershell</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
 					<string>punctuation.section.group.begin.powershell</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.embedded.substatement.begin.powershell</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
 			<string>interpolated.complex.source.powershell</string>
 			<key>end</key>
-			<string>\)</string>
+			<string>(\))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -757,20 +769,19 @@
 					<key>name</key>
 					<string>punctuation.section.group.end.powershell</string>
 				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.embedded.substatement.end.powershell</string>
+				</dict>
 			</dict>
+			<key>name</key>
+			<string>meta.embedded.substatement.powershell</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#interpolation</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#interpolatedStringContent</string>
 				</dict>
 			</array>
 		</dict>
