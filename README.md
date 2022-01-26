@@ -22,10 +22,6 @@ both VS Code and Sublime Text.  There are a number of existing issues with the g
 that we need to track down and fix.  Please see [issue #1](https://github.com/PowerShell/EditorSyntax/issues/1)
 for more details.
 
-## Build and Test
-
-> ***NOTE:*** You can grab a build of the current definitions as they exist in Github from [Appveyor](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master/artifacts)
-
 ### Prerequisites
 
 - Node.JS, >= 8.9.1
