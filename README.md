@@ -1,5 +1,3 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/github/powershell/editorsyntax?branch=master&svg=true)](https://ci.appveyor.com/project/powershell/editorsyntax/branch/master) [![Join the chat at https://gitter.im/PowerShell/EditorSyntax](https://badges.gitter.im/PowerShell/EditorSyntax.svg)](https://gitter.im/PowerShell/EditorSyntax?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 # PowerShell Syntax Definition for Editors
 
 This project establishes the central development and maintenance of syntax definition
@@ -81,20 +79,19 @@ send pull requests if you'd like to contribute.
 
 ## Maintainers
 
-- [Nick James](https://github.com/omniomi) - [@omniomi](https://twitter.com/omniomi)
-- [Tyler Leonhardt](https://github.com/tylerl0706) - [@TylerLeonhardt](https://twitter.com/TylerLeonhardt)
+- [Andy Jordan](https://github.com/andyleejordan)
+- [Nick James](https://github.com/omniomi)
 
 ## License
 
-This extension is [licensed under the MIT License](LICENSE).  Please see the
+This extension is [licensed under the MIT License](LICENSE). Please see the
 [third-party notices](Third%20Party%20Notices.txt) file for details on the original
 source of the TextMate definition that we use.
 
 ## Code of Conduct
 
-This project has adopted the [Microsoft Open Source Code of Conduct][conduct-code].
-For more information see the [Code of Conduct FAQ][conduct-faq] or contact [opencode@microsoft.com][conduct-email] with any additional questions or comments.
+Please see our [Code of Conduct](.github/CODE_OF_CONDUCT.md) before participating in this project.
 
-[conduct-code]: http://opensource.microsoft.com/codeofconduct/
-[conduct-faq]: http://opensource.microsoft.com/codeofconduct/faq/
-[conduct-email]: mailto:opencode@microsoft.com
+## Security Policy
+
+For any security issues, please see our [Security Policy](.github/SECURITY.md).
