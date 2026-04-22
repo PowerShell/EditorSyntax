@@ -1007,7 +1007,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>support.constant.variable.powershell</string>
+							<string>variable.other.constant.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
@@ -1291,7 +1291,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>support.constant.variable.powershell</string>
+							<string>variable.other.constant.powershell</string>
 						</dict>
 						<key>1</key>
 						<dict>
