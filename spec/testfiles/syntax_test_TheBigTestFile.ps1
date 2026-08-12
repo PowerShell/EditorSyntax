@@ -543,6 +543,18 @@ There is no @platting here!
 #               ^ punctuation.section.bracket.end.powershell
 #                       ^ punctuation.section.group.begin.powershell
 #                                    ^ punctuation.section.group.end.powershell
+[Array]::Empty[int]()
+#              ^ punctuation.section.bracket.begin.powershell
+#               ^^^ storage.type.powershell
+#                  ^ punctuation.section.bracket.end.powershell
+[System.Linq.Enumerable]::Select[int,string]($null, $null)
+#                                ^ punctuation.section.bracket.begin.powershell
+#                                 ^^^ ^^^^^^ storage.type.powershell
+#                                           ^ punctuation.section.bracket.end.powershell
+[System.Linq.Enumerable]::Empty[System.Collections.Generic.List[int]]()
+#                               ^                               ^ punctuation.section.bracket.begin.powershell
+#                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^ storage.type.powershell
+#                                                                   ^^ punctuation.section.bracket.end.powershell
 
 # Commands (functions)
 Invoke-Something -foobar
