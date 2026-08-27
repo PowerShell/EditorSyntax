@@ -93,4 +93,7 @@ function Verb-Noun
     Clean
     {
     }
+    Dispose
+    {
+    }
 }
