@@ -1023,7 +1023,7 @@
 					<key>comment</key>
 					<string>These are the other built-in constants.</string>
 					<key>match</key>
-					<string>(\$)(?i:(Error|ExecutionContext|Host|Home|PID|PsHome|PsVersionTable|ShellID))((?:\.(?:\p{L}|\d|_)+)*\b)?\b</string>
+					<string>(\$)(?i:(ExecutionContext|Host|Home|PID|PsHome|PsVersionTable|ShellID))((?:\.(?:\p{L}|\d|_)+)*\b)?\b</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1047,7 +1047,7 @@
 					<key>comment</key>
 					<string>Automatic variables are not constants, but they are read-only. In monokai (default) color schema support.variable doesn't have color, so we use constant.</string>
 					<key>match</key>
-					<string>(\$)((?:[$^?])|(?i:_|Args|ConsoleFileName|Event|EventArgs|EventSubscriber|ForEach|Input|LastExitCode|Matches|MyInvocation|NestedPromptLevel|Profile|PSBoundParameters|PsCmdlet|PsCulture|PSDebugContext|PSItem|PSCommandPath|PSScriptRoot|PsUICulture|Pwd|Sender|SourceArgs|SourceEventArgs|StackTrace|Switch|This)\b)((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+					<string>(\$)((?:[$^?])|(?i:_|Args|ConsoleFileName|Error|Event|EventArgs|EventSubscriber|ForEach|Input|LastExitCode|Matches|MyInvocation|NestedPromptLevel|Profile|PSBoundParameters|PsCmdlet|PsCulture|PSDebugContext|PSItem|PSCommandPath|PSScriptRoot|PsUICulture|Pwd|Sender|SourceArgs|SourceEventArgs|StackTrace|Switch|This)\b)((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 				<dict>
 					<key>captures</key>

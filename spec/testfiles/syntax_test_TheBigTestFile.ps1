@@ -113,13 +113,33 @@ $args
 # ^ support.variable.automatic.powershell
 $error
 # <- punctuation.definition.variable.powershell
-# ^ support.constant.variable.powershell
-$home
-# <- punctuation.definition.variable.powershell
-# ^ support.constant.variable.powershell
+# ^ support.variable.automatic.powershell
 $foreach
 # <- punctuation.definition.variable.powershell
 # ^ support.variable.automatic.powershell
+
+# Automatic constants
+$executioncontext
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$host
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$home
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$pid
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$pshome
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$psversiontable
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$shellid
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
 
 # Normal variables
 $variable

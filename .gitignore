@@ -3,3 +3,4 @@ grammars/
 node_modules/
 atom/
 atom.zip
+.vscode/
